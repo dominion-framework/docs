@@ -1,0 +1,6 @@
+syntax: glob
+.idea/*
+.lock
+node_modules
+publish.sh
+_docpress

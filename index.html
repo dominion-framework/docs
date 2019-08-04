@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/style.css?t=90051322">
+    <script src="assets/script.js?t=93f1a66c"></script>
+    <title>Dominion</title>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body class="-menu-visible">
+    <div class="doc-layout">
+      <div class="toggle menu-toggle js-menu-toggle"></div>
+      <div class="menu toc-menu">
+        <ul>
+          <li class="menu-item -level-0 -parent">
+            <ul class="submenu">
+              <li class="menu-item -level-1"><a class="link title -active link-index" href="index.html">Dominion</a>
+              </li>
+              <li class="menu-item -level-1"><a class="link title link-installation" href="#installation">Installation</a>
+              </li>
+              <li class="menu-item -level-1 -parent"><a class="link title link-usage" href="#usage">Usage</a>
+                <ul class="submenu">
+                  <li class="menu-item -level-2"><a class="link title link-components" href="#components">Components</a>
+                  </li>
+                  <li class="menu-item -level-2"><a class="link title link-api-request-lifecycle" href="#api-request-lifecycle">API Request Lifecycle</a>
+                  </li>
+                  <li class="menu-item -level-2"><a class="link title link-controller" href="#controller">Controller</a>
+                  </li>
+                  <li class="menu-item -level-2"><a class="link title link-models" href="#models">Models</a>
+                  </li>
+                  <li class="menu-item -level-2"><a class="link title link-repositories" href="#repositories">Repositories</a>
+                  </li>
+                  <li class="menu-item -level-2"><a class="link title link-interceptors" href="#interceptors">Interceptors</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="body page-index">
+        <div class="header-nav">
+          <div class="right">
+          </div>
+        </div>
+        <div class="markdown-body"><h1 id="dominion">Dominion</h1>
+<p>Declarative Promise based Node.js framework for REST API</p>
+<h2 id="installation">Installation</h2>
+<pre><code>npm i https://github.com/yura-chaikovsky/dominion.git
+</code></pre>
+<h2 id="usage">Usage</h2>
+<h3 id="components">Components</h3>
+<p>You can take &quot;components&quot; as 1:1 representation of restfull (or business) domains.
+It&apos;s useful to organize components having each in separate folder.
+Lets take <code>Users</code> model for example. Recommended file organization will be:</p>
+<pre><code>| - components/
+| | - users/             &lt;-- `Users` component 
+| | | - index.js
+| | | - controller.js
+| | | - factory.js
+| | | - repository.js
+| | - products/
+| - index.js
+| - package.json
+| - package-lock.json
+</code></pre>
+<h4 id="component-declaration-file">Component declaration file</h4>
+<p>Component dependencies are declared in <code>index.js</code> file:</p>
+<pre><code class="lang-js"><span class="pl-c1">module</span>.exports = {
+    <span class="hljs-attr">factories</span>: [
+        __dirname + <span class="pl-s">&apos;/factory&apos;</span>,      <span class="pl-c">// &lt;-- reference to factory.js</span>
+    ],
+    <span class="hljs-attr">controllers</span>: [
+        __dirname + <span class="pl-s">&apos;/controller&apos;</span>,   <span class="pl-c">// &lt;-- reference to controller.js</span>
+    ],
+    <span class="hljs-attr">requestInterceptors</span>: [],         <span class="pl-c">// &lt;-- list of references to request interceptors</span>
+    responseInterceptors: []         <span class="pl-c">// &lt;-- list of references to response interceptors</span>
+};
+</code></pre>
+<p>This declarations is used only for requiring components on the fly independent from
+order of requires in file.</p>
+<p>There are 3 default entities:</p>
+<ol>
+<li>Controllers</li>
+<li>Factories</li>
+<li>Repositories</li>
+</ol>
+<p><code>Controller</code> is a place where you define API&apos;s endpoints, basically mappings
+between URL&apos;s and actions you need to produce response.</p>
+<p><code>Factories</code> is where you describe model structure and its methods. Optionally factories
+may be linked to a repository.</p>
+<p><code>Repository</code> is playing role of ORM (Object-relational mapping) with external data storage.
+By default framework uses MySQL, but should work with any DB that has compatible SQL dialect.
+Alternative, repository prototype may be redefined to work with any type of
+storage (NoSQL, cloud storage, flat file, etc).</p>
+<p>Commonly you&apos;ll need one set of controller/factory/repository in a component,
+but it&apos;s possible to have multiple ones if needed.</p>
+<h3 id="api-request-lifecycle">API Request Lifecycle</h3>
+<p>To understand how requests are processed lets look on their lifecycle, it&apos;s straight forward:</p>
+<ol>
+<li>
+<p>On startup framework goes through all registered controllers (<code>core/controllers/index.js</code>), generates URL based
+on functions interface and make mappings between URL&apos;s and those functions.</p>
+</li>
+<li>
+<p>Client makes request to API server.</p>
+</li>
+<li>
+<p>Framework&apos;s router (<code>core/router/index.js</code>) catches the request and looking
+for matching callback from ones registered in controllers.</p>
+</li>
+<li>
+<p>If match was founded router builds request Promise chain. A chain contains
+<em>request interceptors</em>,  <em>handler</em> (function defined in controller), <em>response interceptors</em>
+and <em>request finalisation</em>. Then request promise chain gets executed:</p>
+<ol>
+<li>Requests interceptors are taking from <code>requestInterceptors</code> array in component&apos;s
+declaration file (<code>index.js</code>). They are general purpose functions that may validate
+client&apos;s authorization.</li>
+<li>Then <code>handler</code> gets executed. It defines top level business logic.
+Usually controller&apos;s <code>handler</code> manipulates models created by <code>Factories</code>.
+If needed, factories or model instances call linked <code>Repository</code>
+to create/modify/remove data in DB.</li>
+<li>Result of <code>handler</code> execution is passed to response interceptors. They are taking
+from <code>responseInterceptors</code> array in component&apos;s declaration file. There are no common use
+for response interceptor, as <code>handler</code> is responsible to produce response that is
+ready to be send back to client. However, it may be used to perform some general actions
+that depends on <code>handler</code>&apos;s response, like set custom header.</li>
+<li>Lastly, router handles common exceptions produced by <code>Repositoy</code> or <code>Factories</code> and sets
+proper status code (400 - for bad request, 404 - if model not found, 409 - for conflicts, etc).</li>
+</ol>
+</li>
+<li>
+<p>And finally, response produced by all previous steps gets stringified and returned to a client.</p>
+</li>
+</ol>
+<h3 id="controller">Controller</h3>
+<p>File containing controller should export object with a list of request <code>handler</code> functions and some
+meta data. This object may have properties:</p>
+<p><code>path</code> - domain part of an URL. Note, domain part is the last section of URL,
+for example if controller returns models from <code>Users</code> domain,
+urls can be <code>https://example.com/users</code>, <code>https://example.com/departments/42/users</code>.</p>
+<p><code>permissions</code> - array of permissions that are required by all <code>handler</code>&apos;s in the controller.</p>
+<p><code>GET</code> <code>POST</code> <code>PUT</code> <code>DELETE</code> <code>OPTIONS</code> <code>WS</code> - arrays containing <code>handler</code> functions for requests
+with specific http verbs or web sockets.</p>
+<pre><code class="lang-js"><span class="pl-k">const</span> Factories                 = use(<span class="pl-s">&quot;core/factories&quot;</span>);
+
+<span class="pl-k">const</span> UsersFactory              = Factories(<span class="pl-s">&quot;Users&quot;</span>);
+
+<span class="pl-c1">module</span>.exports = {
+
+    <span class="hljs-attr">path</span>: UsersFactory.__model__.name, <span class="pl-c">// &quot;users&quot;</span>
+
+    permissions: {
+        <span class="hljs-attr">POST</span>:   <span class="pl-s">&quot;Users.Create&quot;</span>,
+        <span class="hljs-attr">PUT</span>:    <span class="pl-s">&quot;Users.Update&quot;</span>,
+        <span class="hljs-attr">DELETE</span>: <span class="pl-s">&quot;Users.Delete&quot;</span>
+    },
+
+    <span class="hljs-attr">GET</span>: [
+        <span class="pl-c">// users/?limit=6&amp;offset=12</span>
+        <span class="hljs-function"><span class="pl-k">function</span> (<span class="hljs-params">limit = <span class="hljs-number">6</span>, offset = <span class="hljs-number">12</span></span>) </span>{
+            <span class="pl-c">// @summary: Get all user with pagination</span>
+            <span class="pl-k">return</span> UsersFactory.find();
+        },
+
+        <span class="pl-c">// users/42</span>
+        <span class="hljs-function"><span class="pl-k">function</span> (<span class="hljs-params">usersId</span>) </span>{
+            <span class="pl-c">// @permission: Users.Read</span>
+            <span class="pl-c">// @summary: Get user instance by id</span>
+            <span class="pl-k">return</span> UsersFactory.get({<span class="hljs-attr">id</span>: usersId});
+        }
+    ],
+
+    <span class="hljs-attr">POST</span>: [
+        <span class="pl-c">// users/</span>
+        <span class="hljs-function"><span class="pl-k">function</span> (<span class="hljs-params"></span>) </span>{
+            <span class="pl-c">// @summary: Create new user</span>
+            <span class="pl-k">return</span> UsersFactory.new(<span class="pl-k">this</span>.request.body)
+                .then(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> user.save())
+                .then(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> user.sendInvitationEmail())
+                .then(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> UsersFactory.get({<span class="hljs-attr">id</span>: user.id}));
+        }
+    ],
+
+    <span class="hljs-attr">PUT</span>: [
+        <span class="pl-c">// users/42</span>
+        <span class="hljs-function"><span class="pl-k">function</span> (<span class="hljs-params">usersId</span>) </span>{
+            <span class="pl-c">// @summary: Update new user profile</span>
+            <span class="pl-k">return</span> UsersFactory.get({<span class="hljs-attr">id</span>: usersId})
+                .then(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> user.populate(<span class="pl-k">this</span>.request.body))
+                .then(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> user.save());
+        }
+    ],
+
+    <span class="hljs-attr">DELETE</span>: [
+        <span class="pl-c">// users/1</span>
+        <span class="hljs-function"><span class="pl-k">function</span> (<span class="hljs-params">usersId</span>) </span>{
+            <span class="pl-c">// @summary: Remove user by id</span>
+            <span class="pl-k">return</span> UsersFactory.get({<span class="hljs-attr">id</span>: usersId})
+                .then(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> user.remove())
+                .then(<span class="hljs-function"><span class="hljs-params">result</span> =&gt;</span> {
+                    <span class="pl-k">if</span> (result.affectedRows) {
+                        <span class="pl-k">this</span>.response.status = <span class="pl-k">this</span>.response.statuses._204_NoContent;
+                    }
+                });
+        }
+    ]
+};
+</code></pre>
+<h4 id="url-generation">URL generation</h4>
+<p>URL for API&apos;s endpoints is generated automatically from <code>handler</code> function interface (arguments list)
+based on following rules:</p>
+<ol>
+<li>Property <code>path:</code> from controller declaration is always the last section of URL.</li>
+</ol>
+<pre><code class="lang-js">{
+    <span class="hljs-attr">path</span>: <span class="pl-s">&quot;books&quot;</span>,
+    ...
+    GET: [
+        <span class="hljs-function"><span class="pl-k">function</span> (<span class="hljs-params"></span>) </span>{ }
+
+        <span class="pl-c">// produces URL: </span>
+        <span class="pl-c">// https://example.com/books    </span>
+    ]
+
+}
+</code></pre>
+<ol start="2">
+<li>Function&apos;s required arguments are used for path part of URL. If argument name equals to
+declaration&apos;s <code>path:</code> property it is used as model identified in URL:</li>
+</ol>
+<pre><code class="lang-js">{
+    <span class="hljs-attr">path</span>: <span class="pl-s">&quot;books&quot;</span>
+    ...
+    GET: [
+        <span class="hljs-function"><span class="pl-k">function</span> (<span class="hljs-params">booksId</span>) </span>{ }
+
+        <span class="pl-c">// produces URL: </span>
+        <span class="pl-c">// https://example.com/books/42    </span>
+    ]
+
+}
+</code></pre>
+<ol start="3">
+<li>If argument name is not equal to declaration&apos;s <code>path:</code> property it is used as model&apos;s
+parent identified in URL. Identifiers from URL will be passed to function
+when it will be called. In following example, during execution <code>shelvesId</code> == 42 and <code>booksId</code> == 21:</li>
+</ol>
+<pre><code class="lang-js">{
+    <span class="hljs-attr">path</span>: <span class="pl-s">&quot;books&quot;</span>
+    ...
+    GET: [
+        <span class="hljs-function"><span class="pl-k">function</span> (<span class="hljs-params">shelvesId, booksId</span>) </span>{ }
+
+        <span class="pl-c">// produces URL: </span>
+        <span class="pl-c">// https://example.com/shelves/42/books/21    </span>
+    ]
+
+}
+</code></pre>
+<ol start="4">
+<li>Function&apos;s optional arguments are treated as query parameters (section of URL after &quot;?&quot;).</li>
+</ol>
+<pre><code class="lang-js">{
+    <span class="hljs-attr">path</span>: <span class="pl-s">&quot;books&quot;</span>
+    ...
+    GET: [
+        <span class="hljs-function"><span class="pl-k">function</span> (<span class="hljs-params">limit = <span class="hljs-number">6</span>, offset = <span class="hljs-number">0</span></span>) </span>{ }
+
+        <span class="pl-c">// produces URL: </span>
+        <span class="pl-c">// https://example.com/books?limit=12&amp;offset=0    </span>
+    ]
+
+}
+</code></pre>
+<ol start="5">
+<li>If names of required arguments has &apos;Id&apos; suffix (e.g. <code>booksId</code>) it will be ignored in URL.</li>
+</ol>
+<p>Note, all values extracted from URL are strings, consequently arguments in
+<code>handler</code> functions also are always <code>String</code> type.</p>
+<h4 id="api-handlers">API Handlers</h4>
+<p><code>Handler</code> function is executing with HTTP message context (<code>core/messages/index.js</code>).
+In other word, <code>this</code> point to object containing information about HTTP request and response.</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="pl-k">function</span>(<span class="hljs-params">booksId</span>) </span>{
+    <span class="pl-c1">console</span>.log(<span class="pl-k">this</span>.request.body);
+    
+    <span class="pl-k">this</span>.response.headers[<span class="pl-s">&quot;X-Items-Length&quot;</span>] = <span class="hljs-number">42</span>;
+}
+</code></pre>
+<h4 id="annotations">Annotations</h4>
+<p>Annotation comments are declared inside <code>handler</code> functions. They can be used to add
+some meta information to an endpoint.</p>
+<p>For example, <code>@path:</code> annotation can be used to change auto-generated URL of an endpoint:</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="pl-k">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="pl-c">// @path: /auth/token</span>
+    
+    <span class="pl-k">return</span> UsersFactory.get({<span class="hljs-attr">email</span>: <span class="pl-k">this</span>.request.body.email})
+        .then(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> user.validatePassword(<span class="pl-k">this</span>.request.body.password))
+        .then(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> user.createAuthToken())
+}
+</code></pre>
+<h3 id="models">Models</h3>
+<p>Files containing models declaration should export object with model&apos;s properties and
+prototypes for models factories and models instances.</p>
+<p>Models declaration object has following properties:</p>
+<p><code>name</code> - model&apos;s name. Good practice is to keep model&apos;s name always in plural to avoid ambiguity.</p>
+<p><code>repository</code> - optional, link to model&apos;s <code>Repository</code>.</p>
+<p><code>properties</code> - object containing model&apos;s properties. Object keys will be properties&apos; names, values - properties validators.</p>
+<p><code>factory</code> - object containing functions that will be used as model&apos;s factory prototype.</p>
+<p><code>instance</code> - object containing functions that will be used as model&apos;s instance prototype.</p>
+<pre><code class="lang-js"><span class="pl-k">const</span> Property                  = use(<span class="pl-s">&quot;core/property&quot;</span>);
+<span class="pl-k">const</span> Errors                    = use(<span class="pl-s">&quot;core/errors&quot;</span>);
+
+<span class="pl-k">const</span> UsersRepository           = <span class="pl-c1">require</span>(<span class="pl-s">&quot;./repository&quot;</span>);
+
+
+<span class="pl-c1">module</span>.exports = {
+
+    <span class="hljs-attr">name</span>: <span class="pl-s">&quot;Users&quot;</span>,
+
+    <span class="hljs-attr">repository</span>: UsersRepository, 
+
+    <span class="hljs-attr">properties</span>: {
+        <span class="hljs-attr">id</span>: Property.id(),
+        <span class="hljs-attr">phoneNumber</span>: Property.number().min(<span class="hljs-number">100000000000</span>).max(<span class="hljs-number">999999999999</span>),
+        <span class="hljs-attr">email</span>: Property.string().pattern(<span class="hljs-regexp">/\S+@\S\(.\S)+/</span>).max(<span class="hljs-number">100</span>),
+        <span class="hljs-attr">passwordHash</span>: Property.string().max(<span class="hljs-number">255</span>).private(),
+        <span class="hljs-attr">passwordSalt</span>: Property.string().max(<span class="hljs-number">255</span>).private(),
+        <span class="hljs-attr">creationTime</span>: Property.date().private(),
+        <span class="hljs-attr">modificationTime</span>: Property.date().private()
+    },
+
+    <span class="hljs-attr">factory</span>: {
+
+        getActiveUsers(limit = <span class="hljs-number">6</span>, offset = <span class="hljs-number">0</span>) {
+            <span class="pl-k">return</span> <span class="pl-k">this</span>.repo.getActiveUsers(limit, offset)
+                .then(<span class="hljs-function"><span class="hljs-params">users</span> =&gt;</span> <span class="pl-c1">Promise</span>.all(users.map(<span class="hljs-function"><span class="hljs-params">mix</span> =&gt;</span> <span class="pl-k">this</span>.new(mix, <span class="pl-c1">false</span>))));
+        }
+
+    },
+
+    <span class="hljs-attr">instance</span>: {
+
+        checkPassword(password) {
+            <span class="pl-k">if</span> (<span class="pl-k">this</span>.passwordHash === createHash(password, <span class="pl-k">this</span>.passwordSalt)) {
+                <span class="pl-k">return</span> <span class="pl-k">this</span>;
+            } <span class="pl-k">else</span> {
+                <span class="pl-k">throw</span> <span class="pl-k">new</span> Errors.Unauthorized(<span class="pl-s">&quot;Incorrect credentials&quot;</span>);
+            }
+        },
+
+        setPassword(password) {
+            <span class="pl-k">let</span> [passwordHash, passwordSalt] = hash(password);
+            <span class="pl-k">this</span>.populate({passwordHash, passwordSalt});
+            <span class="pl-k">return</span> <span class="pl-k">this</span>;
+        }
+    }
+};
+</code></pre>
+<h4 id="factory-prototype">Factory Prototype</h4>
+<p>Default factory prototype (<code>core/factories/modelFactoryPrototype.js</code>) has methods:</p>
+<p><code>.new( [modelData] )</code></p>
+<p>Creates new instance of model. Object with initial model&apos;s data can be passed as argument.</p>
+<p><code>.get( [criteriasObject] )</code></p>
+<p>Fetches one record from DB using <code>criteriasObject</code> and returns model&apos;s instance
+containing it. This method requires <code>repository:</code> to be defined in model declaration.</p>
+<p>For example:</p>
+<pre><code class="lang-js">UsersFactory.get({<span class="hljs-attr">id</span>: <span class="hljs-number">42</span>})
+</code></pre>
+<p><code>.find([criteriasObject], [limit], [offset], [order])</code></p>
+<p>Fetch collection with <code>limit</code> records using <code>criteriasObject</code>  starting from <code>offset</code>
+in <code>order</code>, where order is a string equals to one of model&apos;s properties name and
+prefixed by &quot;+&quot; or &quot;-&quot; for ascend or descend sorting. Returns array with model&apos;s instance.
+This method requires <code>repository:</code> to be defined in model declaration.</p>
+<p>For example:</p>
+<pre><code class="lang-js">UsersFactory.find({<span class="hljs-attr">name</span>: <span class="pl-s">&quot;Alice&quot;</span>, <span class="hljs-attr">status</span>: <span class="pl-s">&quot;active&quot;</span>}, <span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="pl-s">&quot;+last_name&quot;</span>)
+</code></pre>
+<h4 id="instance-prototype">Instance Prototype</h4>
+<p>Default instance prototype (<code>core/factories/modelPrototype.js</code>) has methods:</p>
+<p><code>.populate( {modelsData} )</code></p>
+<p>Populates model&apos;s properties from object provided in <code>modelsData</code>. Before assigning
+provided values are validated to match <code>Property</code> rules from models declaration.
+For example:</p>
+<pre><code class="lang-js"><span class="pl-c">//model&apos;s property declaration:</span>
+properties: {
+    <span class="hljs-attr">id</span>: Property.id(),
+    <span class="hljs-attr">isbn</span>: Property.string().pattern(<span class="hljs-regexp">/^ISBN \d-\d{3}-\d{5}-\d$/</span>)
+}
+
+...
+
+<span class="pl-c">//models instance:</span>
+
+book.populate( {<span class="hljs-attr">isbn</span>: <span class="pl-s">&quot;2000&quot;</span>} ); 
+<span class="pl-c">// throws error, because &quot;2000&quot; doesn&apos;t match regexp /^ISBN \d-\d{3}-\d{5}-\d$/</span>
+
+<span class="pl-c">// the same applies during direct assignment</span>
+book.isbn = <span class="pl-s">&quot;2000&quot;</span>
+</code></pre>
+<p><code>.validate()</code></p>
+<p>Validates all model&apos;s properties to match <code>Property</code> rules from model&apos;s properties declaration.</p>
+<p><code>.toJSON()</code></p>
+<p>Stringifies model before sending it back to client. It applies <code>Property</code> rules and output
+modifications from model&apos;s properties declaration. Can be reloaded if you need to modify
+string representation of model, but recommended way is to extend <code>Property</code>
+output modifications.</p>
+<p>For example:</p>
+<pre><code class="lang-js"><span class="pl-c">//model&apos;s property declaration:</span>
+properties: {
+    <span class="hljs-attr">id</span>: Property.id(),
+    <span class="hljs-attr">isbn</span>: Property.string().pattern(<span class="hljs-regexp">/^ISBN \d-\d{3}-\d{5}-\d$/</span>),
+    <span class="hljs-attr">creationTime</span>: Property.date().private(),
+    <span class="hljs-attr">modificationTime</span>: Property.date().private()
+}
+
+...
+
+<span class="pl-c">//models instance:</span>
+
+book.toJSON(); 
+<span class="pl-c">// returns</span>
+<span class="pl-c">// {</span>
+<span class="pl-c">//    &quot;id&quot;: 42,</span>
+<span class="pl-c">//    &quot;isbn&quot;: &quot;ISBN 4-393-29939-3&quot;</span>
+<span class="pl-c">// }</span>
+<span class="pl-c">// Note, properties creationTime and modificationTime are missing</span>
+<span class="pl-c">// because they are marked as private: Property.date().private()</span>
+
+<span class="pl-c">// The same applies to JSON.stringify() for obvious reasons </span>
+<span class="pl-c">// (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#toJSON()_behavior)</span>
+<span class="pl-c1">JSON</span>.stringify(book);
+</code></pre>
+<p><code>.save()</code></p>
+<p>Saves model instance in DB. Properties validation will be performed before saving.
+Returns Promise that will be resolved with model instance, or rejected with
+validation or DB error. This method requires <code>repository:</code> to be defined in model declaration.</p>
+<p>For example:</p>
+<pre><code class="lang-js"> <span class="pl-k">return</span> book.save();
+</code></pre>
+<p><code>.remove()</code></p>
+<p>Removes model instance from DB. Returns Promise that will be resolved with DB response,
+or rejected with DB error. This method requires <code>repository:</code> to be defined in model declaration.</p>
+<p>For example:</p>
+<pre><code class="lang-js"> <span class="pl-k">return</span> book.remove()
+    .then(<span class="hljs-function"><span class="hljs-params">result</span> =&gt;</span> {
+        <span class="pl-k">if</span> (result.affectedRows === <span class="hljs-number">1</span>) {
+            <span class="pl-k">this</span>.response.status = <span class="pl-k">this</span>.response.statuses._204_NoContent;
+        }
+    });
+</code></pre>
+<h3 id="repositories">Repositories</h3>
+<p>Files containing repository declaration should export instance
+of Repository (<code>core/repositories/repositoryPrototype.js</code>)
+representing external storage (e.g. database) related to specific model.</p>
+<p>Repository can be created using default <code>Repositories.create()</code> method
+or by custom implementation of repository interface.</p>
+<p>Default repository can be extended with methods that makes
+direct calls to external storage, e.g. <code>findByTitle()</code>.</p>
+<pre><code class="lang-js"><span class="pl-k">const</span> Repositories              = use(<span class="pl-s">&apos;core/repositories&apos;</span>);
+
+<span class="pl-c1">module</span>.exports = Repositories.create(<span class="pl-s">&apos;books_table&apos;</span>, {
+
+    findByTitle(title, offset, limit){
+        <span class="pl-k">const</span> query = <span class="pl-s">`SELECT * FROM <span class="hljs-subst">${<span class="pl-k">this</span>.__table__}</span> 
+                       WHERE title LIKE ?
+                       LIMIT ?, ?`</span>;
+        <span class="pl-k">return</span> <span class="pl-k">this</span>.db.execute(query, [<span class="pl-s">`%<span class="hljs-subst">${title}</span>%`</span>, offset, limit])
+            .then(<span class="hljs-function">(<span class="hljs-params">[rows, columns]</span>) =&gt;</span> rows);
+    }
+
+}); 
+</code></pre>
+<p>Custom methods in <code>Repositories</code> should return raw data.
+Any data post-processing should be performed in models or factories.</p>
+<p>Default <code>Repositories</code> prototype has methods:</p>
+<p><code>.find( [criteriasObject], [limit], [offset], [order])</code></p>
+<p>Executes SELECT query in DB. Used by <code>.get()</code> and <code>.find()</code> methods
+in default models factories prototype.</p>
+<p><code>.save( [modelInstance] )</code>
+Executes INSERT or UPDATE query in DB. Used by <code>.save()</code> method
+in default models instance prototype.</p>
+<p><code>.remove( [modelInstance] )</code>
+Executes DELETE query in DB. Used by <code>.remove()</code> method
+in default models instance prototype.</p>
+<p>There are very few good reasons you would need to overload this methods
+or call them directly. So, take it as an interface you need to
+implement in case of writing custom <code>Repository</code>.</p>
+<h3 id="interceptors">Interceptors</h3>
+<p><strong>Interceptors are global!</strong> This means that no matter in what
+component they are declared, they will be executed for <em>every</em> request.
+I know it feels counter-intuitive and smells like a bad design, but it&apos;s not.
+Or, at least I think it is not.</p>
+<p>The point here you should never need to decorate API endpoint on component level
+or on single <code>handler</code> level. Such functionality should be moved to factories, models
+or services.</p>
+<p>Interceptors should be used for actual global things like extracting
+cookies from header, parsing multipart/form-data, logging, converting response
+from JSON to XML, etc.</p>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
