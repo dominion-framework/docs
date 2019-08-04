@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="assets/style.css?t=90051322">
-    <script src="assets/script.js?t=93f1a66c"></script>
+    <link rel="stylesheet" href="_docpress/assets/style.css?t=90051322">
+    <script src="_docpress/assets/script.js?t=93f1a66c"></script>
     <title>Dominion</title>
     <meta name="viewport" content="width=device-width">
   </head>
@@ -17,6 +17,8 @@
               <li class="menu-item -level-1"><a class="link title -active link-index" href="index.html">Dominion</a>
               </li>
               <li class="menu-item -level-1"><a class="link title link-installation" href="#installation">Installation</a>
+              </li>
+              <li class="menu-item -level-1"><a class="link title link-quick-start" href="#quick-start">Quick start</a>
               </li>
               <li class="menu-item -level-1 -parent"><a class="link title link-usage" href="#usage">Usage</a>
                 <ul class="submenu">
@@ -46,15 +48,22 @@
         <div class="markdown-body"><h1 id="dominion">Dominion</h1>
 <p>Declarative Promise based Node.js framework for REST API</p>
 <h2 id="installation">Installation</h2>
-<pre><code>npm i https://github.com/yura-chaikovsky/dominion.git
+<pre><code>npm i @dominion-framework/dominion
 </code></pre>
+<h2 id="quick-start">Quick start</h2>
+<pre><code>npx dominion create hello
+npm start
+</code></pre>
+<p>This will run Node.js server with demo API&apos;s.
+Open <a href="http://localhost:7000/hello">http://localhost:7000/hello</a> to check results and examine
+generated files in folder <code>components/hello</code> to see how it works.</p>
 <h2 id="usage">Usage</h2>
 <h3 id="components">Components</h3>
 <p>You can take &quot;components&quot; as 1:1 representation of restfull (or business) domains.
 It&apos;s useful to organize components having each in separate folder.
 Lets take <code>Users</code> model for example. Recommended file organization will be:</p>
 <pre><code>| - components/
-| | - users/             &lt;-- `Users` component 
+| | - users/             &lt;-- `Users` component
 | | | - index.js
 | | | - controller.js
 | | | - factory.js
@@ -284,7 +293,7 @@ when it will be called. In following example, during execution <code>shelvesId</
 In other word, <code>this</code> point to object containing information about HTTP request and response.</p>
 <pre><code class="lang-js"><span class="hljs-function"><span class="pl-k">function</span>(<span class="hljs-params">booksId</span>) </span>{
     <span class="pl-c1">console</span>.log(<span class="pl-k">this</span>.request.body);
-    
+
     <span class="pl-k">this</span>.response.headers[<span class="pl-s">&quot;X-Items-Length&quot;</span>] = <span class="hljs-number">42</span>;
 }
 </code></pre>
@@ -294,7 +303,7 @@ some meta information to an endpoint.</p>
 <p>For example, <code>@path:</code> annotation can be used to change auto-generated URL of an endpoint:</p>
 <pre><code class="lang-js"><span class="hljs-function"><span class="pl-k">function</span>(<span class="hljs-params"></span>) </span>{
     <span class="pl-c">// @path: /auth/token</span>
-    
+
     <span class="pl-k">return</span> UsersFactory.get({<span class="hljs-attr">email</span>: <span class="pl-k">this</span>.request.body.email})
         .then(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> user.validatePassword(<span class="pl-k">this</span>.request.body.password))
         .then(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> user.createAuthToken())
@@ -319,7 +328,7 @@ prototypes for models factories and models instances.</p>
 
     <span class="hljs-attr">name</span>: <span class="pl-s">&quot;Users&quot;</span>,
 
-    <span class="hljs-attr">repository</span>: UsersRepository, 
+    <span class="hljs-attr">repository</span>: UsersRepository,
 
     <span class="hljs-attr">properties</span>: {
         <span class="hljs-attr">id</span>: Property.id(),
@@ -392,7 +401,7 @@ properties: {
 
 <span class="pl-c">//models instance:</span>
 
-book.populate( {<span class="hljs-attr">isbn</span>: <span class="pl-s">&quot;2000&quot;</span>} ); 
+book.populate( {<span class="hljs-attr">isbn</span>: <span class="pl-s">&quot;2000&quot;</span>} );
 <span class="pl-c">// throws error, because &quot;2000&quot; doesn&apos;t match regexp /^ISBN \d-\d{3}-\d{5}-\d$/</span>
 
 <span class="pl-c">// the same applies during direct assignment</span>
@@ -418,7 +427,7 @@ properties: {
 
 <span class="pl-c">//models instance:</span>
 
-book.toJSON(); 
+book.toJSON();
 <span class="pl-c">// returns</span>
 <span class="pl-c">// {</span>
 <span class="pl-c">//    &quot;id&quot;: 42,</span>
@@ -462,14 +471,14 @@ direct calls to external storage, e.g. <code>findByTitle()</code>.</p>
 <span class="pl-c1">module</span>.exports = Repositories.create(<span class="pl-s">&apos;books_table&apos;</span>, {
 
     findByTitle(title, offset, limit){
-        <span class="pl-k">const</span> query = <span class="pl-s">`SELECT * FROM <span class="hljs-subst">${<span class="pl-k">this</span>.__table__}</span> 
+        <span class="pl-k">const</span> query = <span class="pl-s">`SELECT * FROM <span class="hljs-subst">${<span class="pl-k">this</span>.__table__}</span>
                        WHERE title LIKE ?
                        LIMIT ?, ?`</span>;
         <span class="pl-k">return</span> <span class="pl-k">this</span>.db.execute(query, [<span class="pl-s">`%<span class="hljs-subst">${title}</span>%`</span>, offset, limit])
             .then(<span class="hljs-function">(<span class="hljs-params">[rows, columns]</span>) =&gt;</span> rows);
     }
 
-}); 
+});
 </code></pre>
 <p>Custom methods in <code>Repositories</code> should return raw data.
 Any data post-processing should be performed in models or factories.</p>

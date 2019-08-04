@@ -3,8 +3,17 @@ Declarative Promise based Node.js framework for REST API
 
 ## Installation
 ```
-npm i https://github.com/yura-chaikovsky/dominion.git
+npm i @dominion-framework/dominion
 ```
+
+## Quick start
+```
+npx dominion create hello
+npm start
+```
+This will run Node.js server with demo API's. 
+Open http://localhost:7000/hello to check results and examine 
+generated files in folder `components/hello` to see how it works. 
 
 ## Usage
 
@@ -423,7 +432,7 @@ book.toJSON();
 //    "isbn": "ISBN 4-393-29939-3"
 // }
 // Note, properties creationTime and modificationTime are missing
-// because they marked as private: Property.date().private()
+// because they are marked as private: Property.date().private()
 
 // The same applies to JSON.stringify() for obvious reasons 
 // (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#toJSON()_behavior)
