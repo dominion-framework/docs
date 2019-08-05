@@ -3,4 +3,3 @@ syntax: glob
 .lock
 node_modules
 publish.sh
-_docpress
