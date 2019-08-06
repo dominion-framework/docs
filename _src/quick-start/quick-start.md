@@ -101,7 +101,7 @@ Server.openApiToFile();
 As you may guess from the code above, `./index.js` is used for 
 registering components in a project. Yeah, I'm annoyed how verbose
 requires are as well, but I assure you it will be fixed as soon as
-ES modules will be moved out of a flag.
+ES modules will be moved out of a flag in Node.js.
 
 First two are default components. `cors` is adding proper CORS headers
 into APIs response. It is not needed, if your APIs won't  be used
