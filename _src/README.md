@@ -2,76 +2,6 @@
 
 Dominion is declarative Promise based Node.js framework for REST API
 
-## Installation
-```
-npm i @dominion-framework/dominion
-```
-
-## Quick start
-```
-npx dominion create hello
-npm start
-```
-This will run Node.js server with demo API's. 
-Open http://localhost:7000/hello to check results and examine 
-generated files in folder `components/hello` to see how it works. 
-
-## Usage
-
-### Components
-You can take "components" as 1:1 representation of restfull (or business) domains. 
-It's useful to organize components having each in separate folder. 
-Lets take `Users` model for example. Recommended file organization will be: 
-```
-| - components/
-| | - users/             <-- `Users` component 
-| | | - index.js
-| | | - controller.js
-| | | - factory.js
-| | | - repository.js
-| | - products/
-| - index.js
-| - package.json
-| - package-lock.json
-```
-
-#### Component declaration file
-
-Component dependencies are declared in `index.js` file:
-```js
-module.exports = {
-    factories: [
-        __dirname + '/factory',      // <-- reference to factory.js
-    ],
-    controllers: [
-        __dirname + '/controller',   // <-- reference to controller.js
-    ],
-    requestInterceptors: [],         // <-- list of references to request interceptors
-    responseInterceptors: []         // <-- list of references to response interceptors
-};
-```
-This declarations is used only for requiring components on the fly independent from 
-order of requires in file.
-
-There are 3 default entities:
-1. Controllers
-2. Factories
-3. Repositories
-
-`Controller` is a place where you define API's endpoints, basically mappings 
-between URL's and actions you need to produce response.
-
-`Factories` is where you describe model structure and its methods. Optionally factories 
-may be linked to a repository.
-
-`Repository` is playing role of ORM (Object-relational mapping) with external data storage. 
-By default framework uses MySQL, but should work with any DB that has compatible SQL dialect. 
-Alternative, repository prototype may be redefined to work with any type of 
-storage (NoSQL, cloud storage, flat file, etc).
-
-Commonly you'll need one set of controller/factory/repository in a component, 
-but it's possible to have multiple ones if needed.
-
 ### API Request Lifecycle 
 To understand how requests are processed lets look on their lifecycle, it's straight forward:
 1. On startup framework goes through all registered controllers (`core/controllers/index.js`), generates URL based 
@@ -244,7 +174,9 @@ declaration's `path:` property it is used as model identified in URL:
 
 }
 ```
-5. If names of required arguments has 'Id' suffix (e.g. `booksId`) it will be ignored in URL.     
+5. If names of required arguments has 'Id' suffix (e.g. `booksId`) it will be ignored in URL.
+
+6. If requested URL will not match any of existing handlers, server will respond `501 Not Implemented`.      
 
 Note, all values extracted from URL are strings, consequently arguments in 
 `handler` functions also are always `String` type.
@@ -496,7 +428,7 @@ Any data post-processing should be performed in models or factories.
 
 Default `Repositories` prototype has methods:
 
-`.find( [criteriasObject], [limit], [offset], [order])`
+`.find( [criteriasObject], [limit], [offset], [order] )`
 
 Executes SELECT query in DB. Used by `.get()` and `.find()` methods
 in default models factories prototype.

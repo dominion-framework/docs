@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dominion - Node.js framework for creating REST APIs</title>
+    <link href="/assets/style.css" type="text/css" rel="stylesheet" />
+    <script src="/assets/clipboard.min.js" async></script>
+    <meta content="width=device-width, initial-scale=1.0,minimum-scale=1.0,user-scalable=yes" name="viewport" />
+</head>
+<body>
+<div class="doc-page">
+    <div class="toggle menu-toggle"></div>
+    <nav class="menu toc-menu">
+        <ul>
+            <li class="menu-item logo">
+                <a class="link" href="/"><img src="/assets/logo.svg" /></a>
+            </li>
+            <li class="menu-item">
+                <a class="link active" href="/quick-start">Quick start</a>
+            </li>
+            <li class="menu-item">
+                <a class="link" href="/components">Components</a>
+            </li>
+            <li class="menu-item">
+                <a class="link" href="#api-request-lifecycle">API Request Lifecycle</a>
+            </li>
+            <li class="menu-item">
+                <a class="link" href="#controller">Controller</a>
+            </li>
+            <li class="menu-item">
+                <a class="link" href="#models">Models</a>
+            </li>
+            <li class="menu-item">
+                <a class="link" href="#repositories">Repositories</a>
+            </li>
+            <li class="menu-item">
+                <a class="link" href="#interceptors">Interceptors</a>
+            </li>
+            <li class="menu-item">
+                <a class="link" href="/annotations">Annotations</a>
+                <ul class="submenu">
+                    <li class="menu-item"><a class="link" href="#available-settings">@path</a>
+                    </li>
+                    <li class="menu-item"><a class="link" href="#plugins">@summary</a>
+                    </li>
+                    <li class="menu-item"><a class="link" href="#installing-markdown-plugins">@description</a>
+                    </li>
+                    <li class="menu-item"><a class="link" href="#bundled-plugins">@model</a>
+                    </li>
+                    <li class="menu-item"><a class="link" href="#bundled-plugins">@deprecated</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="markdown-body"><h1>Quick start</h1>
+<p><em>This is a guide for those who are using Dominion framework
+for the first time. If you already have some experience with it,
+this page probably not going to be very interesting.</em></p>
+<p>OK, if you are still with me, let’s begin. Our main goal in
+this tutorial is to install and start Node.js API server with a couple
+of sample APIs.</p>
+<p>To start, create a new folder and run following commands in
+your terminal.</p>
+<pre class="hljs"><button data-clipboard-target="#_5efg" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_5efg">npm init -y
+npm i @dominion-framework/dominion
+npx dominion create hello
+npm start
+
+</code></pre>
+<p>Message in the terminal should indicate that server is running,
+like in example below.</p>
+<pre class="terminal" onmouseenter="scroll({top: 1e4 ,behavior: 'smooth'})">
+<code><span class="hljs-meta">$</span> <span class="hljs-built_in">npm</span> init -y
+Wrote to /home/user/dominion-test/package.json:
+
+{
+  "name": "dominion-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+
+
+<span class="hljs-meta">$</span> <span class="hljs-built_in">npm</span> i @dominion-framework/dominion
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN dominion@1.0.0 No description
+npm WARN dominion@1.0.0 No repository field.
+
++ @dominion-framework/dominion@0.2.7
+added 1 package from 1 contributor and audited 1 package in 0.455s
+found <span class="hljs-meta-string">0</span> vulnerabilities
+
+<span class="hljs-meta">$</span> <span class="hljs-built_in">npx</span> dominion create hello
+Component 'Hello' created in /home/user/dominion-test/components/hello.
+<span class="hljs-meta">$</span> <span class="hljs-built_in">npm</span> start
+
+> dominion@1.0.0 start /home/user/dominion-test
+> node index.js
+
+<span class="hljs-meta-string">Server is running at http://localhost:7042/ in development mode...</span>
+<span class="hljs-meta-string">&#9608;</span></code>
+</pre>
+<blockquote>
+<p>If port 7042 is busy on your machine, first tell me <em>why?</em> in
+<a href="https://gitter.im/dominion-framework/community">Gitter</a>. Then
+you may change it in <code>./config/config.dev.js</code>.</p>
+</blockquote>
+<p>Now as your server is running, open
+<a href="http://localhost:7042/hello?offset=70&amp;limit=42">http://localhost:7042/hello?offset=70&amp;limit=42</a> to check results.
+If you can see welcome message, we are done. That’s all you need to
+start REST API server.</p>
+<p>But lets go a bit deeper to what just happened. First two commands
+<code>npm init</code> and <code>npm i @dominion-framework/dominion</code> are obvious,
+initiating npm package and installing Dominion framework. However,
+after opening <code>./node_modules</code>, some of you will be pleased to see
+that it doesn’t contain a backup of npm repository.</p>
+<p>Third command <code>npx dominion create hello</code> is creating project scaffold.
+Actually, it creates scaffold for a single component. You can read
+more about it on page <a href="/components">Components</a>. But <code>hello</code> is
+a bit special, it also creates default configs, server’s index file,
+and adds <code>start</code> script to <code>package.json</code>. Don’t worry, if any of
+those already exists it won’t be overwritten.</p>
+<p>Finally, <code>npm start</code> is executing <code>node index.js</code>. Nothing special
+here, so lets see what is inside index file.</p>
+<pre class="hljs"><button data-clipboard-target="#_llp" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_llp"><span class="hljs-keyword">const</span> Server = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@dominion-framework/dominion"</span>);
+
+Server.addComponent(<span class="hljs-built_in">require</span>(<span class="hljs-string">"@dominion-framework/dominion/components/cors"</span>));
+Server.addComponent(<span class="hljs-built_in">require</span>(<span class="hljs-string">"@dominion-framework/dominion/components/logging"</span>));
+
+Server.addComponent(<span class="hljs-built_in">require</span>(<span class="hljs-string">"./components/hello"</span>));
+
+Server.start();
+
+Server.openApiToFile();
+</code></pre>
+<p>As you may guess from the code above, <code>./index.js</code> is used for
+registering components in a project. Yeah, I’m annoyed how verbose
+requires are as well, but I assure you it will be fixed as soon as
+ES modules will be moved out of a flag.</p>
+<p>First two are default components. <code>cors</code> is adding proper CORS headers
+into APIs response. It is not needed, if your APIs won’t  be used
+from a browser. And <code>logging</code> is writing logs into console, you should
+already saw it after opening <a href="https://localhost:7042/hello">https://localhost:7042/hello</a>.</p>
+<p>Then goes component that we created using “npx dominion create”.
+And here it starts to be interesting. There are 3 files inside
+folder <code>./components/hello/</code> - <code>index.js</code>, <code>controller.js</code> and
+<code>factory.js</code>. Index is used for registering parts of a components
+(more about it on <a href="/components">Components</a> page). Controller
+is a file where you write actual API handlers. Lets take
+endpoint that returns welcome message:</p>
+<pre class="hljs"><button data-clipboard-target="#_3b87" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_3b87">GET: [
+    <span class="hljs-comment">//hello?offset=0&amp;limit=10</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">offset = <span class="hljs-number">0</span>, limit = <span class="hljs-number">10</span></span>) </span>{
+        <span class="hljs-comment">// @summary: Demo endpoint with optional arguments</span>
+        <span class="hljs-comment">// @description: Open http://localhost:7042/hello?offset=0&amp;limit=10 to see results</span>
+
+        <span class="hljs-keyword">return</span> <span class="hljs-string">`Welcome to Dominion! Nice to meet you! [<span class="hljs-subst">${offset}</span>, <span class="hljs-subst">${limit}</span>]`</span>;
+    },
+    ...
+]
+</code></pre>
+<p>Callback function (or handler) is inside <code>GET</code> array what means it will
+be called on HTTP GET request. Function has two optional arguments -
+<code>offset</code> and <code>limit</code> - this allows to pass those parameters in a query
+string. Note, if you will have parameter in URL query string which
+is not among arguments, then handler won’t be matched. For example,
+calling <a href="http://localhost:7042/hello?foo=bar">http://localhost:7042/hello?foo=bar</a> will return <code>501 Not Implemented</code>.</p>
+<p>Lines <code>@summary</code> and <code>@description</code> are handler’s annotations. They
+may provide some meta data about handler or extend its functionality.
+More about them on <a href="/annotations">Annotations</a> page.</p>
+<p>The final piece of a puzzle is where <code>/hello?</code> part of URL comes from.
+Controllers may (but not have to) be linked to a model. If it is,
+URLs path is taken from model’s name. In our case, controller is
+linked to model named <code>Hello</code>. What brings us to Models.</p>
+<p>Models are created by the factory declared in the file <code>factory.js</code>.</p>
+<pre class="hljs"><button data-clipboard-target="#_3aoh" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_3aoh">{
+    <span class="hljs-attr">name</span>: <span class="hljs-string">"Hello"</span>,
+    
+    <span class="hljs-attr">properties</span>: {
+        <span class="hljs-attr">id</span>: Property.id(),
+        <span class="hljs-attr">guid</span>: Property.string().example(<span class="hljs-string">"123e4567-e89b-12d3-a456-426655440000"</span>),
+        <span class="hljs-attr">email</span>: Property.string().required().example(<span class="hljs-string">"my.name@example.com"</span>),
+        <span class="hljs-attr">state</span>: Property.enum([<span class="hljs-string">"open"</span>, <span class="hljs-string">"close"</span>]),
+        <span class="hljs-attr">parentId</span>: Property.model(<span class="hljs-string">"Hello"</span>),
+        <span class="hljs-attr">creationTime</span>: Property.date().private(),
+        <span class="hljs-attr">modificationTime</span>: Property.date().private()
+    },
+    
+    <span class="hljs-attr">factory</span>: { },
+    
+    <span class="hljs-attr">instance</span>: {
+        sendWelcomeEmail() {
+            NodeMailer.send({<span class="hljs-attr">to</span>: <span class="hljs-keyword">this</span>.email})  
+        } 
+    }
+}
+</code></pre>
+<p>In factory declaration you can specify model name and properties (fields).
+Properties are defined using <code>Property</code> constructor. It works
+similar to <a href="https://github.com/hapijs/joi">@hapi/joi</a>. Besides
+value validation, it allows to add meta data (<code>.example()</code>) or
+modify output. For example, if field is <code>.private()</code> it will be removed
+from API response.</p>
+<p>When you need to extend functionality, you can add custom methods to
+factory or model (aka. instance) prototypes. In example above, instances
+of model <code>Hello</code> will have method <code>sendWelcomeEmail</code>. You can use it
+like this:</p>
+<pre class="hljs"><button data-clipboard-target="#_1939" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_1939"><span class="hljs-keyword">const</span> HelloFactory = Factories(<span class="hljs-string">"Hello"</span>);
+
+HelloFactory.new({
+   <span class="hljs-attr">id</span>: <span class="hljs-number">42</span>,
+   <span class="hljs-attr">email</span>: <span class="hljs-string">"my.name@example.com"</span>
+})
+.then(<span class="hljs-function"><span class="hljs-params">modelHello</span> =&gt;</span> modelHello.sendWelcomeEmail());
+</code></pre>
+<p>As you notices, creating new instance of <code>Hello</code> model is
+asynchronous operation. Realistically, there is nothing
+to do asynchronously when you creating new model instance.
+But for majority of other operation there is a lot, e.g. saving
+in database, reading file, communicating with other micro-services, etc.
+So, to keep things consistent <code>.new()</code> returns Promise.</p>
+<p>And as usual, you can find more about models on <a href="/factories">Factories</a> page.</p>
+<p>I hope you are still following, we are almost done.
+Lets return back to component index file. We are left with one more
+row, really simple one:</p>
+<pre class="hljs"><button data-clipboard-target="#_127b" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_127b">Server.start();
+</code></pre>
+<p>It runs all bootstrap functions and starts listening for HTTP requests.</p>
+<p>OK, that’s it. We just went through all basic features of the framework.
+Thank you for reading and I’m wishing you to have a grate time working
+with Dominion framework. You can find more in-depth information on this
+website and of course (and it is more recommended) in the
+<a href="https://github.com/dominion-framework/dominion">source code</a> on GitHub.</p>
+<p>One last thing before you leave. There is a little giveaway for you.
+OpenAPI (Swagger) documentation is coming out of the box -
+open <a href="https://editor.swagger.io/">https://editor.swagger.io/</a> and copy-paste content from
+file <code>./openapi.json</code> into it. This file is created by the last
+line in component index:</p>
+<pre class="hljs"><button data-clipboard-target="#_29ng" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_29ng">Server.openApiToFile();
+</code></pre>
+</div>
+</div>
+</body>
+</html>
