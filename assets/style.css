@@ -55,14 +55,16 @@ button::-moz-focus-inner,
   line-height: 1.6;
   word-wrap: break-word;
   margin: 0 auto;
-  max-width: 768px;
   overflow: visible;
-  padding: 64px 32px;
+  width: 100%;
+  padding: 64px 16px;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 814px) {
   .markdown-body {
-    font-size: 14px
+    font-size: 14px;
+    max-width: 768px;
+    padding: 64px 32px;
   }
 }
 
