@@ -216,7 +216,7 @@ website and of course (and it is more recommended) in the
 One last thing before you leave. There is a little giveaway for you.
 OpenAPI (Swagger) documentation is coming out of the box -
 open https://editor.swagger.io/ and copy-paste content from 
-file `./openapi.json` into it. This file is created by the last 
+file `./openapi.json` into it. This file was created with the last 
 line in component index:
 
 ```js

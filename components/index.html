@@ -65,7 +65,7 @@
 <p>You can take “components” as 1:1 representation of restfull (or business) domains.
 It’s useful to organize components having each in separate folder.
 Lets take <code>Users</code> model for example. Recommended file organization will be:</p>
-<pre class="hljs"><code class="highlight" id="_5c4h">| - components/
+<pre class="hljs"><code class="highlight" id="_33o6">| - components/
 | | - users/             &lt;-- `Users` component 
 | | | - index.js
 | | | - controller.js
@@ -77,14 +77,14 @@ Lets take <code>Users</code> model for example. Recommended file organization wi
 | - package-lock.json
 </code></pre>
 <h2>Creating component from cli</h2>
-<pre class="hljs"><button data-clipboard-target="#_1hkf" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_1hkf">npx dominion create users
+<pre class="hljs"><button data-clipboard-target="#_2jap" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_2jap">npx dominion create users
 </code></pre>
 <p>Third command <code>npx dominion create hello</code> is creating project scaffold.
 Actually, it is creating scaffold for a single component. You can read
 more about it on page <a href="/components">Components</a>.</p>
 <h2>Component declaration file</h2>
 <p>Component dependencies are declared in <code>index.js</code> file:</p>
-<pre class="hljs"><button data-clipboard-target="#_2o18" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_2o18"><span class="hljs-built_in">module</span>.exports = {
+<pre class="hljs"><button data-clipboard-target="#_3agm" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_3agm"><span class="hljs-built_in">module</span>.exports = {
     <span class="hljs-attr">factories</span>: [
         __dirname + <span class="hljs-string">'/factory'</span>,      <span class="hljs-comment">// &lt;-- reference to factory.js</span>
     ],
