@@ -910,6 +910,9 @@ hue-6-2: #c18401
 
 
 [data-clipboard-target] {
+  position: sticky;
+  left: calc(100% - 1.4rem);
+  top: 0;
   float: right;
   border: 1px solid #66a1e6;
   background: transparent;
