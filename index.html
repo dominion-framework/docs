@@ -24,49 +24,62 @@
 </head>
 <body>
 <div class="doc-page">
-    <div class="toggle menu-toggle"></div>
     <nav class="menu toc-menu">
-        <ul>
-            <li class="menu-item logo">
-                <a class="link active" href="/"><img src="/assets/logo.svg" /></a>
-            </li>
-            <li class="menu-item">
-                <a class="link" href="/quick-start">Quick start</a>
-            </li>
-            <li class="menu-item">
-                <a class="link" href="/components">Components</a>
-            </li>
-            <li class="menu-item">
-                <a class="link" href="#api-request-lifecycle">API Request Lifecycle</a>
-            </li>
-            <li class="menu-item">
-                <a class="link" href="#controller">Controller</a>
-            </li>
-            <li class="menu-item">
-                <a class="link" href="#models">Models</a>
-            </li>
-            <li class="menu-item">
-                <a class="link" href="#repositories">Repositories</a>
-            </li>
-            <li class="menu-item">
-                <a class="link" href="#interceptors">Interceptors</a>
-            </li>
-            <li class="menu-item">
-                <a class="link" href="/annotations">Annotations</a>
-                <ul class="submenu">
-                    <li class="menu-item"><a class="link" href="#available-settings">@path</a>
-                    </li>
-                    <li class="menu-item"><a class="link" href="#plugins">@summary</a>
-                    </li>
-                    <li class="menu-item"><a class="link" href="#installing-markdown-plugins">@description</a>
-                    </li>
-                    <li class="menu-item"><a class="link" href="#bundled-plugins">@model</a>
-                    </li>
-                    <li class="menu-item"><a class="link" href="#bundled-plugins">@deprecated</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+        <div class="toggle menu-toggle"></div>
+        <div class="menu-item logo">
+            <a class="link active" href="/"><img src="/assets/logo.svg" /></a>
+        </div>
+        <div class="collapsible">
+            <div class="links">
+                <a href="https://www.npmjs.com/package/@dominion-framework/dominion">
+                    <svg viewBox="0 0 256 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet"><path d="M0 0v85.498h71.166V99.83H128V85.498h128V0H0z" fill="#CB3837"/><path d="M42.502 14.332h-28.17v56.834h28.17V28.664h14.332v42.502h14.332V14.332H42.502zM85.498 14.332v71.166h28.664V71.166h28.17V14.332H85.498zM128 56.834h-13.838v-28.17H128v28.17zM184.834 14.332h-28.17v56.834h28.17V28.664h14.332v42.502h14.332V28.664h14.332v42.502h14.332V14.332h-57.328z" fill="#FFF"/></svg>
+                </a>
+                <a href="https://gitter.im/dominion-framework/community">
+                    <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><defs><linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="a"><stop stop-color="#FB0766" offset="0%"/><stop stop-color="#C50948" offset="100%"/></linearGradient></defs><path d="M0 0h256v256H0V0z" fill="url(#a)"/><path d="M83.914 62.873h12.525v82.661H83.914V62.873zm76.149 20.039h12.524v62.622h-12.524V82.912zm-50.599 0h12.524v110.466h-12.524V82.912zm25.049 0h12.525v110.466h-12.525V82.912z" fill="#FFF"/></svg>
+                </a>
+                <a href="https://github.com/dominion-framework/dominion">
+                    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m256 0c-140.609375 0-256 115.390625-256 256 0 119.988281 84.195312 228.984375 196 256v-84.695312c-11.078125 2.425781-21.273438 2.496093-32.550781-.828126-15.128907-4.464843-27.421875-14.542968-36.546875-29.910156-5.816406-9.8125-16.125-20.453125-26.878906-19.671875l-2.636719-29.882812c23.253906-1.992188 43.371093 14.167969 55.3125 34.230469 5.304687 8.921874 11.410156 14.152343 19.246093 16.464843 7.574219 2.230469 15.707032 1.160157 25.183594-2.1875 2.378906-18.972656 11.070313-26.074219 17.636719-36.074219v-.015624c-66.679687-9.945313-93.253906-45.320313-103.800781-73.242188-13.976563-37.074219-6.476563-83.390625 18.238281-112.660156.480469-.570313 1.347656-2.0625 1.011719-3.105469-11.332032-34.230469 2.476562-62.546875 2.984375-65.550781 13.078125 3.867187 15.203125-3.890625 56.808593 21.386718l7.191407 4.320313c3.007812 1.792969 2.0625.769531 5.070312.542969 17.371094-4.71875 35.683594-7.324219 53.726563-7.558594 18.179687.234375 36.375 2.839844 54.464844 7.75l2.328124.234375c-.203124-.03125.632813-.148437 2.035157-.984375 51.972656-31.480469 50.105469-21.191406 64.042969-25.722656.503906 3.007812 14.128906 31.785156 2.917968 65.582031-1.511718 4.65625 45.058594 47.300781 19.246094 115.753906-10.546875 27.933594-37.117188 63.308594-103.796875 73.253907v.015624c8.546875 13.027344 18.816406 19.957032 18.761719 46.832032v105.722656c111.808594-27.015625 196-136.011719 196-256 .003906-140.609375-115.386719-256-255.996094-256zm0 0"/></svg>
+                </a>
+            </div>
+            <ul>
+                <li class="menu-item">
+                    <a class="link" href="/quick-start">Quick start</a>
+                </li>
+                <li class="menu-item">
+                    <a class="link" href="/components">Components</a>
+                </li>
+                <li class="menu-item">
+                    <a class="link" href="#api-request-lifecycle">API Request Lifecycle</a>
+                </li>
+                <li class="menu-item">
+                    <a class="link" href="#controller">Controller</a>
+                </li>
+                <li class="menu-item">
+                    <a class="link" href="#models">Models</a>
+                </li>
+                <li class="menu-item">
+                    <a class="link" href="#repositories">Repositories</a>
+                </li>
+                <li class="menu-item">
+                    <a class="link" href="#interceptors">Interceptors</a>
+                </li>
+                <li class="menu-item">
+                    <a class="link" href="/annotations">Annotations</a>
+                    <ul class="submenu">
+                        <li class="menu-item"><a class="link" href="#available-settings">@path</a>
+                        </li>
+                        <li class="menu-item"><a class="link" href="#plugins">@summary</a>
+                        </li>
+                        <li class="menu-item"><a class="link" href="#installing-markdown-plugins">@description</a>
+                        </li>
+                        <li class="menu-item"><a class="link" href="#bundled-plugins">@model</a>
+                        </li>
+                        <li class="menu-item"><a class="link" href="#bundled-plugins">@deprecated</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </nav>
     <div class="markdown-body"><p><img src="./assets/logo.svg" alt="Dominion node rest api framework logo"></p>
 <p>Dominion is declarative Promise based Node.js framework for REST API</p>
@@ -118,7 +131,7 @@ urls can be <code>https://example.com/users</code>, <code>https://example.com/de
 <p><code>permissions</code> - array of permissions that are required by all <code>handler</code>'s in the controller.</p>
 <p><code>GET</code> <code>POST</code> <code>PUT</code> <code>DELETE</code> <code>OPTIONS</code> <code>WS</code> - arrays containing <code>handler</code> functions for requests
 with specific http verbs or web sockets.</p>
-<pre class="hljs"><button data-clipboard-target="#_16p4" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_16p4"><span class="hljs-keyword">const</span> Factories                 = use(<span class="hljs-string">"core/factories"</span>);
+<pre class="hljs"><button data-clipboard-target="#_4cp9" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_4cp9"><span class="hljs-keyword">const</span> Factories                 = use(<span class="hljs-string">"core/factories"</span>);
 
 <span class="hljs-keyword">const</span> UsersFactory              = Factories(<span class="hljs-string">"Users"</span>);
 
@@ -189,7 +202,7 @@ based on following rules:</p>
 <ol>
 <li>Property <code>path:</code> from controller declaration is always the last section of URL.</li>
 </ol>
-<pre class="hljs"><button data-clipboard-target="#_5832" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_5832">{
+<pre class="hljs"><button data-clipboard-target="#_20j1" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_20j1">{
     <span class="hljs-attr">path</span>: <span class="hljs-string">"books"</span>,
     ...
     GET: [
@@ -205,7 +218,7 @@ based on following rules:</p>
 <li>Function’s required arguments are used for path part of URL. If argument name equals to
 declaration’s <code>path:</code> property it is used as model identified in URL:</li>
 </ol>
-<pre class="hljs"><button data-clipboard-target="#_126b" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_126b">{
+<pre class="hljs"><button data-clipboard-target="#_1mjl" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_1mjl">{
     <span class="hljs-attr">path</span>: <span class="hljs-string">"books"</span>
     ...
     GET: [
@@ -222,7 +235,7 @@ declaration’s <code>path:</code> property it is used as model identified in UR
 parent identified in URL. Identifiers from URL will be passed to function
 when it will be called. In following example, during execution <code>shelvesId</code> == 42 and <code>booksId</code> == 21:</li>
 </ol>
-<pre class="hljs"><button data-clipboard-target="#_35c0" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_35c0">{
+<pre class="hljs"><button data-clipboard-target="#_4o7o" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_4o7o">{
     <span class="hljs-attr">path</span>: <span class="hljs-string">"books"</span>
     ...
     GET: [
@@ -237,7 +250,7 @@ when it will be called. In following example, during execution <code>shelvesId</
 <ol start="4">
 <li>Function’s optional arguments are treated as query parameters (section of URL after “?”).</li>
 </ol>
-<pre class="hljs"><button data-clipboard-target="#_1bmn" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_1bmn">{
+<pre class="hljs"><button data-clipboard-target="#_8la" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_8la">{
     <span class="hljs-attr">path</span>: <span class="hljs-string">"books"</span>
     ...
     GET: [
@@ -262,7 +275,7 @@ when it will be called. In following example, during execution <code>shelvesId</
 <h4>API Handlers</h4>
 <p><code>Handler</code> function is executing with HTTP message context (<code>core/messages/index.js</code>).
 In other word, <code>this</code> point to object containing information about HTTP request and response.</p>
-<pre class="hljs"><button data-clipboard-target="#_2179" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_2179"><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">booksId</span>) </span>{
+<pre class="hljs"><button data-clipboard-target="#_12h8" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_12h8"><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">booksId</span>) </span>{
     <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.request.body);
     
     <span class="hljs-keyword">this</span>.response.headers[<span class="hljs-string">"X-Items-Length"</span>] = <span class="hljs-number">42</span>;
@@ -272,7 +285,7 @@ In other word, <code>this</code> point to object containing information about HT
 <p>Annotation comments are declared inside <code>handler</code> functions. They can be used to add
 some meta information to an endpoint.</p>
 <p>For example, <code>@path:</code> annotation can be used to change auto-generated URL of an endpoint:</p>
-<pre class="hljs"><button data-clipboard-target="#_73i" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_73i"><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+<pre class="hljs"><button data-clipboard-target="#_7h0" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_7h0"><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-comment">// @path: /auth/token</span>
     
     <span class="hljs-keyword">return</span> UsersFactory.get({<span class="hljs-attr">email</span>: <span class="hljs-keyword">this</span>.request.body.email})
@@ -289,7 +302,7 @@ prototypes for models factories and models instances.</p>
 <p><code>properties</code> - object containing model’s properties. Object keys will be properties’ names, values - properties validators.</p>
 <p><code>factory</code> - object containing functions that will be used as model’s factory prototype.</p>
 <p><code>instance</code> - object containing functions that will be used as model’s instance prototype.</p>
-<pre class="hljs"><button data-clipboard-target="#_206p" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_206p"><span class="hljs-keyword">const</span> Property                  = use(<span class="hljs-string">"core/property"</span>);
+<pre class="hljs"><button data-clipboard-target="#_590g" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_590g"><span class="hljs-keyword">const</span> Property                  = use(<span class="hljs-string">"core/property"</span>);
 <span class="hljs-keyword">const</span> Errors                    = use(<span class="hljs-string">"core/errors"</span>);
 
 <span class="hljs-keyword">const</span> UsersRepository           = <span class="hljs-built_in">require</span>(<span class="hljs-string">"./repository"</span>);
@@ -346,7 +359,7 @@ prototypes for models factories and models instances.</p>
 <p>Fetches one record from DB using <code>criteriasObject</code> and returns model’s instance
 containing it. This method requires <code>repository:</code> to be defined in model declaration.</p>
 <p>For example:</p>
-<pre class="hljs"><button data-clipboard-target="#_3k1l" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_3k1l">UsersFactory.get({<span class="hljs-attr">id</span>: <span class="hljs-number">42</span>})
+<pre class="hljs"><button data-clipboard-target="#_1h8h" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_1h8h">UsersFactory.get({<span class="hljs-attr">id</span>: <span class="hljs-number">42</span>})
 </code></pre>
 <p><code>.find([criteriasObject], [limit], [offset], [order])</code></p>
 <p>Fetch collection with <code>limit</code> records using <code>criteriasObject</code>  starting from <code>offset</code>
@@ -354,7 +367,7 @@ in <code>order</code>, where order is a string equals to one of model’s proper
 prefixed by “+” or “-” for ascend or descend sorting. Returns array with model’s instance.
 This method requires <code>repository:</code> to be defined in model declaration.</p>
 <p>For example:</p>
-<pre class="hljs"><button data-clipboard-target="#_1kp3" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_1kp3">UsersFactory.find({<span class="hljs-attr">name</span>: <span class="hljs-string">"Alice"</span>, <span class="hljs-attr">status</span>: <span class="hljs-string">"active"</span>}, <span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-string">"+last_name"</span>)
+<pre class="hljs"><button data-clipboard-target="#_ggi" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_ggi">UsersFactory.find({<span class="hljs-attr">name</span>: <span class="hljs-string">"Alice"</span>, <span class="hljs-attr">status</span>: <span class="hljs-string">"active"</span>}, <span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-string">"+last_name"</span>)
 </code></pre>
 <h4>Instance Prototype</h4>
 <p>Default instance prototype (<code>core/factories/modelPrototype.js</code>) has methods:</p>
@@ -362,7 +375,7 @@ This method requires <code>repository:</code> to be defined in model declaration
 <p>Populates model’s properties from object provided in <code>modelsData</code>. Before assigning
 provided values are validated to match <code>Property</code> rules from models declaration.
 For example:</p>
-<pre class="hljs"><button data-clipboard-target="#_ik8" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_ik8"><span class="hljs-comment">//model's property declaration:</span>
+<pre class="hljs"><button data-clipboard-target="#_abj" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_abj"><span class="hljs-comment">//model's property declaration:</span>
 properties: {
     <span class="hljs-attr">id</span>: Property.id(),
     <span class="hljs-attr">isbn</span>: Property.string().pattern(<span class="hljs-regexp">/^ISBN \d-\d{3}-\d{5}-\d$/</span>)
@@ -386,7 +399,7 @@ modifications from model’s properties declaration. Can be reloaded if you need
 string representation of model, but recommended way is to extend <code>Property</code>
 output modifications.</p>
 <p>For example:</p>
-<pre class="hljs"><button data-clipboard-target="#_3329" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_3329"><span class="hljs-comment">//model's property declaration:</span>
+<pre class="hljs"><button data-clipboard-target="#_3aep" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_3aep"><span class="hljs-comment">//model's property declaration:</span>
 properties: {
     <span class="hljs-attr">id</span>: Property.id(),
     <span class="hljs-attr">isbn</span>: Property.string().pattern(<span class="hljs-regexp">/^ISBN \d-\d{3}-\d{5}-\d$/</span>),
@@ -416,13 +429,13 @@ book.toJSON();
 Returns Promise that will be resolved with model instance, or rejected with
 validation or DB error. This method requires <code>repository:</code> to be defined in model declaration.</p>
 <p>For example:</p>
-<pre class="hljs"><button data-clipboard-target="#_1bh4" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_1bh4"> <span class="hljs-keyword">return</span> book.save();
+<pre class="hljs"><button data-clipboard-target="#_2674" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_2674"> <span class="hljs-keyword">return</span> book.save();
 </code></pre>
 <p><code>.remove()</code></p>
 <p>Removes model instance from DB. Returns Promise that will be resolved with DB response,
 or rejected with DB error. This method requires <code>repository:</code> to be defined in model declaration.</p>
 <p>For example:</p>
-<pre class="hljs"><button data-clipboard-target="#_13n8" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_13n8"> <span class="hljs-keyword">return</span> book.remove()
+<pre class="hljs"><button data-clipboard-target="#_38gk" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_38gk"> <span class="hljs-keyword">return</span> book.remove()
     .then(<span class="hljs-function"><span class="hljs-params">result</span> =&gt;</span> {
         <span class="hljs-keyword">if</span> (result.affectedRows === <span class="hljs-number">1</span>) {
             <span class="hljs-keyword">this</span>.response.status = <span class="hljs-keyword">this</span>.response.statuses._204_NoContent;
@@ -437,7 +450,7 @@ representing external storage (e.g. database) related to specific model.</p>
 or by custom implementation of repository interface.</p>
 <p>Default repository can be extended with methods that makes
 direct calls to external storage, e.g. <code>findByTitle()</code>.</p>
-<pre class="hljs"><button data-clipboard-target="#_33co" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_33co"><span class="hljs-keyword">const</span> Repositories              = use(<span class="hljs-string">'core/repositories'</span>);
+<pre class="hljs"><button data-clipboard-target="#_4ob5" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_4ob5"><span class="hljs-keyword">const</span> Repositories              = use(<span class="hljs-string">'core/repositories'</span>);
 
 <span class="hljs-built_in">module</span>.exports = Repositories.create(<span class="hljs-string">'books_table'</span>, {
 
