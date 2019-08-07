@@ -51,7 +51,8 @@ There are 3 default entities:
 3. Repositories
 
 `Controller` is a place where you define API's endpoints, basically mappings 
-between URL's and actions you need to produce response.
+between URL's and actions you need to produce response. Optionally controllers
+may be linked to factory.
 
 `Factories` is where you describe model structure and its methods. Optionally factories 
 may be linked to a repository.

@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <title>Dominion - Node.js framework for creating REST APIs</title>
     <meta content="width=device-width, initial-scale=1.0,minimum-scale=1.0,user-scalable=yes" name="viewport" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="manifest" href="/assets/site.webmanifest">
+    <link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
     <link href="/assets/style.css" type="text/css" rel="stylesheet" />
     <script src="/assets/clipboard.min.js" async></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -65,7 +72,7 @@
 <p>You can take “components” as 1:1 representation of restfull (or business) domains.
 It’s useful to organize components having each in separate folder.
 Lets take <code>Users</code> model for example. Recommended file organization will be:</p>
-<pre class="hljs"><code class="highlight" id="_33o6">| - components/
+<pre class="hljs"><code class="highlight" id="_5fdi">| - components/
 | | - users/             &lt;-- `Users` component 
 | | | - index.js
 | | | - controller.js
@@ -77,14 +84,14 @@ Lets take <code>Users</code> model for example. Recommended file organization wi
 | - package-lock.json
 </code></pre>
 <h2>Creating component from cli</h2>
-<pre class="hljs"><button data-clipboard-target="#_2jap" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_2jap">npx dominion create users
+<pre class="hljs"><button data-clipboard-target="#_1e93" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_1e93">npx dominion create users
 </code></pre>
 <p>Third command <code>npx dominion create hello</code> is creating project scaffold.
 Actually, it is creating scaffold for a single component. You can read
 more about it on page <a href="/components">Components</a>.</p>
 <h2>Component declaration file</h2>
 <p>Component dependencies are declared in <code>index.js</code> file:</p>
-<pre class="hljs"><button data-clipboard-target="#_3agm" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_3agm"><span class="hljs-built_in">module</span>.exports = {
+<pre class="hljs"><button data-clipboard-target="#_bln" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_bln"><span class="hljs-built_in">module</span>.exports = {
     <span class="hljs-attr">factories</span>: [
         __dirname + <span class="hljs-string">'/factory'</span>,      <span class="hljs-comment">// &lt;-- reference to factory.js</span>
     ],
@@ -107,7 +114,8 @@ order of requires in file.</p>
 <li>Repositories</li>
 </ol>
 <p><code>Controller</code> is a place where you define API’s endpoints, basically mappings
-between URL’s and actions you need to produce response.</p>
+between URL’s and actions you need to produce response. Optionally controllers
+may be linked to factory.</p>
 <p><code>Factories</code> is where you describe model structure and its methods. Optionally factories
 may be linked to a repository.</p>
 <p><code>Repository</code> is playing role of ORM (Object-relational mapping) with external data storage.
