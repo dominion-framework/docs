@@ -687,48 +687,22 @@ button::-moz-focus-inner,
   }
 }
 
-.menu-toggle {
-  display: none;
-  box-sizing: content-box;
-}
-
-@media (min-width: 769px) {
-  .menu-toggle {
-    display: block;
-    width: 52px;
-    height: 52px;
-    line-height: 40px;
-    position: fixed;
-    padding-left: 12px;
-    left: 0;
-    bottom: 0;
-    color: #111;
-    z-index: 10;
-    cursor: pointer;
-    background: transparent
-  }
+.menu-toggle-button {
+  height: 40px;
+  width: 40px;
+  border: none;
+  background: transparent;
+  float: right;
+  margin: 12px 16px 0 16px;
 }
 
 .menu-toggle {
-  transition: width 1ms linear 250ms, background-color 1ms linear 250ms, color 400ms linear
-}
-
-.-menu-visible .menu-toggle {
-  width: 229px;
-  background-color: #fff;
-  transition: color 400ms linear
-}
-
-.menu-toggle:before {
-  display: inline-block;
-  content: "\f20e";
-  font-size: 24px;
-  text-align: center;
-  width: 40px
-}
-
-.menu-toggle:hover {
-  color: #4078c0
+  width: 30px;
+  height: 4px;
+  background: #2c4891;
+  border-radius: 4px;
+  box-shadow: 0 8px 0 0 #2c4891, 0 16px 0 0 #2c4891;
+  margin-top: -9px;
 }
 
 @keyframes link-fade-in {
@@ -787,6 +761,9 @@ button::-moz-focus-inner,
   .toc-menu .collapsible{
     max-height: 100vh;
   }
+  .menu-toggle-button {
+    display: none;
+  }
 }
 
 .toc-menu .logo a {
@@ -842,6 +819,8 @@ button::-moz-focus-inner,
 .toc-menu .link.active {
   animation: link-fade-in .3s linear forwards;
 }
+
+
 
 .toc-menu .submenu {
   display: none;

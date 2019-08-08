@@ -25,7 +25,9 @@
 <body>
 <div class="doc-page">
     <nav class="menu toc-menu">
-        <div class="toggle menu-toggle"></div>
+        <button class="menu-toggle-button" onclick="document.querySelector('.toc-menu div.collapsible').classList.toggle('open')">
+            <div class="menu-toggle"></div>
+        </button>
         <div class="menu-item logo">
             <a class="link" href="/"><img src="/assets/logo.svg" /></a>
         </div>
