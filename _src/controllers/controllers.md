@@ -13,6 +13,10 @@ an endpoint to return model that was not created by that factory.
 * **URI creation** - controller will automatically set
 proper URI for endpoints based on what they do and with what resource.
 
+It is a good practice not to have business logic in endpoints
+functions and keep them reasonably small. Business logic should
+be implemented in methods of factories and model instances, or 
+in separated services.  
 
 ## Writing controller
 
