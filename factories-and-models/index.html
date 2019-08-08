@@ -100,12 +100,38 @@
 <p>Files containing factory declaration should export object with model’s properties and
 prototypes for models factories and models instances.</p>
 <p>Models declaration object has following properties:</p>
-<p><code>name</code> - model’s name. Good practice is to keep model’s name always in plural to avoid ambiguity.</p>
-<p><code>repository</code> - optional, link to model’s <code>Repository</code>.</p>
-<p><code>properties</code> - object containing model’s properties. Object keys will be properties’ names, values - properties validators.</p>
-<p><code>factory</code> - object containing functions that will be used as model’s factory prototype.</p>
-<p><code>instance</code> - object containing functions that will be used as model’s instance prototype.</p>
-<pre class="hljs"><button data-clipboard-target="#_19j0" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_19j0"><span class="hljs-keyword">const</span> Property                  = use(<span class="hljs-string">"core/property"</span>);
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Name</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><em>name</em></td>
+<td style="text-align:left">String. Model’s name. Good practice is to keep model’s name always in plural to avoid ambiguity.</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>repository</em></td>
+<td style="text-align:left">Optional, Repository object the model is linked to.</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>properties</em></td>
+<td style="text-align:left">Object containing model’s properties. Object keys will be properties’ names, values - properties validators.</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>factory</em></td>
+<td style="text-align:left">Object containing functions that will be used as model’s factory prototype.</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>instance</em></td>
+<td style="text-align:left">Object containing functions that will be used as model’s instance prototype.</td>
+</tr>
+</tbody>
+</table>
+<h2>Code example</h2>
+<pre class="hljs"><button data-clipboard-target="#_9f2" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_9f2"><span class="hljs-keyword">const</span> Property                  = use(<span class="hljs-string">"core/property"</span>);
 <span class="hljs-keyword">const</span> Errors                    = use(<span class="hljs-string">"core/errors"</span>);
 
 <span class="hljs-keyword">const</span> UsersRepository           = <span class="hljs-built_in">require</span>(<span class="hljs-string">"./repository"</span>);

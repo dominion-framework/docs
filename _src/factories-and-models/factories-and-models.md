@@ -5,15 +5,16 @@ prototypes for models factories and models instances.
 
 Models declaration object has following properties:
 
-`name` - model's name. Good practice is to keep model's name always in plural to avoid ambiguity.
+|Name   |Description   |
+|:---|:---|
+|_name_ | String. Model's name. Good practice is to keep model's name always in plural to avoid ambiguity. 
+|_repository_ | Optional, Repository object the model is linked to.
+|_properties_ | Object containing model's properties. Object keys will be properties' names, values - properties validators.
+|_factory_ | Object containing functions that will be used as model's factory prototype. 
+|_instance_ | Object containing functions that will be used as model's instance prototype.
 
-`repository` - optional, link to model's `Repository`.
 
-`properties` - object containing model's properties. Object keys will be properties' names, values - properties validators.
-
-`factory` - object containing functions that will be used as model's factory prototype. 
-
-`instance` - object containing functions that will be used as model's instance prototype.
+## Code example
 
 ```js
 const Property                  = use("core/property");
