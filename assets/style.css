@@ -565,6 +565,13 @@ button::-moz-focus-inner,
   border: 0;
 }
 
+.markdown-body h1 code,
+.markdown-body h2 code,
+.markdown-body h3 code,
+.markdown-body h4 code {
+  background: transparent;
+}
+
 .markdown-body .highlight {
   margin-bottom: 16px;
 }
@@ -820,8 +827,6 @@ button::-moz-focus-inner,
 .toc-menu .link.active {
   animation: link-fade-in .3s linear forwards;
 }
-
-
 
 .toc-menu .submenu {
   display: none;
