@@ -61,7 +61,7 @@ button::-moz-focus-inner,
 .markdown-body {
   line-height: 1.6;
   word-wrap: break-word;
-  margin: 0 auto;
+  margin: 90px auto 0 auto;
   overflow: visible;
   width: 100%;
   padding: 64px 16px;
@@ -72,6 +72,7 @@ button::-moz-focus-inner,
     font-size: 14px;
     max-width: 768px;
     padding: 64px 32px;
+    margin: 0 auto;
   }
 }
 
