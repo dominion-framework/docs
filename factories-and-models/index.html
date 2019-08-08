@@ -48,7 +48,7 @@
                     <a class="link" href="/quick-start">Quick Start</a>
                 </li>
                 <li class="menu-item">
-                    <a class="link active" href="/components">Components</a>
+                    <a class="link" href="/components">Components</a>
                 </li>
                 <li class="menu-item">
                     <a class="link" href="#api-request-lifecycle">API Request Lifecycle</a>
@@ -62,7 +62,7 @@
                     </ul>
                 </li>
                 <li class="menu-item">
-                    <a class="link" href="/factories-and-models">Factories and Models</a>
+                    <a class="link active" href="/factories-and-models">Factories and Models</a>
                     <ul class="submenu">
                         <li class="menu-item">
                             <a class="link" href="/factories-and-models/factory-prototype">Factory prototype</a>
@@ -96,62 +96,65 @@
             </ul>
         </div>
     </nav>
-    <div class="markdown-body"><h1>Components</h1>
-<p>You can take “components” as 1:1 representation of restfull (or business) domains.
-It’s useful to organize components having each in separate folder.
-Lets take <code>Users</code> model for example. Recommended file organization will be:</p>
-<pre class="hljs"><code class="highlight" id="_1fk8">| - components/
-| | - users/             &lt;-- `Users` component 
-| | | - index.js
-| | | - controller.js
-| | | - factory.js
-| | | - repository.js
-| | - products/
-| - index.js
-| - package.json
-| - package-lock.json
-</code></pre>
-<h2>Creating component from cli</h2>
-<pre class="hljs"><button data-clipboard-target="#_4ngc" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_4ngc">npx dominion create users
-</code></pre>
-<p>Third command <code>npx dominion create hello</code> is creating project scaffold.
-Actually, it is creating scaffold for a single component. You can read
-more about it on page <a href="/components">Components</a>.</p>
-<h2>Component declaration file</h2>
-<p>Component dependencies are declared in <code>index.js</code> file:</p>
-<pre class="hljs"><button data-clipboard-target="#_9n6" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_9n6"><span class="hljs-built_in">module</span>.exports = {
-    <span class="hljs-attr">factories</span>: [
-        __dirname + <span class="hljs-string">'/factory'</span>,      <span class="hljs-comment">// &lt;-- reference to factory.js</span>
-    ],
-    <span class="hljs-attr">controllers</span>: [
-        __dirname + <span class="hljs-string">'/controller'</span>,   <span class="hljs-comment">// &lt;-- reference to controller.js</span>
-    ],
-    <span class="hljs-attr">requestInterceptors</span>: [ ],        <span class="hljs-comment">// &lt;-- list of references to request interceptors</span>
+    <div class="markdown-body"><h1>Factories and Models</h1>
+<p>Files containing factory declaration should export object with model’s properties and
+prototypes for models factories and models instances.</p>
+<p>Models declaration object has following properties:</p>
+<p><code>name</code> - model’s name. Good practice is to keep model’s name always in plural to avoid ambiguity.</p>
+<p><code>repository</code> - optional, link to model’s <code>Repository</code>.</p>
+<p><code>properties</code> - object containing model’s properties. Object keys will be properties’ names, values - properties validators.</p>
+<p><code>factory</code> - object containing functions that will be used as model’s factory prototype.</p>
+<p><code>instance</code> - object containing functions that will be used as model’s instance prototype.</p>
+<pre class="hljs"><button data-clipboard-target="#_4fb2" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_4fb2"><span class="hljs-keyword">const</span> Property                  = use(<span class="hljs-string">"core/property"</span>);
+<span class="hljs-keyword">const</span> Errors                    = use(<span class="hljs-string">"core/errors"</span>);
 
-    responseInterceptors: [ ],       <span class="hljs-comment">// &lt;-- list of references to response interceptors</span>
+<span class="hljs-keyword">const</span> UsersRepository           = <span class="hljs-built_in">require</span>(<span class="hljs-string">"./repository"</span>);
 
-    bootstrap: [ ]                   <span class="hljs-comment">// &lt;-- list of references to files that will run on startup</span>
+
+<span class="hljs-built_in">module</span>.exports = {
+
+    <span class="hljs-attr">name</span>: <span class="hljs-string">"Users"</span>,
+
+    <span class="hljs-attr">repository</span>: UsersRepository, 
+
+    <span class="hljs-attr">properties</span>: {
+        <span class="hljs-attr">id</span>: Property.id(),
+        <span class="hljs-attr">phoneNumber</span>: Property.number().min(<span class="hljs-number">100000000000</span>).max(<span class="hljs-number">999999999999</span>),
+        <span class="hljs-attr">email</span>: Property.string().pattern(<span class="hljs-regexp">/\S+@\S\(.\S)+/</span>).max(<span class="hljs-number">100</span>),
+        <span class="hljs-attr">passwordHash</span>: Property.string().max(<span class="hljs-number">255</span>).private(),
+        <span class="hljs-attr">passwordSalt</span>: Property.string().max(<span class="hljs-number">255</span>).private(),
+        <span class="hljs-attr">creationTime</span>: Property.date().private(),
+        <span class="hljs-attr">modificationTime</span>: Property.date().private()
+    },
+
+    <span class="hljs-attr">factory</span>: {
+
+        getActiveUsers(limit = <span class="hljs-number">6</span>, offset = <span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.repo.getActiveUsers(limit, offset)
+                .then(<span class="hljs-function"><span class="hljs-params">users</span> =&gt;</span> <span class="hljs-built_in">Promise</span>.all(users.map(<span class="hljs-function"><span class="hljs-params">mix</span> =&gt;</span> <span class="hljs-keyword">this</span>.new(mix, <span class="hljs-literal">false</span>))));
+        }
+
+    },
+
+    <span class="hljs-attr">instance</span>: {
+
+        checkPassword(password) {
+            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.passwordHash === createHash(password, <span class="hljs-keyword">this</span>.passwordSalt)) {
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Errors.Unauthorized(<span class="hljs-string">"Incorrect credentials"</span>);
+            }
+        },
+
+        setPassword(password) {
+            <span class="hljs-keyword">let</span> [passwordHash, passwordSalt] = hash(password);
+            <span class="hljs-keyword">this</span>.populate({passwordHash, passwordSalt});
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+        }
+
+    }
 };
 </code></pre>
-<p>This declarations is used only for requiring components on the fly independent from
-order of requires in file.</p>
-<p>There are 3 default entities:</p>
-<ol>
-<li>Controllers</li>
-<li>Factories</li>
-<li>Repositories</li>
-</ol>
-<p><code>Controller</code> is a place where you define API’s endpoints, basically mappings
-between URL’s and actions you need to produce response. Optionally controllers
-may be linked to factory.</p>
-<p><code>Factories</code> is where you describe model structure and its methods. Optionally factories
-may be linked to a repository.</p>
-<p><code>Repository</code> is playing role of ORM (Object-relational mapping) with external data storage.
-By default framework uses MySQL, but should work with any DB that has compatible SQL dialect.
-Alternative, repository prototype may be redefined to work with any type of
-storage (NoSQL, cloud storage, flat file, etc).</p>
-<p>Commonly you’ll need one set of controller/factory/repository in a component,
-but it’s possible to have multiple ones if needed.</p>
 </div>
 </div>
 </body>

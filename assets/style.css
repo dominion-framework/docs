@@ -827,6 +827,7 @@ button::-moz-focus-inner,
   display: none;
 }
 
+.toc-menu .opened + .submenu,
 .toc-menu .active + .submenu {
   display: block;
 }

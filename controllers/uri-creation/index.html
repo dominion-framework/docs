@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dominion - Node.js framework for creating REST APIs</title>
+    <meta content="width=device-width, initial-scale=1.0,minimum-scale=1.0,user-scalable=yes" name="viewport" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="manifest" href="/assets/site.webmanifest">
+    <link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link href="/assets/style.css" type="text/css" rel="stylesheet" />
+    <script src="/assets/clipboard.min.js" async></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-97343130-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-97343130-2');
+    </script>
+</head>
+<body>
+<div class="doc-page">
+    <nav class="menu toc-menu">
+        <button class="menu-toggle-button" onclick="document.querySelector('.toc-menu div.collapsible').classList.toggle('open')">
+            <div class="menu-toggle"></div>
+        </button>
+        <div class="menu-item logo">
+            <a class="link" href="/"><img src="/assets/logo.svg" /></a>
+        </div>
+        <div class="collapsible">
+            <div class="links">
+                <a href="https://www.npmjs.com/package/@dominion-framework/dominion" style="width: 32px;">
+                    <svg viewBox="0 0 256 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet"><path d="M0 0v85.498h71.166V99.83H128V85.498h128V0H0z" fill="#000"/><path d="M42.502 14.332h-28.17v56.834h28.17V28.664h14.332v42.502h14.332V14.332H42.502zM85.498 14.332v71.166h28.664V71.166h28.17V14.332H85.498zM128 56.834h-13.838v-28.17H128v28.17zM184.834 14.332h-28.17v56.834h28.17V28.664h14.332v42.502h14.332V28.664h14.332v42.502h14.332V14.332h-57.328z" fill="#FFF"/></svg>
+                </a>
+                <a href="https://gitter.im/dominion-framework/community">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><path d="M10 2a1 1 0 0 0-1 1v27a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1h-4zm9 7a1 1 0 0 0-1 1v37a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1h-4zm9 0a1 1 0 0 0-1 1v37a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1h-4zm9 0a1 1 0 0 0-1 1v20a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1h-4z"/></svg>
+                </a>
+                <a href="https://github.com/dominion-framework/dominion">
+                    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m256 0c-140.609375 0-256 115.390625-256 256 0 119.988281 84.195312 228.984375 196 256v-84.695312c-11.078125 2.425781-21.273438 2.496093-32.550781-.828126-15.128907-4.464843-27.421875-14.542968-36.546875-29.910156-5.816406-9.8125-16.125-20.453125-26.878906-19.671875l-2.636719-29.882812c23.253906-1.992188 43.371093 14.167969 55.3125 34.230469 5.304687 8.921874 11.410156 14.152343 19.246093 16.464843 7.574219 2.230469 15.707032 1.160157 25.183594-2.1875 2.378906-18.972656 11.070313-26.074219 17.636719-36.074219v-.015624c-66.679687-9.945313-93.253906-45.320313-103.800781-73.242188-13.976563-37.074219-6.476563-83.390625 18.238281-112.660156.480469-.570313 1.347656-2.0625 1.011719-3.105469-11.332032-34.230469 2.476562-62.546875 2.984375-65.550781 13.078125 3.867187 15.203125-3.890625 56.808593 21.386718l7.191407 4.320313c3.007812 1.792969 2.0625.769531 5.070312.542969 17.371094-4.71875 35.683594-7.324219 53.726563-7.558594 18.179687.234375 36.375 2.839844 54.464844 7.75l2.328124.234375c-.203124-.03125.632813-.148437 2.035157-.984375 51.972656-31.480469 50.105469-21.191406 64.042969-25.722656.503906 3.007812 14.128906 31.785156 2.917968 65.582031-1.511718 4.65625 45.058594 47.300781 19.246094 115.753906-10.546875 27.933594-37.117188 63.308594-103.796875 73.253907v.015624c8.546875 13.027344 18.816406 19.957032 18.761719 46.832032v105.722656c111.808594-27.015625 196-136.011719 196-256 .003906-140.609375-115.386719-256-255.996094-256zm0 0"/></svg>
+                </a>
+            </div>
+            <ul>
+                <li class="menu-item">
+                    <a class="link" href="/quick-start">Quick Start</a>
+                </li>
+                <li class="menu-item">
+                    <a class="link" href="/components">Components</a>
+                </li>
+                <li class="menu-item">
+                    <a class="link" href="#api-request-lifecycle">API Request Lifecycle</a>
+                </li>
+                <li class="menu-item">
+                    <a class="link opened" href="/controllers">Controller</a>
+                    <ul class="submenu">
+                        <li class="menu-item">
+                            <a class="link active" href="/controllers/uri-creation">URI Creation</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a class="link" href="/factories-and-models">Factories and Models</a>
+                    <ul class="submenu">
+                        <li class="menu-item">
+                            <a class="link" href="/factories-and-models/factory-prototype">Factory prototype</a>
+                        </li>
+                        <li class="menu-item">
+                            <a class="link" href="/factories-and-models/model-prototype">Model prototype</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a class="link" href="#repositories">Repositories</a>
+                </li>
+                <li class="menu-item">
+                    <a class="link" href="#interceptors">Interceptors</a>
+                </li>
+                <li class="menu-item">
+                    <a class="link" href="/annotations">Annotations</a>
+                    <ul class="submenu">
+                        <li class="menu-item"><a class="link" href="#available-settings">@path</a>
+                        </li>
+                        <li class="menu-item"><a class="link" href="#plugins">@summary</a>
+                        </li>
+                        <li class="menu-item"><a class="link" href="#installing-markdown-plugins">@description</a>
+                        </li>
+                        <li class="menu-item"><a class="link" href="#bundled-plugins">@model</a>
+                        </li>
+                        <li class="menu-item"><a class="link" href="#bundled-plugins">@deprecated</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="markdown-body"><h1>URI Creation</h1>
+<p>Dominion framework automatically create URIs according to RESTful APIs best
+practices. You only need to specify what data you expect to have as an
+input to your endpoint. Or, in other words, list arguments in endpoint’s
+function. Lets take a look on some quick examples.</p>
+<pre class="hljs"><button data-clipboard-target="#_ib8" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_ib8">    <span class="hljs-comment">// https://api.example.com/books/42</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">booksId</span>) </span>{ }
+</code></pre>
+<pre class="hljs"><button data-clipboard-target="#_1fgd" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_1fgd">    <span class="hljs-comment">// https://api.example.com/books?limit=X&amp;offset=Y</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">limit = <span class="hljs-number">10</span>, offset = <span class="hljs-number">0</span></span>) </span>{ }
+</code></pre>
+<pre class="hljs"><button data-clipboard-target="#_kmo" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_kmo">    <span class="hljs-comment">// https://api.example.com/library/42/books/42?limit=X    </span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">library, booksId, limit = <span class="hljs-number">10</span></span>) </span>{ }
+</code></pre>
+<pre class="hljs"><button data-clipboard-target="#_4ckh" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_4ckh">    <span class="hljs-comment">// https://api.example.com/library/42/shelves/42/books/42?limit=X&amp;authorName=Y    </span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">libraryId, shelvesId, booksId, authorName = null, limit = <span class="hljs-number">10</span></span>) </span>{ }
+</code></pre>
+<h2>Creation Rules</h2>
+<ol>
+<li>Name of a models factory that controller is linked to with <code>factory:</code>
+property or value of controller’s <code>path:</code> property will always
+be the last section of URI.</li>
+</ol>
+<pre class="hljs"><button data-clipboard-target="#_1knn" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_1knn">{
+    <span class="hljs-attr">factory</span>: BooksFactory, <span class="hljs-comment">// assuming BooksFactory name is "books"</span>
+    ...
+    GET: [
+        <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ }
+
+        <span class="hljs-comment">// produces URI: </span>
+        <span class="hljs-comment">// https://api.example.com/books    </span>
+    ]
+}
+</code></pre>
+<pre class="hljs"><button data-clipboard-target="#_hd1" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_hd1">{
+    <span class="hljs-attr">path</span>: <span class="hljs-string">"books"</span>,
+    ...
+    GET: [
+        <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ }
+
+        <span class="hljs-comment">// produces URI: </span>
+        <span class="hljs-comment">// https://api.example.com/books    </span>
+    ]
+}
+</code></pre>
+<ol start="2">
+<li>Required arguments of a function will become segments of URI path.
+Value of arguments will be set to string coming after segments.
+If argument name ends with “Id” suffix, it will be ignored.</li>
+</ol>
+<pre class="hljs"><button data-clipboard-target="#_cf2" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_cf2">{
+    <span class="hljs-attr">path</span>: <span class="hljs-string">"books"</span>,
+    ...
+    GET: [
+        <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">shelvesId, booksId</span>) </span>{ }
+
+        <span class="hljs-comment">// produces URI: </span>
+        <span class="hljs-comment">// https://api.example.com/shelves/42/books/21</span>
+        <span class="hljs-comment">// shelvesId == 42, booksId == 21    </span>
+    ]
+}
+</code></pre>
+<ol start="3">
+<li>Optional arguments of a function are treated as query parameters
+(section of URI going after “?”). Value of arguments will be set to
+the value of passed query parameters. Key-value pairs can be in any order
+in a query string or be omitted at all.</li>
+</ol>
+<pre class="hljs"><button data-clipboard-target="#_35ee" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_35ee">{
+    <span class="hljs-attr">path</span>: <span class="hljs-string">"books"</span>,
+    ...
+    GET: [
+        <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">limit = <span class="hljs-number">6</span>, offset = <span class="hljs-number">0</span></span>) </span>{ }
+
+        <span class="hljs-comment">// produces URI: </span>
+        <span class="hljs-comment">// https://api.example.com/books?limit=12&amp;offset=0</span>
+        <span class="hljs-comment">// limit == 12, offset == 0</span>
+    ]
+}
+</code></pre>
+<ol start="4">
+<li>If <code>path:</code> property consist with more than one segment, function
+argument need to be camelCased to receive value from URL.</li>
+</ol>
+<pre class="hljs"><button data-clipboard-target="#_3f7o" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_3f7o">{
+    <span class="hljs-attr">path</span>: <span class="hljs-string">"books/publisher"</span>,
+    ...
+    GET: [
+        <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">booksPublisherId</span>) </span>{ }
+
+        <span class="hljs-comment">// produces URI: </span>
+        <span class="hljs-comment">// https://api.example.com/books/publisher/42</span>
+        <span class="hljs-comment">// booksPublisherId == 42</span>
+    ]
+}
+</code></pre>
+<p>If requested URI will not match any of existing handlers, server will respond <code>501 Not Implemented</code>.</p>
+<blockquote>
+<p>Note, all values extracted from URI are strings, consequently arguments passed into functions are also always <code>String</code> type.</p>
+</blockquote>
+</div>
+</div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-# Quick start
+# Quick Start
 
 _This is a guide for those who are using Dominion framework 
 for the first time. If you already have some experience with it, 
@@ -123,7 +123,7 @@ GET: [
         // @summary: Demo endpoint with optional arguments
         // @description: Open http://localhost:7042/hello?offset=0&limit=10 to see results
 
-        return `Welcome to Dominion! Nice to meet you! [${offset}, ${limit}]`;
+        return HelloFactory.new({message: `Welcome to Dominion! Nice to meet you! [${offset}, ${limit}]` });
     },
     ...
 ]
@@ -140,9 +140,10 @@ may provide some meta data about handler or extend its functionality.
 More about them on [Annotations](/annotations) page.
 
 The final piece of a puzzle is where `/hello?` part of URL comes from.
-Controllers may (but not have to) be linked to a model. If it is, 
-URLs path is taken from model's name. In our case, controller is
-linked to model named `Hello`. What brings us to Models.
+[Controllers](/controllers) may (but not have to) be linked to a models
+factory . If they are, URLs path is taken from model's name. 
+In our case, controller is linked to model named `Hello`. 
+What brings us to Models.
 
 Models are created by the factory declared in the file `factory.js`.
 ```js
@@ -151,10 +152,11 @@ Models are created by the factory declared in the file `factory.js`.
     
     properties: {
         id: Property.id(),
+        message: Property.string(),
         guid: Property.string().example("123e4567-e89b-12d3-a456-426655440000"),
-        email: Property.string().required().example("my.name@example.com"),
+        email: Property.string().example("my.name@example.com"),
         state: Property.enum(["open", "close"]),
-        parentId: Property.model("Hello"),
+        parentId: Property.model("Hello").private(),
         creationTime: Property.date().private(),
         modificationTime: Property.date().private()
     },
