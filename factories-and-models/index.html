@@ -73,6 +73,35 @@
                     </ul>
                 </li>
                 <li class="menu-item">
+                    <a class="link" href="/properties">Properties</a>
+                    <ul class="submenu">
+                        <li class="menu-item">
+                            <a class="link" href="/properties#number">.number()</a>
+                        </li>
+                        <li class="menu-item">
+                            <a class="link" href="/properties#string">.string()</a>
+                        </li>
+                        <li class="menu-item">
+                            <a class="link" href="/properties#object">.object()</a>
+                        </li>
+                        <li class="menu-item">
+                            <a class="link" href="/properties#date">.date()</a>
+                        </li>
+                        <li class="menu-item">
+                            <a class="link" href="/properties#enum">.enum()</a>
+                        </li>
+                        <li class="menu-item">
+                            <a class="link" href="/properties#set">.set()</a>
+                        </li>
+                        <li class="menu-item">
+                            <a class="link" href="/properties#model">.model()</a>
+                        </li>
+                        <li class="menu-item">
+                            <a class="link" href="/properties#id-uuid">.id(), .uuid()</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item">
                     <a class="link" href="#repositories">Repositories</a>
                 </li>
                 <li class="menu-item">
@@ -97,9 +126,28 @@
         </div>
     </nav>
     <div class="markdown-body"><h1>Factories and Models</h1>
-<p>Files containing factory declaration should export object with model’s properties and
-prototypes for models factories and models instances.</p>
-<p>Models declaration object has following properties:</p>
+<p>Model is representing a single resource in terms of RESTful APIs.
+It lists properties associated with business model and contains
+methods that may manipulate model’s state. Commonly Models structure
+has 1:1 mapping with persistent storage.</p>
+<p>Collection of models is managed by Factories. Basically, two main
+functions of a factory is to create a new Model instance or retrieve
+collection of models from some storage.</p>
+<p>Cool thing in models declaration in Dominion framework is
+ability to specify extra features for each Model’s property.
+It includes: data validation, input modification, output modification
+and documentation info. More about this you can read
+on <a href="/properties">Properties</a> page.</p>
+<p>By default <a href="/factories-and-models/factory-prototype">Factories prototype</a>
+and <a href="/factories-and-models/model-prototype">Models prototype</a>
+contain the most common manipulations you will need in a project.
+And of course, you can extend or overwrite it using <code>factory:</code> and <code>instance:</code>
+properties in a Factory declaration.</p>
+<h2>Writing a factory</h2>
+<p>Files containing factory declaration should export an object with
+model’s properties and prototypes for models factories and
+models instances.</p>
+<p>Factory declaration object has following properties:</p>
 <table>
 <thead>
 <tr>
@@ -110,31 +158,31 @@ prototypes for models factories and models instances.</p>
 <tbody>
 <tr>
 <td style="text-align:left"><em>name</em></td>
-<td style="text-align:left">String. Model’s name. Good practice is to keep model’s name always in plural to avoid ambiguity.</td>
+<td style="text-align:left">String, required. Model’s name. Good practice is to keep model’s name always in plural to avoid ambiguity.</td>
 </tr>
 <tr>
 <td style="text-align:left"><em>repository</em></td>
-<td style="text-align:left">Optional, Repository object the model is linked to.</td>
+<td style="text-align:left">Object, optional. Repository object the model is linked to.</td>
 </tr>
 <tr>
 <td style="text-align:left"><em>properties</em></td>
-<td style="text-align:left">Object containing model’s properties. Object keys will be properties’ names, values - properties validators.</td>
+<td style="text-align:left">Object, required. Object containing model’s properties. Object keys will be properties’ names, values - properties validators.</td>
 </tr>
 <tr>
 <td style="text-align:left"><em>factory</em></td>
-<td style="text-align:left">Object containing functions that will be used as model’s factory prototype.</td>
+<td style="text-align:left">Object, optional. Object containing functions that will be used to extend model’s factory prototype.</td>
 </tr>
 <tr>
 <td style="text-align:left"><em>instance</em></td>
-<td style="text-align:left">Object containing functions that will be used as model’s instance prototype.</td>
+<td style="text-align:left">Object, optional. Object containing functions that will be used to extend model’s prototype.</td>
 </tr>
 </tbody>
 </table>
 <h2>Code example</h2>
-<pre class="hljs"><button data-clipboard-target="#_9f2" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_9f2"><span class="hljs-keyword">const</span> Property                  = use(<span class="hljs-string">"core/property"</span>);
-<span class="hljs-keyword">const</span> Errors                    = use(<span class="hljs-string">"core/errors"</span>);
+<pre class="hljs"><button data-clipboard-target="#_7ho" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_7ho"><span class="hljs-keyword">const</span> Errors = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@dominion-framework/dominion/core/errors"</span>);
+<span class="hljs-keyword">const</span> Property = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@dominion-framework/dominion/core/property"</span>);
 
-<span class="hljs-keyword">const</span> UsersRepository           = <span class="hljs-built_in">require</span>(<span class="hljs-string">"./repository"</span>);
+<span class="hljs-keyword">const</span> UsersRepository = <span class="hljs-built_in">require</span>(<span class="hljs-string">"./repository"</span>);
 
 
 <span class="hljs-built_in">module</span>.exports = {
@@ -145,7 +193,7 @@ prototypes for models factories and models instances.</p>
 
     <span class="hljs-attr">properties</span>: {
         <span class="hljs-attr">id</span>: Property.id(),
-        <span class="hljs-attr">phoneNumber</span>: Property.number().min(<span class="hljs-number">100000000000</span>).max(<span class="hljs-number">999999999999</span>),
+        <span class="hljs-attr">phoneNumber</span>: Property.number().min(<span class="hljs-number">1e11</span>).max(<span class="hljs-number">1e12</span><span class="hljs-number">-1</span>),
         <span class="hljs-attr">email</span>: Property.string().pattern(<span class="hljs-regexp">/\S+@\S\(.\S)+/</span>).max(<span class="hljs-number">100</span>),
         <span class="hljs-attr">passwordHash</span>: Property.string().max(<span class="hljs-number">255</span>).private(),
         <span class="hljs-attr">passwordSalt</span>: Property.string().max(<span class="hljs-number">255</span>).private(),

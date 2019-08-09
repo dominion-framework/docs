@@ -18,18 +18,18 @@ functions and keep them reasonably small. Business logic should
 be implemented in methods of factories and model instances, or 
 in separated services.  
 
-## Writing controller
+## Writing a controller
 
-A file containing controller should export object with a list of 
+A file containing controller should export an object with a list of 
 endpoint callback functions and meta info describing what type of resources 
 this controller will operate. 
 This object may have properties:
 
 |Name   |Description   |
 |:---|:---|
-|_factory_  | Models factory object. This object will define resource name, that will be used in endpoints URI. It also will obligate all endpoints defined in a controller to return models or collections of this type.    |
-|_path_     | String. Resource name or custom path, that will be used in endpoints URI. It may be used when there is no appropriate model for endpoints functionality. Note, you can set only one either `path` or `factory` property. 
-|_OPTIONS[], GET[], POST[], PUT[], DELETE[]_  | Arrays containing functions that will be called on HTTP request with appropriate verb and URI matching function's arguments. 
+|_factory_  | Object, optional. Models factory object. This object will define resource name, that will be used in endpoints URI. It also will obligate all endpoints defined in a controller to return models or collections of this type.    |
+|_path_     | String, optional. Resource name or custom path, that will be used in endpoints URI. It may be used when there is no appropriate model for endpoints functionality. Note, you can set only one either `path` or `factory` property. 
+|_OPTIONS[], GET[], POST[], PUT[], DELETE[]_  | Array, optional. Arrays containing functions that will be called on HTTP request with appropriate verb and URI matching function's arguments. 
 
 
 ## Code example

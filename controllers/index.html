@@ -73,6 +73,35 @@
                     </ul>
                 </li>
                 <li class="menu-item">
+                    <a class="link" href="/properties">Properties</a>
+                    <ul class="submenu">
+                        <li class="menu-item">
+                            <a class="link" href="/properties#number">.number()</a>
+                        </li>
+                        <li class="menu-item">
+                            <a class="link" href="/properties#string">.string()</a>
+                        </li>
+                        <li class="menu-item">
+                            <a class="link" href="/properties#object">.object()</a>
+                        </li>
+                        <li class="menu-item">
+                            <a class="link" href="/properties#date">.date()</a>
+                        </li>
+                        <li class="menu-item">
+                            <a class="link" href="/properties#enum">.enum()</a>
+                        </li>
+                        <li class="menu-item">
+                            <a class="link" href="/properties#set">.set()</a>
+                        </li>
+                        <li class="menu-item">
+                            <a class="link" href="/properties#model">.model()</a>
+                        </li>
+                        <li class="menu-item">
+                            <a class="link" href="/properties#id-uuid">.id(), .uuid()</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item">
                     <a class="link" href="#repositories">Repositories</a>
                 </li>
                 <li class="menu-item">
@@ -114,8 +143,8 @@ proper URI for endpoints based on what they do and with what resource.</li>
 functions and keep them reasonably small. Business logic should
 be implemented in methods of factories and model instances, or
 in separated services.</p>
-<h2>Writing controller</h2>
-<p>A file containing controller should export object with a list of
+<h2>Writing a controller</h2>
+<p>A file containing controller should export an object with a list of
 endpoint callback functions and meta info describing what type of resources
 this controller will operate.
 This object may have properties:</p>
@@ -129,20 +158,20 @@ This object may have properties:</p>
 <tbody>
 <tr>
 <td style="text-align:left"><em>factory</em></td>
-<td style="text-align:left">Models factory object. This object will define resource name, that will be used in endpoints URI. It also will obligate all endpoints defined in a controller to return models or collections of this type.</td>
+<td style="text-align:left">Object, optional. Models factory object. This object will define resource name, that will be used in endpoints URI. It also will obligate all endpoints defined in a controller to return models or collections of this type.</td>
 </tr>
 <tr>
 <td style="text-align:left"><em>path</em></td>
-<td style="text-align:left">String. Resource name or custom path, that will be used in endpoints URI. It may be used when there is no appropriate model for endpoints functionality. Note, you can set only one either <code>path</code> or <code>factory</code> property.</td>
+<td style="text-align:left">String, optional. Resource name or custom path, that will be used in endpoints URI. It may be used when there is no appropriate model for endpoints functionality. Note, you can set only one either <code>path</code> or <code>factory</code> property.</td>
 </tr>
 <tr>
 <td style="text-align:left"><em>OPTIONS[], GET[], POST[], PUT[], DELETE[]</em></td>
-<td style="text-align:left">Arrays containing functions that will be called on HTTP request with appropriate verb and URI matching function’s arguments.</td>
+<td style="text-align:left">Array, optional. Arrays containing functions that will be called on HTTP request with appropriate verb and URI matching function’s arguments.</td>
 </tr>
 </tbody>
 </table>
 <h2>Code example</h2>
-<pre class="hljs"><button data-clipboard-target="#_1jn1" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_1jn1"><span class="hljs-keyword">const</span> Factories = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@dominion-framework/dominion/core/factories"</span>);
+<pre class="hljs"><button data-clipboard-target="#_3ejb" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_3ejb"><span class="hljs-keyword">const</span> Factories = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@dominion-framework/dominion/core/factories"</span>);
 
 <span class="hljs-keyword">const</span> UsersFactory = Factories(<span class="hljs-string">"Users"</span>);
 

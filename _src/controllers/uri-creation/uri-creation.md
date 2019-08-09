@@ -24,6 +24,12 @@ function. Lets take a look on some quick examples.
     // https://api.example.com/library/42/shelves/42/books/42?limit=X&authorName=Y    
     function (libraryId, shelvesId, booksId, authorName = null, limit = 10) { }
 ```
+
+Before we continue with rules how URIs are build, there is one
+more way to set endpoint URI - **[@path annotation](/annotations/path)**.
+You can use it when you want to screw up normal RESTful URI
+with something like `/users/14/getProfileByLastName?email=please@no.com`,
+or when you have actually reasonable cases like `/auth/token`.     
   
 ## Creation Rules
 

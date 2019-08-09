@@ -1,26 +1,51 @@
 # Factories and Models
 
-Files containing factory declaration should export object with model's properties and 
-prototypes for models factories and models instances.
+Model is representing a single resource in terms of RESTful APIs.
+It lists properties associated with business model and contains 
+methods that may manipulate model's state. Commonly Models structure 
+has 1:1 mapping with persistent storage.   
 
-Models declaration object has following properties:
+Collection of models is managed by Factories. Basically, two main 
+functions of a factory is to create a new Model instance or retrieve
+collection of models from some storage. 
+
+Cool thing in models declaration in Dominion framework is
+ability to specify extra features for each Model's property.
+It includes: data validation, input modification, output modification
+and documentation info. More about this you can read 
+on [Properties](/properties) page.
+
+By default [Factories prototype](/factories-and-models/factory-prototype)
+and [Models prototype](/factories-and-models/model-prototype) 
+contain the most common manipulations you will need in a project.
+And of course, you can extend or overwrite it using `factory:` and `instance:`
+properties in a Factory declaration.    
+
+ 
+## Writing a factory
+
+Files containing factory declaration should export an object with 
+model's properties and prototypes for models factories and 
+models instances.
+
+Factory declaration object has following properties:
 
 |Name   |Description   |
 |:---|:---|
-|_name_ | String. Model's name. Good practice is to keep model's name always in plural to avoid ambiguity. 
-|_repository_ | Optional, Repository object the model is linked to.
-|_properties_ | Object containing model's properties. Object keys will be properties' names, values - properties validators.
-|_factory_ | Object containing functions that will be used as model's factory prototype. 
-|_instance_ | Object containing functions that will be used as model's instance prototype.
+|_name_ | String, required. Model's name. Good practice is to keep model's name always in plural to avoid ambiguity. 
+|_repository_ | Object, optional. Repository object the model is linked to.
+|_properties_ | Object, required. Object containing model's properties. Object keys will be properties' names, values - properties validators.
+|_factory_ | Object, optional. Object containing functions that will be used to extend model's factory prototype. 
+|_instance_ | Object, optional. Object containing functions that will be used to extend model's prototype.
 
 
 ## Code example
 
 ```js
-const Property                  = use("core/property");
-const Errors                    = use("core/errors");
+const Errors = require("@dominion-framework/dominion/core/errors");
+const Property = require("@dominion-framework/dominion/core/property");
 
-const UsersRepository           = require("./repository");
+const UsersRepository = require("./repository");
 
 
 module.exports = {
@@ -31,7 +56,7 @@ module.exports = {
 
     properties: {
         id: Property.id(),
-        phoneNumber: Property.number().min(100000000000).max(999999999999),
+        phoneNumber: Property.number().min(1e11).max(1e12-1),
         email: Property.string().pattern(/\S+@\S\(.\S)+/).max(100),
         passwordHash: Property.string().max(255).private(),
         passwordSalt: Property.string().max(255).private(),
