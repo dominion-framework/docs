@@ -44,20 +44,7 @@ function(booksId) {
     this.response.headers["X-Items-Length"] = 42;
 }
 ```
-#### Annotations
-Annotation comments are declared inside `handler` functions. They can be used to add
-some meta information to an endpoint.
 
-For example, `@path:` annotation can be used to change auto-generated URL of an endpoint:
-```js
-function() {
-    // @path: /auth/token
-    
-    return UsersFactory.get({email: this.request.body.email})
-        .then(user => user.validatePassword(this.request.body.password))
-        .then(user => user.createAuthToken())
-}
-```
 
 
 

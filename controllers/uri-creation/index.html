@@ -59,6 +59,24 @@
                         <li class="menu-item">
                             <a class="link active" href="/controllers/uri-creation">URI Creation</a>
                         </li>
+                        <li class="menu-item">
+                            <a class="link" href="/controllers/http-message">HTTP Message</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a class="link" href="/annotations">Annotations</a>
+                    <ul class="submenu">
+                        <li class="menu-item"><a class="link" href="#path">@path</a>
+                        </li>
+                        <li class="menu-item"><a class="link" href="#summary">@summary</a>
+                        </li>
+                        <li class="menu-item"><a class="link" href="#description">@description</a>
+                        </li>
+                        <li class="menu-item"><a class="link" href="#model">@model</a>
+                        </li>
+                        <li class="menu-item"><a class="link" href="#deprecated">@deprecated</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="menu-item">
@@ -76,28 +94,28 @@
                     <a class="link" href="/properties">Properties</a>
                     <ul class="submenu">
                         <li class="menu-item">
-                            <a class="link" href="/properties#number">.number()</a>
+                            <a class="link" href="#number">.number()</a>
                         </li>
                         <li class="menu-item">
-                            <a class="link" href="/properties#string">.string()</a>
+                            <a class="link" href="#string">.string()</a>
                         </li>
                         <li class="menu-item">
-                            <a class="link" href="/properties#object">.object()</a>
+                            <a class="link" href="#object">.object()</a>
                         </li>
                         <li class="menu-item">
-                            <a class="link" href="/properties#date">.date()</a>
+                            <a class="link" href="#date">.date()</a>
                         </li>
                         <li class="menu-item">
-                            <a class="link" href="/properties#enum">.enum()</a>
+                            <a class="link" href="#enum">.enum()</a>
                         </li>
                         <li class="menu-item">
-                            <a class="link" href="/properties#set">.set()</a>
+                            <a class="link" href="#set">.set()</a>
                         </li>
                         <li class="menu-item">
-                            <a class="link" href="/properties#model">.model()</a>
+                            <a class="link" href="#model">.model()</a>
                         </li>
                         <li class="menu-item">
-                            <a class="link" href="/properties#id-uuid">.id(), .uuid()</a>
+                            <a class="link" href="#id-uuid">.id(), .uuid()</a>
                         </li>
                     </ul>
                 </li>
@@ -107,21 +125,6 @@
                 <li class="menu-item">
                     <a class="link" href="#interceptors">Interceptors</a>
                 </li>
-                <li class="menu-item">
-                    <a class="link" href="/annotations">Annotations</a>
-                    <ul class="submenu">
-                        <li class="menu-item"><a class="link" href="#available-settings">@path</a>
-                        </li>
-                        <li class="menu-item"><a class="link" href="#plugins">@summary</a>
-                        </li>
-                        <li class="menu-item"><a class="link" href="#installing-markdown-plugins">@description</a>
-                        </li>
-                        <li class="menu-item"><a class="link" href="#bundled-plugins">@model</a>
-                        </li>
-                        <li class="menu-item"><a class="link" href="#bundled-plugins">@deprecated</a>
-                        </li>
-                    </ul>
-                </li>
             </ul>
         </div>
     </nav>
@@ -130,20 +133,20 @@
 practices. You only need to specify what data you expect to have as an
 input to your endpoint. Or, in other words, list arguments in endpoint’s
 function. Lets take a look on some quick examples.</p>
-<pre class="hljs"><button data-clipboard-target="#_8ne" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_8ne">    <span class="hljs-comment">// https://api.example.com/books/42</span>
+<pre class="hljs"><button data-clipboard-target="#_4e55" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_4e55">    <span class="hljs-comment">// https://api.example.com/books/42</span>
     <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">booksId</span>) </span>{ }
 </code></pre>
-<pre class="hljs"><button data-clipboard-target="#_2gl2" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_2gl2">    <span class="hljs-comment">// https://api.example.com/books?limit=X&amp;offset=Y</span>
+<pre class="hljs"><button data-clipboard-target="#_moa" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_moa">    <span class="hljs-comment">// https://api.example.com/books?limit=X&amp;offset=Y</span>
     <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">limit = <span class="hljs-number">10</span>, offset = <span class="hljs-number">0</span></span>) </span>{ }
 </code></pre>
-<pre class="hljs"><button data-clipboard-target="#_4ngh" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_4ngh">    <span class="hljs-comment">// https://api.example.com/library/42/books/42?limit=X    </span>
+<pre class="hljs"><button data-clipboard-target="#_1kkp" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_1kkp">    <span class="hljs-comment">// https://api.example.com/library/42/books/42?limit=X    </span>
     <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">library, booksId, limit = <span class="hljs-number">10</span></span>) </span>{ }
 </code></pre>
-<pre class="hljs"><button data-clipboard-target="#_3d0" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_3d0">    <span class="hljs-comment">// https://api.example.com/library/42/shelves/42/books/42?limit=X&amp;authorName=Y    </span>
+<pre class="hljs"><button data-clipboard-target="#_22d6" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_22d6">    <span class="hljs-comment">// https://api.example.com/library/42/shelves/42/books/42?limit=X&amp;authorName=Y    </span>
     <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">libraryId, shelvesId, booksId, authorName = null, limit = <span class="hljs-number">10</span></span>) </span>{ }
 </code></pre>
 <p>Before we continue with rules how URIs are build, there is one
-more way to set endpoint URI - <strong><a href="/annotations/path">@path annotation</a></strong>.
+more way to set endpoint URI - <strong><a href="/annotations#path">@path annotation</a></strong>.
 You can use it when you want to screw up normal RESTful URI
 with something like <code>/users/14/getProfileByLastName?email=please@no.com</code>,
 or when you have actually reasonable cases like <code>/auth/token</code>.</p>
@@ -153,7 +156,7 @@ or when you have actually reasonable cases like <code>/auth/token</code>.</p>
 property or value of controller’s <code>path:</code> property will always
 be the last section of URI.</li>
 </ol>
-<pre class="hljs"><button data-clipboard-target="#_494i" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_494i">{
+<pre class="hljs"><button data-clipboard-target="#_gg2" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_gg2">{
     <span class="hljs-attr">factory</span>: BooksFactory, <span class="hljs-comment">// assuming BooksFactory name is "books"</span>
     ...
     GET: [
@@ -164,7 +167,7 @@ be the last section of URI.</li>
     ]
 }
 </code></pre>
-<pre class="hljs"><button data-clipboard-target="#_17mj" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_17mj">{
+<pre class="hljs"><button data-clipboard-target="#_kge" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_kge">{
     <span class="hljs-attr">path</span>: <span class="hljs-string">"books"</span>,
     ...
     GET: [
@@ -180,7 +183,7 @@ be the last section of URI.</li>
 Value of arguments will be set to string coming after segments.
 If argument name ends with “Id” suffix, it will be ignored.</li>
 </ol>
-<pre class="hljs"><button data-clipboard-target="#_1a6h" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_1a6h">{
+<pre class="hljs"><button data-clipboard-target="#_1gp9" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_1gp9">{
     <span class="hljs-attr">path</span>: <span class="hljs-string">"books"</span>,
     ...
     GET: [
@@ -198,7 +201,7 @@ If argument name ends with “Id” suffix, it will be ignored.</li>
 the value of passed query parameters. Key-value pairs can be in any order
 in a query string or be omitted at all.</li>
 </ol>
-<pre class="hljs"><button data-clipboard-target="#_pic" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_pic">{
+<pre class="hljs"><button data-clipboard-target="#_ffa" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_ffa">{
     <span class="hljs-attr">path</span>: <span class="hljs-string">"books"</span>,
     ...
     GET: [
@@ -214,7 +217,7 @@ in a query string or be omitted at all.</li>
 <li>If <code>path:</code> property consist with more than one segment, function
 argument need to be camelCased to receive value from URL.</li>
 </ol>
-<pre class="hljs"><button data-clipboard-target="#_4gdk" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_4gdk">{
+<pre class="hljs"><button data-clipboard-target="#_3pl7" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_3pl7">{
     <span class="hljs-attr">path</span>: <span class="hljs-string">"books/publisher"</span>,
     ...
     GET: [

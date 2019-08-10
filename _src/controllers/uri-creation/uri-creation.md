@@ -26,7 +26,7 @@ function. Lets take a look on some quick examples.
 ```
 
 Before we continue with rules how URIs are build, there is one
-more way to set endpoint URI - **[@path annotation](/annotations/path)**.
+more way to set endpoint URI - **[@path annotation](/annotations#path)**.
 You can use it when you want to screw up normal RESTful URI
 with something like `/users/14/getProfileByLastName?email=please@no.com`,
 or when you have actually reasonable cases like `/auth/token`.     

@@ -59,6 +59,24 @@
                         <li class="menu-item">
                             <a class="link" href="/controllers/uri-creation">URI Creation</a>
                         </li>
+                        <li class="menu-item">
+                            <a class="link" href="/controllers/http-message">HTTP Message</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a class="link" href="/annotations">Annotations</a>
+                    <ul class="submenu">
+                        <li class="menu-item"><a class="link" href="#path">@path</a>
+                        </li>
+                        <li class="menu-item"><a class="link" href="#summary">@summary</a>
+                        </li>
+                        <li class="menu-item"><a class="link" href="#description">@description</a>
+                        </li>
+                        <li class="menu-item"><a class="link" href="#model">@model</a>
+                        </li>
+                        <li class="menu-item"><a class="link" href="#deprecated">@deprecated</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="menu-item">
@@ -76,28 +94,28 @@
                     <a class="link" href="/properties">Properties</a>
                     <ul class="submenu">
                         <li class="menu-item">
-                            <a class="link" href="/properties#number">.number()</a>
+                            <a class="link" href="#number">.number()</a>
                         </li>
                         <li class="menu-item">
-                            <a class="link" href="/properties#string">.string()</a>
+                            <a class="link" href="#string">.string()</a>
                         </li>
                         <li class="menu-item">
-                            <a class="link" href="/properties#object">.object()</a>
+                            <a class="link" href="#object">.object()</a>
                         </li>
                         <li class="menu-item">
-                            <a class="link" href="/properties#date">.date()</a>
+                            <a class="link" href="#date">.date()</a>
                         </li>
                         <li class="menu-item">
-                            <a class="link" href="/properties#enum">.enum()</a>
+                            <a class="link" href="#enum">.enum()</a>
                         </li>
                         <li class="menu-item">
-                            <a class="link" href="/properties#set">.set()</a>
+                            <a class="link" href="#set">.set()</a>
                         </li>
                         <li class="menu-item">
-                            <a class="link" href="/properties#model">.model()</a>
+                            <a class="link" href="#model">.model()</a>
                         </li>
                         <li class="menu-item">
-                            <a class="link" href="/properties#id-uuid">.id(), .uuid()</a>
+                            <a class="link" href="#id-uuid">.id(), .uuid()</a>
                         </li>
                     </ul>
                 </li>
@@ -106,21 +124,6 @@
                 </li>
                 <li class="menu-item">
                     <a class="link" href="#interceptors">Interceptors</a>
-                </li>
-                <li class="menu-item">
-                    <a class="link" href="/annotations">Annotations</a>
-                    <ul class="submenu">
-                        <li class="menu-item"><a class="link" href="#available-settings">@path</a>
-                        </li>
-                        <li class="menu-item"><a class="link" href="#plugins">@summary</a>
-                        </li>
-                        <li class="menu-item"><a class="link" href="#installing-markdown-plugins">@description</a>
-                        </li>
-                        <li class="menu-item"><a class="link" href="#bundled-plugins">@model</a>
-                        </li>
-                        <li class="menu-item"><a class="link" href="#bundled-plugins">@deprecated</a>
-                        </li>
-                    </ul>
                 </li>
             </ul>
         </div>
@@ -143,7 +146,45 @@ proper URI for endpoints based on what they do and with what resource.</li>
 functions and keep them reasonably small. Business logic should
 be implemented in methods of factories and model instances, or
 in separated services.</p>
-<h2>Writing a controller</h2>
+<h2>Annotations</h2>
+<p>You can add additional meta data to an endpoint using <a href="/annotations">annotation</a>.
+Dominion framework comes with couple predefined annotations, that
+allows to set custom URI for endpoint or add description for
+OpenAPI (Swagger) documentation. However, the main purpose
+of annotation is to extend functionality of an endpoint in
+<a href="/interceptors">interceptors</a>. For example, you can use annotations
+to assign specific permissions for specific endpoint. Take a look
+on example below:</p>
+<pre class="hljs"><button data-clipboard-target="#_4lp5" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_4lp5">...
+POST: [
+    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">booksId</span>) </span>{
+        <span class="hljs-comment">// @path: auth/token/revoke</span>
+        <span class="hljs-comment">// @permissions: user.signout</span>
+
+        <span class="hljs-comment">// @summary: Sign out user</span>
+        <span class="hljs-comment">// @description: Expire token passed in request body. Returns empty body on success or error description on failure.</span>
+
+        ... 
+    }
+]
+...
+</code></pre>
+<h2>HTTP Message</h2>
+<p>Functions that processing requests will have execution context
+set to <a href="/controllers/http-message/">HTTP Message</a>.
+It contains information related to HTTP request and response. Take it as <code>req</code> and <code>res</code>
+in Node.js http module, they are actually wrapping those objects.</p>
+<pre class="hljs"><button data-clipboard-target="#_36gk" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_36gk">GET: [
+    <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">this</span>.request.body.firstName;
+        <span class="hljs-keyword">this</span>.request.headers[<span class="hljs-string">'authorization'</span>];
+
+        <span class="hljs-keyword">this</span>.response.headers[<span class="hljs-string">'x-result-length'</span>] = <span class="hljs-number">42</span>;
+        <span class="hljs-keyword">this</span>.response.status = <span class="hljs-keyword">this</span>.response.statuses._201_Created;
+    }
+]
+</code></pre>
+<h2>Writing a Controller</h2>
 <p>A file containing controller should export an object with a list of
 endpoint callback functions and meta info describing what type of resources
 this controller will operate.
@@ -166,12 +207,12 @@ This object may have properties:</p>
 </tr>
 <tr>
 <td style="text-align:left"><em>OPTIONS[], GET[], POST[], PUT[], DELETE[]</em></td>
-<td style="text-align:left">Array, optional. Arrays containing functions that will be called on HTTP request with appropriate verb and URI matching function’s arguments.</td>
+<td style="text-align:left">Array, optional. Arrays containing endpoint functions - functions that will be called on HTTP request with appropriate verb and URI matching function’s arguments.</td>
 </tr>
 </tbody>
 </table>
 <h2>Code example</h2>
-<pre class="hljs"><button data-clipboard-target="#_56jd" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_56jd"><span class="hljs-keyword">const</span> Factories = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@dominion-framework/dominion/core/factories"</span>);
+<pre class="hljs"><button data-clipboard-target="#_2b87" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_2b87"><span class="hljs-keyword">const</span> Factories = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@dominion-framework/dominion/core/factories"</span>);
 
 <span class="hljs-keyword">const</span> UsersFactory = Factories(<span class="hljs-string">"Users"</span>);
 
