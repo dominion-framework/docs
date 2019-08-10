@@ -806,7 +806,7 @@ button::-moz-focus-inner,
 
 .toc-menu .link {
   display: block;
-  padding: 7px 24px;
+  padding: 10px 24px;
   color: #0c264f;
   text-decoration: none;
   text-overflow: ellipsis;
