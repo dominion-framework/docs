@@ -746,6 +746,7 @@ button::-moz-focus-inner,
   max-height: 100vh;
   overflow-y: auto;
   background: #fefefe;
+  z-index: 1;
 }
 
 .toc-menu .collapsible {

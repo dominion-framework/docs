@@ -60,55 +60,6 @@ function() {
 ```
 
 
-### Repositories
-Files containing repository declaration should export instance 
-of Repository (`core/repositories/repositoryPrototype.js`) 
-representing external storage (e.g. database) related to specific model.
-
-Repository can be created using default `Repositories.create()` method 
-or by custom implementation of repository interface.
-
-Default repository can be extended with methods that makes
-direct calls to external storage, e.g. `findByTitle()`.   
-```js
-const Repositories              = use('core/repositories');
-
-module.exports = Repositories.create('books_table', {
-
-    findByTitle(title, offset, limit){
-        const query = `SELECT * FROM ${this.__table__} 
-                       WHERE title LIKE ?
-                       LIMIT ?, ?`;
-        return this.db.execute(query, [`%${title}%`, offset, limit])
-            .then(([rows, columns]) => rows);
-    }
-
-}); 
-```
-Custom methods in `Repositories` should return raw data. 
-Any data post-processing should be performed in models or factories.
-
-Default `Repositories` prototype has methods:
-
-`.find( [criteriasObject], [limit], [offset], [order] )`
-
-Executes SELECT query in DB. Used by `.get()` and `.find()` methods
-in default models factories prototype.
-
-
-`.save( [modelInstance] )`
-Executes INSERT or UPDATE query in DB. Used by `.save()` method
-in default models instance prototype.
-
-`.remove( [modelInstance] )`
-Executes DELETE query in DB. Used by `.remove()` method
-in default models instance prototype.
-   
-There are very few good reasons you would need to overload this methods 
-or call them directly. So, take it as an interface you need to 
-implement in case of writing custom `Repository`. 
-
-
 
 ### Interceptors
 **Interceptors are global!** This means that no matter in what 

@@ -54,7 +54,7 @@
                     <a class="link" href="#api-request-lifecycle">API Request Lifecycle</a>
                 </li>
                 <li class="menu-item">
-                    <a class="link active" href="/controllers">Controller</a>
+                    <a class="link" href="/controllers">Controller</a>
                     <ul class="submenu">
                         <li class="menu-item">
                             <a class="link" href="/controllers/uri-creation">URI Creation</a>
@@ -102,7 +102,7 @@
                     </ul>
                 </li>
                 <li class="menu-item">
-                    <a class="link" href="/repositories">Repositories</a>
+                    <a class="link active" href="/repositories">Repositories</a>
                 </li>
                 <li class="menu-item">
                     <a class="link" href="#interceptors">Interceptors</a>
@@ -125,111 +125,84 @@
             </ul>
         </div>
     </nav>
-    <div class="markdown-body"><h1>Controllers</h1>
-<p>In RESTful API you have to define interface for accessing and
-manipulating your model and/or models collection (or resources,
-to be precise with RESTful specs). In Dominion
-framework controllers are specifically designed for this, but
-still they provide flexibility for API endpoints that do not
-fit well in RESTful structure.</p>
-<p>Two main advantage of Dominion’s controllers are:</p>
-<ul>
-<li><strong>validating output</strong> - controller linked to a factory won’t allow
-an endpoint to return model that was not created by that factory.</li>
-<li><strong>URI creation</strong> - controller will automatically set
-proper URI for endpoints based on what they do and with what resource.</li>
-</ul>
-<p>It is a good practice not to have business logic in endpoints
-functions and keep them reasonably small. Business logic should
-be implemented in methods of factories and model instances, or
-in separated services.</p>
-<h2>Writing a controller</h2>
-<p>A file containing controller should export an object with a list of
-endpoint callback functions and meta info describing what type of resources
-this controller will operate.
-This object may have properties:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Name</th>
-<th style="text-align:left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><em>factory</em></td>
-<td style="text-align:left">Object, optional. Models factory object. This object will define resource name, that will be used in endpoints URI. It also will obligate all endpoints defined in a controller to return models or collections of this type.</td>
-</tr>
-<tr>
-<td style="text-align:left"><em>path</em></td>
-<td style="text-align:left">String, optional. Resource name or custom path, that will be used in endpoints URI. It may be used when there is no appropriate model for endpoints functionality. Note, you can set only one either <code>path</code> or <code>factory</code> property.</td>
-</tr>
-<tr>
-<td style="text-align:left"><em>OPTIONS[], GET[], POST[], PUT[], DELETE[]</em></td>
-<td style="text-align:left">Array, optional. Arrays containing functions that will be called on HTTP request with appropriate verb and URI matching function’s arguments.</td>
-</tr>
-</tbody>
-</table>
-<h2>Code example</h2>
-<pre class="hljs"><button data-clipboard-target="#_56jd" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_56jd"><span class="hljs-keyword">const</span> Factories = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@dominion-framework/dominion/core/factories"</span>);
+    <div class="markdown-body"><h1>Repositories</h1>
+<p>Repository is a communication layer between models and external
+storage. Basically, there is no limitation what can be treated
+as an external storage. It may be anything: relational databases,
+NoSQL databases, flat files databases, cloud storage, microservices, etc.</p>
+<p>By default, Dominion framework package doesn’t include any repository,
+because type of external storage specifically depends on projects architecture,
+so, there is no reason to include something you will never use.</p>
+<p>To use repository in you component you will need to install npm package
+with a repository you need. For example, for MySQL:</p>
+<pre class="hljs"><button data-clipboard-target="#_46pj" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_46pj">npm install @dominion-framework/repository-mysql
+</code></pre>
+<p>Then, you need to create repository declaration in your component’s folder
+and link it with a model. The most basic repository will contain only
+<code>Repository.create()</code> function. For example a file <code>repository.js</code> may look like:</p>
+<pre class="hljs"><button data-clipboard-target="#_2552" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_2552"><span class="hljs-keyword">const</span> Repositories = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@dominion-framework/repository-mysql'</span>);
 
-<span class="hljs-keyword">const</span> UsersFactory = Factories(<span class="hljs-string">"Users"</span>);
+<span class="hljs-built_in">module</span>.exports = Repositories.create(<span class="hljs-string">'books_table'</span>, { });
+</code></pre>
+<p>In a model declaration use <code>repository:</code> property to link created repository
+to a model:</p>
+<pre class="hljs"><button data-clipboard-target="#_b" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_b"><span class="hljs-keyword">const</span> Property = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@dominion-framework/dominion/core/property"</span>);
+
+<span class="hljs-keyword">const</span> BooksRepository = <span class="hljs-built_in">require</span>(<span class="hljs-string">"./repository"</span>);
 
 <span class="hljs-built_in">module</span>.exports = {
 
-    <span class="hljs-attr">factory</span>: UsersFactory,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">"Books"</span>,
 
-    <span class="hljs-attr">GET</span>: [
-        <span class="hljs-comment">// users/?limit=6&amp;offset=12</span>
-        <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">limit = <span class="hljs-number">6</span>, offset = <span class="hljs-number">12</span></span>) </span>{
-            <span class="hljs-comment">// @summary: Get all user with pagination</span>
-            <span class="hljs-keyword">return</span> UsersFactory.find({}, limit, offset);
-        },
+    <span class="hljs-attr">repository</span>: BooksRepository, 
 
-        <span class="hljs-comment">// users/42</span>
-        <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">usersId</span>) </span>{
-            <span class="hljs-comment">// @permission: Users.Read</span>
-            <span class="hljs-comment">// @summary: Get user instance by id</span>
-            <span class="hljs-keyword">return</span> UsersFactory.get({<span class="hljs-attr">id</span>: usersId});
-        }
-    ],
-
-    <span class="hljs-attr">POST</span>: [
-        <span class="hljs-comment">// users/</span>
-        <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-            <span class="hljs-comment">// @summary: Create new user</span>
-            <span class="hljs-keyword">return</span> UsersFactory.new(<span class="hljs-keyword">this</span>.request.body)
-                .then(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> user.save())
-                .then(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> user.sendInvitationEmail())
-                .then(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> UsersFactory.get({<span class="hljs-attr">id</span>: user.id}));
-        }
-    ],
-
-    <span class="hljs-attr">PUT</span>: [
-        <span class="hljs-comment">// users/42</span>
-        <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">usersId</span>) </span>{
-            <span class="hljs-comment">// @summary: Update new user profile</span>
-            <span class="hljs-keyword">return</span> UsersFactory.get({<span class="hljs-attr">id</span>: usersId})
-                .then(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> user.populate(<span class="hljs-keyword">this</span>.request.body))
-                .then(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> user.save());
-        }
-    ],
-
-    <span class="hljs-attr">DELETE</span>: [
-        <span class="hljs-comment">// users/1</span>
-        <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">usersId</span>) </span>{
-            <span class="hljs-comment">// @summary: Remove user by id</span>
-            <span class="hljs-keyword">return</span> UsersFactory.get({<span class="hljs-attr">id</span>: usersId})
-                .then(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> user.remove())
-                .then(<span class="hljs-function"><span class="hljs-params">result</span> =&gt;</span> {
-                    <span class="hljs-keyword">if</span> (result.affectedRows) {
-                        <span class="hljs-keyword">this</span>.response.status = <span class="hljs-keyword">this</span>.response.statuses._204_NoContent;
-                    }
-                });
-        }
-    ]
-};
+    <span class="hljs-attr">properties</span>: {
+        <span class="hljs-attr">id</span>: Property.id(),
+        ...
+    }
+}
 </code></pre>
+<h2>Repository prototype</h2>
+<p>Default repositories are coming with three basic functions for
+manipulating a model - <code>find()</code>, <code>save()</code> and <code>remove()</code>.
+If you are creating your own repository, take them as an interface
+you need to implement.</p>
+<h4><code>.find( [criteriasObject], [limit], [offset], [order] )</code></h4>
+<p>Returns an array with model’s data that matches <code>criteriaObject</code>.
+It is used in <code>.get()</code> and <code>.find()</code> methods
+of default models factories prototype. Basically it executes SELECT
+query, if we are talking about SQL databases.</p>
+<h4><code>.save( [modelInstance] )</code></h4>
+<p>Creates or updates model data. In case of creation, optionally it
+can return primary key of a new record, which then will be
+set in Model instance. It is used in <code>.save()</code> method
+of default models instance prototype.
+Take it as INSERT or UPDATE query, in case of SQL.</p>
+<h4><code>.remove( [modelInstance] )</code></h4>
+<p>Removes model data from external storage. It is used in <code>.remove()</code>
+method of default models instance prototype.
+Obviously, it is DELETE query in case of SQL type of repositories.</p>
+<h2>Extending Repository</h2>
+<p>If you need to add missing features to the repository or overwrite
+default methods, you define custom methods when creating repository.
+In example below, default repository prototype is extended with method
+<code>findByTitle()</code>.</p>
+<pre class="hljs"><button data-clipboard-target="#_1mbp" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_1mbp"><span class="hljs-keyword">const</span> Repositories = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@dominion-framework/repository-mysql'</span>);
+
+<span class="hljs-built_in">module</span>.exports = Repositories.create(<span class="hljs-string">'books_table'</span>, {
+
+    findByTitle(title, offset, limit) {
+        <span class="hljs-keyword">const</span> query = <span class="hljs-string">`SELECT * FROM <span class="hljs-subst">${<span class="hljs-keyword">this</span>.__table__}</span> 
+                       WHERE title LIKE ?
+                       LIMIT ?, ?`</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.db.execute(query, [<span class="hljs-string">`%<span class="hljs-subst">${title}</span>%`</span>, offset, limit])
+            .then(<span class="hljs-function">(<span class="hljs-params">[rows, columns]</span>) =&gt;</span> rows);
+    }
+
+}); 
+</code></pre>
+<p>Note, custom methods in <code>Repositories</code> should return raw data.
+Any data post-processing should be performed in models or factories.</p>
 </div>
 </div>
 </body>
