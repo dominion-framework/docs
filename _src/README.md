@@ -9,7 +9,7 @@ on functions interface and make mappings between URL's and those functions.
 
 2. Client makes request to API server.
 
-3. Framework's router (`core/router/index.js`) catches the request and looking 
+3. Framework's router (`core/router/index.js`) catches a request and looking 
 for matching callback from ones registered in controllers.
 
 4. If match was founded router builds request Promise chain. A chain contains 
