@@ -77,7 +77,7 @@ Obviously, it is DELETE query in case of SQL type of repositories.
 ## Extending Repository
 
 If you need to add missing features to the repository or overwrite 
-default methods, you define custom methods when creating repository.
+default methods, you can define custom methods when creating repository.
 In example below, default repository prototype is extended with method
 `findByTitle()`.
   
