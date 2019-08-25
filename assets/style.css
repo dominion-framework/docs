@@ -768,6 +768,8 @@ button::-moz-focus-inner,
   }
   .toc-menu .collapsible{
     max-height: 100vh;
+    overflow: visible;
+    margin-bottom: 40px;
   }
   .menu-toggle-button {
     display: none;

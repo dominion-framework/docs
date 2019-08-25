@@ -9,7 +9,7 @@ By default, Dominion framework package doesn't include any repository,
 because type of external storage specifically depends on projects architecture,
 so, there is no reason to include something you will never use.
 
-To use repository in you component you will need to install npm package
+To use repository in your component you will need to install npm package
 with a repository you need. For example, for MySQL:
 
 ```shell script

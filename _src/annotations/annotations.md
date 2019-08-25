@@ -1,7 +1,7 @@
 # Annotations
 Annotation comments are free form key-value declaration inside endpoint functions.
 They can be used to add some meta information to an endpoint or add 
-additional functionality to request procession.
+additional functionality to request processing.
 
 Dominion framework has several predefined annotation, however you can write
 any annotation you want and use it as meta endpoint data in interceptor.
