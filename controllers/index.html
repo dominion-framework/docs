@@ -48,6 +48,9 @@
                     <a class="link" href="/quick-start">Quick Start</a>
                 </li>
                 <li class="menu-item">
+                    <a class="link" href="/lifecycle">Request Lifecycle</a>
+                </li>
+                <li class="menu-item">
                     <a class="link" href="/components">Components</a>
                 </li>
                 <li class="menu-item">
@@ -155,7 +158,7 @@ of annotation is to extend functionality of an endpoint in
 <a href="/interceptors">interceptors</a>. For example, you can use annotations
 to assign specific permissions for specific endpoint. Take a look
 on example below:</p>
-<pre class="hljs"><button data-clipboard-target="#_39j4" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_39j4">...
+<pre class="hljs"><button data-clipboard-target="#_p8h" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_p8h">...
 POST: [
     <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">booksId</span>) </span>{
         <span class="hljs-comment">// @path: auth/token/revoke</span>
@@ -174,7 +177,7 @@ POST: [
 set to <a href="/controllers/http-message/">HTTP Message</a>.
 It contains information related to HTTP request and response. Take it as <code>req</code> and <code>res</code>
 in Node.js http module, they are actually wrapping those objects.</p>
-<pre class="hljs"><button data-clipboard-target="#_1h35" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_1h35">GET: [
+<pre class="hljs"><button data-clipboard-target="#_4kdo" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_4kdo">GET: [
     <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
         <span class="hljs-keyword">this</span>.request.body.firstName;
         <span class="hljs-keyword">this</span>.request.headers[<span class="hljs-string">'authorization'</span>];
@@ -212,7 +215,7 @@ This object may have properties:</p>
 </tbody>
 </table>
 <h2>Code example</h2>
-<pre class="hljs"><button data-clipboard-target="#_4hde" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_4hde"><span class="hljs-keyword">const</span> Factories = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@dominion-framework/dominion/core/factories"</span>);
+<pre class="hljs"><button data-clipboard-target="#_o5j" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_o5j"><span class="hljs-keyword">const</span> Factories = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@dominion-framework/dominion/core/factories"</span>);
 
 <span class="hljs-keyword">const</span> UsersFactory = Factories(<span class="hljs-string">"Users"</span>);
 

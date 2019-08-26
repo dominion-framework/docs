@@ -52,9 +52,18 @@ button::-moz-focus-inner,
   min-height: 100vh;
 }
 
+.homepage-logo {
+  display: none;
+  margin-bottom: 1.4rem;
+}
+
 @media (min-width: 814px) {
   .doc-page {
     flex-direction: row;
+  }
+
+  .homepage-logo {
+    display: block;
   }
 }
 

@@ -1,8 +1,9 @@
 # Config
 
 Dominion framework is using small configuration set covering server 
-address, API's URL prefix and CORS settings.
-Configurations file should export object as following:
+address, API's URL prefix and CORS settings. You are also free to use
+configuration file for project specific settings. Configurations file 
+should export object as following:
  
 ```js
 module.exports = {
