@@ -1,5 +1,9 @@
 # Components
-You can take _component_ as 1:1 representation of restfull resource (or business domain). 
+You can take _component_ as 1:1 representation of RESTful resource 
+(or business domain). Component is designed to implement business 
+logic around resource, connect it with permanent storage and expose
+API endpoints to manipulate it. 
+ 
 It's useful to organize components having each in separate folder. 
 Lets take `Users` model for example. Recommended file organization is: 
 ```
