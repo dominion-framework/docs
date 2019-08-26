@@ -16,7 +16,6 @@ npm init -y
 npm i @dominion-framework/dominion
 npx dominion create hello
 npm start
-
 ```
 
 Message in the terminal should indicate that server is running, 
@@ -106,7 +105,7 @@ ES modules will be moved out of a flag in Node.js.
 First two are default components. `cors` is adding proper CORS headers
 into APIs response. It is not needed, if your APIs won't  be used
 from a browser. And `logging` is writing logs into console, you should
-already saw it after opening https://localhost:7042/hello.
+already saw it after opening http://localhost:7042/hello.
 
 Then goes component that we created using "npx dominion create". 
 And here it starts to be interesting. There are 3 files inside 

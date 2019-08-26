@@ -51,13 +51,13 @@
                     <a class="link" href="/components">Components</a>
                 </li>
                 <li class="menu-item">
-                    <a class="link opened" href="/controllers">Controller</a>
+                    <a class="link" href="/controllers">Controller</a>
                     <ul class="submenu">
                         <li class="menu-item">
                             <a class="link" href="/controllers/uri-creation">URI Creation</a>
                         </li>
                         <li class="menu-item">
-                            <a class="link active" href="/controllers/http-message">HTTP Message</a>
+                            <a class="link" href="/controllers/http-message">HTTP Message</a>
                         </li>
                     </ul>
                 </li>
@@ -123,34 +123,39 @@
                     <a class="link" href="/interceptors">Interceptors</a>
                 </li>
                 <li class="menu-item">
-                    <a class="link" href="/config">Config</a>
+                    <a class="link active" href="/config">Config</a>
                 </li>
             </ul>
         </div>
     </nav>
-    <div class="markdown-body"><h1>HTTP Message</h1>
-<p>HTTP Message is an object containing information about HTTP request
-and response. Endpoints from controller are executed in context of
-HTTP Message (in other words you can access it using <code>this</code> inside
-endpoint). You may use it to access additional information about
-request or modify data in response. For example:</p>
-<pre class="hljs"><button data-clipboard-target="#_bhj" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_bhj">GET: [
-    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-comment">// get cookies values</span>
-        <span class="hljs-keyword">const</span> basketId = <span class="hljs-keyword">this</span>.request.cookies[<span class="hljs-string">'basketId'</span>];
+    <div class="markdown-body"><h1>Config</h1>
+<p>Dominion framework is using small configuration set covering server
+address, API’s URL prefix and CORS settings.
+Configurations file should export object as following:</p>
+<pre class="hljs"><button data-clipboard-target="#_465n" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_465n"><span class="hljs-built_in">module</span>.exports = {
+    <span class="hljs-attr">server</span>: {
+        <span class="hljs-attr">protocol</span>: <span class="hljs-string">"http"</span>,
+        <span class="hljs-attr">host</span>: <span class="hljs-string">"localhost"</span>,
+        <span class="hljs-attr">port</span>: <span class="hljs-number">7042</span>,        
+        <span class="hljs-attr">url</span>: <span class="hljs-string">"http://localhost:7042"</span>
+    },
 
-        <span class="hljs-comment">// add header in response</span>
-        <span class="hljs-keyword">this</span>.response.headers[<span class="hljs-string">'Access-Control-Expose-Headers'</span>] = <span class="hljs-string">'X-Items-Total'</span>;
+    <span class="hljs-attr">router</span>: {        
+        <span class="hljs-attr">urlPrefix</span>: <span class="hljs-string">""</span>, 
+        <span class="hljs-attr">primaryKeyPattern</span>: <span class="hljs-string">"\\d+"</span> 
+        <span class="hljs-comment">// e.g. "[a-f\d]{8}-[a-f\d]{4}-4[a-f\d]{3}-[89ab][a-f\d]{3}-[a-f\d]{12}"</span>
+    },
 
-        <span class="hljs-comment">// set response status code</span>
-        <span class="hljs-keyword">this</span>.response.status = <span class="hljs-keyword">this</span>.response.STATUSES._204_NoContent;
+    <span class="hljs-attr">cors</span>: {
+        <span class="hljs-attr">origin</span>: [<span class="hljs-string">"http://localhost:7042"</span>],
+        <span class="hljs-attr">methods</span>: [<span class="hljs-string">"OPTIONS"</span>, <span class="hljs-string">"GET"</span>, <span class="hljs-string">"POST"</span>, <span class="hljs-string">"PUT"</span>, <span class="hljs-string">"DELETE"</span>],
+        <span class="hljs-attr">headers</span>: [<span class="hljs-string">"Content-Type"</span>, <span class="hljs-string">"Set-Cookies"</span>, <span class="hljs-string">"Authorization"</span>],
+        <span class="hljs-attr">credentials</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">maxAge</span>: <span class="hljs-number">5</span> <span class="hljs-comment">/* seconds */</span>
     }
-]
+};
+
 </code></pre>
-<h2>Message.request</h2>
-<p><strong>Message.request</strong> has information about request URL, request data,
-like headers, cookies, payload (body) and endpoint’s meta data.
-Below is a full list of available properties.</p>
 <table>
 <thead>
 <tr>
@@ -160,92 +165,78 @@ Below is a full list of available properties.</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><em>__request__</em></td>
-<td style="text-align:left">Reference to Node.Js <code>IncommingMessage</code>.</td>
+<td style="text-align:left">server.protocol</td>
+<td style="text-align:left">Protocol to be used by Node server: <code>https</code> or <code>http</code> (default).</td>
 </tr>
 <tr>
-<td style="text-align:left">method</td>
-<td style="text-align:left">Request HTTP method, e.g. GET, POST, PUT, DELETE. Always uppercase.</td>
+<td style="text-align:left">server.host</td>
+<td style="text-align:left">Server host, e.g. <code>localhost</code>.</td>
 </tr>
 <tr>
-<td style="text-align:left">protocol</td>
-<td style="text-align:left">Request protocol. Returns <code>https</code> is connections is encrypted, <code>http</code> otherwise.</td>
+<td style="text-align:left">server.port</td>
+<td style="text-align:left">Server port, e.g. <code>7042</code>.</td>
 </tr>
 <tr>
-<td style="text-align:left">host</td>
-<td style="text-align:left">Host part of an URL including port, e.g. <code>localhost:7042</code>.</td>
+<td style="text-align:left">server.url</td>
+<td style="text-align:left">Server external URL. Is used only for OpenAPI documentation. Also, maybe used in the code, for example for links in emails.</td>
 </tr>
 <tr>
-<td style="text-align:left">port</td>
-<td style="text-align:left">Request port, e.g. <code>7042</code>.</td>
+<td style="text-align:left">router.urlPrefix</td>
+<td style="text-align:left">URI prefix, that will be prepended to all endpoints, e.g. <code>api/v2/</code>.</td>
 </tr>
 <tr>
-<td style="text-align:left">path</td>
-<td style="text-align:left">Path part of URL including query string. e.g. <code>books?limit=12</code>.</td>
+<td style="text-align:left">router.primaryKeyPattern</td>
+<td style="text-align:left">RegExp pattern for identifiers, e.g. <code>\\d+</code>. You’ll need to change it if you are using hash or uuid keys in models.</td>
 </tr>
 <tr>
-<td style="text-align:left">url</td>
-<td style="text-align:left">Full request URL.</td>
+<td style="text-align:left">cors.origin</td>
+<td style="text-align:left">Origin which is allowed to make API calls. May be <br /> (i) <code>*</code> for any origin, use it only if you really need it, <br /> (ii) <code>[url array]</code> - list of allowed origins, <br /> (iii) <code>() =&gt; {}</code> function that returns dynamic array of allowed origins.</td>
 </tr>
 <tr>
-<td style="text-align:left">ip</td>
-<td style="text-align:left">Client’s IP address.</td>
+<td style="text-align:left">cors.methods</td>
+<td style="text-align:left">List of allowed HTTP methods, e.g. <code>[&quot;GET&quot;, &quot;POST&quot;, &quot;PUT&quot;, &quot;DELETE&quot;]</code>.</td>
 </tr>
 <tr>
-<td style="text-align:left">headers</td>
-<td style="text-align:left">Object containing request headers. Header name will be lowercased, e.g. <code>this.request.headers[&quot;user-agent&quot;]</code>.</td>
+<td style="text-align:left">cors.headers</td>
+<td style="text-align:left">List of allowed HTTP headers, e.g. <code>[&quot;Content-Type&quot;, &quot;X-Items-Total&quot;]</code>.</td>
 </tr>
 <tr>
-<td style="text-align:left">cookies</td>
-<td style="text-align:left">Object containing request cookies, e.g. <code>this.request.cookies['basketId']</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left">body</td>
-<td style="text-align:left">Object containing request payload. JSON passed in request body will be automatically converted to JS object, e.g. <code>this.request.body.firstName</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left">handler</td>
-<td style="text-align:left">Object containing information about endpoint handler, including annotations list, e.g. <code>this.request.handler.annotations.summary</code>.</td>
+<td style="text-align:left">cors.maxAge</td>
+<td style="text-align:left">TTL of CORS response.</td>
 </tr>
 </tbody>
 </table>
-<h2>Message.response</h2>
-<p><strong>Message.response</strong> collects response information like response status code
-headers and payload. Below is a full list of available properties.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Name</th>
-<th style="text-align:left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><em>__response__</em></td>
-<td style="text-align:left">Reference to Node.Js <code>ServerResponse</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left">status</td>
-<td style="text-align:left">Object representing status of HTTP response. It is helpful to use <code>this.response.STATUSES</code> constant to set proper response status.</td>
-</tr>
-<tr>
-<td style="text-align:left">status.code</td>
-<td style="text-align:left">HTTP response status code, e.g. <code>201</code></td>
-</tr>
-<tr>
-<td style="text-align:left">status.message</td>
-<td style="text-align:left">HTTP response status message, e.g. <code>Created</code></td>
-</tr>
-<tr>
-<td style="text-align:left">headers</td>
-<td style="text-align:left">Object containing response headers. By default, it has <br /> <code>{'Content-Type': 'application/json; charset=utf-8'}</code></td>
-</tr>
-<tr>
-<td style="text-align:left">body</td>
-<td style="text-align:left">Object containing HTTP response payload. Can be any serializable JS object or primitive type.</td>
-</tr>
-</tbody>
-</table>
+<h2>Config resolution</h2>
+<p>Configuration from above is used by default in Dominion framework.
+To overwrite them you can create folder <code>config</code> in project root
+directory containing <code>index.js</code> file. Framework is expecting this file
+to return JS object with configuration. Consequently, you
+can take advantage of it to implement additional logic in configuration.
+For example, you can load some props from environment variables:</p>
+<pre class="hljs"><button data-clipboard-target="#_11f" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_11f"><span class="hljs-built_in">module</span>.exports = {
+    <span class="hljs-attr">server</span>: {
+        <span class="hljs-attr">host</span>: process.env.APPLICATION_HOST,
+        <span class="hljs-attr">port</span>: process.env.APPLICATION_PORT
+    }
+}
+</code></pre>
+<p>Also you can make different config files for different environments
+and implement their resolution in <code>index.js</code>. For example:</p>
+<pre class="hljs"><button data-clipboard-target="#_2kjg" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_2kjg"><span class="hljs-comment">// File config/index.js</span>
+
+<span class="hljs-keyword">switch</span> (process.env.NODE_ENV) {
+    <span class="hljs-keyword">case</span> (<span class="hljs-string">"production"</span>):
+        config = <span class="hljs-built_in">require</span>(<span class="hljs-string">"./config.prod"</span>);
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> (<span class="hljs-string">"test"</span>):
+        config = <span class="hljs-built_in">require</span>(<span class="hljs-string">"./config.test"</span>);
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">default</span>:
+        config = <span class="hljs-built_in">require</span>(<span class="hljs-string">"./config.dev"</span>);
+}
+
+<span class="hljs-built_in">module</span>.exports = config;
+</code></pre>
 </div>
 </div>
 </body>

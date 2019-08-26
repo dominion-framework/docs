@@ -1,30 +1,43 @@
 # Components
-You can take "components" as 1:1 representation of restfull (or business) domains. 
+You can take _component_ as 1:1 representation of restfull resource (or business domain). 
 It's useful to organize components having each in separate folder. 
-Lets take `Users` model for example. Recommended file organization will be: 
+Lets take `Users` model for example. Recommended file organization is: 
 ```
-| - components/
-| | - users/             <-- `Users` component 
-| | | - index.js
-| | | - controller.js
-| | | - factory.js
-| | | - repository.js
-| | - products/
-| - index.js
-| - package.json
-| - package-lock.json
+project/
+├── config/
+├── components/
+│   ├── users/ 
+│   │   ├── index.js
+│   │   ├── controller.js
+│   │   ├── factory.js
+│   │   └── repository.js
+│   └── products/
+├── index.js
+├── package.json
+└── package-lock.json
 ```
 
-## Creating component from cli
+## Creating Component from CLI
+
+You can use build-in script for scaffolding component:
 ```shell script
-npx dominion create users
+npx dominion create [repository type] [component name]
+``` 
+Where `[component name]` is name of your resource and
+`[repository type]` is one of available repositories, e.g. mysql.
+If you don't need repository `[repository type]` argument may be omitted.
+
+ 
+If you are starting new project you can create `hello` components,
+which will create default configurations and project's index file:
+
+```shell script
+npx dominion create hello
 ```
-Third command `npx dominion create hello` is creating project scaffold.
-Actually, it is creating scaffold for a single component. You can read
-more about it on page [Components](/components). 
 
 
-## Component declaration file
+
+## Component Declaration File
 
 Component dependencies are declared in `index.js` file:
 ```js
@@ -57,10 +70,9 @@ may be linked to factory.
 `Factories` is where you describe model structure and its methods. Optionally factories 
 may be linked to a repository.
 
-`Repository` is playing role of ORM (Object-relational mapping) with external data storage. 
-By default framework uses MySQL, but should work with any DB that has compatible SQL dialect. 
-Alternative, repository prototype may be redefined to work with any type of 
-storage (NoSQL, cloud storage, flat file, etc).
+`Repository` is playing role of ORM (Object-relational mapping) with external data storage.
+By default repositories are not included in the framework package. To use repositories, 
+you need to install additional package with repository of a type you need.   
 
 Commonly you'll need one set of controller/factory/repository in a component, 
 but it's possible to have multiple ones if needed.

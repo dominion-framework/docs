@@ -88,7 +88,7 @@ and if annotation is set to 'xml', change endpoint output in response intercepto
 ```js
 //responseInterceptor.js
 
-function jsonToXml(response) {
+module.exports = function jsonToXml(response) {
     if(this.request.handler.annotations['output'] === 'xml') {
         return convertJsonToXml(response);
     } else {

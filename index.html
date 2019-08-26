@@ -51,9 +51,6 @@
                     <a class="link" href="/components">Components</a>
                 </li>
                 <li class="menu-item">
-                    <a class="link" href="#api-request-lifecycle">API Request Lifecycle</a>
-                </li>
-                <li class="menu-item">
                     <a class="link" href="/controllers">Controller</a>
                     <ul class="submenu">
                         <li class="menu-item">
@@ -123,72 +120,16 @@
                     <a class="link" href="/repositories">Repositories</a>
                 </li>
                 <li class="menu-item">
-                    <a class="link" href="#interceptors">Interceptors</a>
+                    <a class="link" href="/interceptors">Interceptors</a>
+                </li>
+                <li class="menu-item">
+                    <a class="link" href="/config">Config</a>
                 </li>
             </ul>
         </div>
     </nav>
     <div class="markdown-body"><p><img src="./assets/logo.svg" alt="Dominion node rest api framework logo"></p>
 <p>Dominion is declarative Promise based Node.js framework for REST API</p>
-<h3>API Request Lifecycle</h3>
-<p>To understand how requests are processed lets look on their lifecycle, it’s straight forward:</p>
-<ol>
-<li>
-<p>On startup framework goes through all registered controllers (<code>core/controllers/index.js</code>), generates URL based
-on functions interface and make mappings between URL’s and those functions.</p>
-</li>
-<li>
-<p>Client makes request to API server.</p>
-</li>
-<li>
-<p>Framework’s router (<code>core/router/index.js</code>) catches a request and looking
-for matching callback from ones registered in controllers.</p>
-</li>
-<li>
-<p>If match was founded router builds request Promise chain. A chain contains
-<em>request interceptors</em>,  <em>handler</em> (function defined in controller), <em>response interceptors</em>
-and <em>request finalisation</em>. Then request promise chain gets executed:</p>
-<ol>
-<li>Requests interceptors are taking from <code>requestInterceptors</code> array in component’s
-declaration file (<code>index.js</code>). They are general purpose functions that may validate
-client’s authorization.</li>
-<li>Then <code>handler</code> gets executed. It defines top level business logic.
-Usually controller’s <code>handler</code> manipulates models created by <code>Factories</code>.
-If needed, factories or model instances call linked <code>Repository</code>
-to create/modify/remove data in DB.</li>
-<li>Result of <code>handler</code> execution is passed to response interceptors. They are taking
-from <code>responseInterceptors</code> array in component’s declaration file. There are no common use
-for response interceptor, as <code>handler</code> is responsible to produce response that is
-ready to be send back to client. However, it may be used to perform some general actions
-that depends on <code>handler</code>'s response, like set custom header.</li>
-<li>Lastly, router handles common exceptions produced by <code>Repositoy</code> or <code>Factories</code> and sets
-proper status code (400 - for bad request, 404 - if model not found, 409 - for conflicts, etc).</li>
-</ol>
-</li>
-<li>
-<p>And finally, response produced by all previous steps gets stringified and returned to a client.</p>
-</li>
-</ol>
-<h4>API Handlers</h4>
-<p><code>Handler</code> function is executing with HTTP message context (<code>core/messages/index.js</code>).
-In other word, <code>this</code> point to object containing information about HTTP request and response.</p>
-<pre class="hljs"><button data-clipboard-target="#_3l3g" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_3l3g"><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">booksId</span>) </span>{
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.request.body);
-    
-    <span class="hljs-keyword">this</span>.response.headers[<span class="hljs-string">"X-Items-Length"</span>] = <span class="hljs-number">42</span>;
-}
-</code></pre>
-<h3>Interceptors</h3>
-<p><strong>Interceptors are global!</strong> This means that no matter in what
-component they are declared, they will be executed for <em>every</em> request.
-I know it feels counter-intuitive and smells like a bad design, but it’s not.
-Or, at least I think it is not.</p>
-<p>The point here you should never need to decorate API endpoint on component level
-or on single <code>handler</code> level. Such functionality should be moved to factories, models
-or services.</p>
-<p>Interceptors should be used for actual global things like extracting
-cookies from header, parsing multipart/form-data, logging, converting response
-from JSON to XML, etc.</p>
 </div>
 </div>
 </body>

@@ -51,9 +51,6 @@
                     <a class="link" href="/components">Components</a>
                 </li>
                 <li class="menu-item">
-                    <a class="link" href="#api-request-lifecycle">API Request Lifecycle</a>
-                </li>
-                <li class="menu-item">
                     <a class="link" href="/controllers">Controller</a>
                     <ul class="submenu">
                         <li class="menu-item">
@@ -123,7 +120,10 @@
                     <a class="link active" href="/repositories">Repositories</a>
                 </li>
                 <li class="menu-item">
-                    <a class="link" href="#interceptors">Interceptors</a>
+                    <a class="link" href="/interceptors">Interceptors</a>
+                </li>
+                <li class="menu-item">
+                    <a class="link" href="/config">Config</a>
                 </li>
             </ul>
         </div>
@@ -138,18 +138,18 @@ because type of external storage specifically depends on projects architecture,
 so, there is no reason to include something you will never use.</p>
 <p>To use repository in your component you will need to install npm package
 with a repository you need. For example, for MySQL:</p>
-<pre class="hljs"><button data-clipboard-target="#_18k9" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_18k9">npm install @dominion-framework/repository-mysql
+<pre class="hljs"><button data-clipboard-target="#_4idk" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_4idk">npm install @dominion-framework/repository-mysql
 </code></pre>
 <p>Then, you need to create repository declaration in your component’s folder
 and link it with a model. The most basic repository will contain only
 <code>Repository.create()</code> function. For example a file <code>repository.js</code> may look like:</p>
-<pre class="hljs"><button data-clipboard-target="#_46b" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_46b"><span class="hljs-keyword">const</span> Repositories = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@dominion-framework/repository-mysql'</span>);
+<pre class="hljs"><button data-clipboard-target="#_8p0" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_8p0"><span class="hljs-keyword">const</span> Repositories = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@dominion-framework/repository-mysql'</span>);
 
 <span class="hljs-built_in">module</span>.exports = Repositories.create(<span class="hljs-string">'books_table'</span>, { });
 </code></pre>
 <p>In a model declaration use <code>repository:</code> property to link created repository
 to a model:</p>
-<pre class="hljs"><button data-clipboard-target="#_36cn" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_36cn"><span class="hljs-keyword">const</span> Property = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@dominion-framework/dominion/core/property"</span>);
+<pre class="hljs"><button data-clipboard-target="#_3og0" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_3og0"><span class="hljs-keyword">const</span> Property = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@dominion-framework/dominion/core/property"</span>);
 
 <span class="hljs-keyword">const</span> BooksRepository = <span class="hljs-built_in">require</span>(<span class="hljs-string">"./repository"</span>);
 
@@ -190,7 +190,7 @@ Obviously, it is DELETE query in case of SQL type of repositories.</p>
 default methods, you can define custom methods when creating repository.
 In example below, default repository prototype is extended with method
 <code>findByTitle()</code>.</p>
-<pre class="hljs"><button data-clipboard-target="#_1pii" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_1pii"><span class="hljs-keyword">const</span> Repositories = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@dominion-framework/repository-mysql'</span>);
+<pre class="hljs"><button data-clipboard-target="#_5fhc" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_5fhc"><span class="hljs-keyword">const</span> Repositories = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@dominion-framework/repository-mysql'</span>);
 
 <span class="hljs-built_in">module</span>.exports = Repositories.create(<span class="hljs-string">'books_table'</span>, {
 

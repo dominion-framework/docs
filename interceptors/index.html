@@ -51,13 +51,13 @@
                     <a class="link" href="/components">Components</a>
                 </li>
                 <li class="menu-item">
-                    <a class="link opened" href="/controllers">Controller</a>
+                    <a class="link" href="/controllers">Controller</a>
                     <ul class="submenu">
                         <li class="menu-item">
                             <a class="link" href="/controllers/uri-creation">URI Creation</a>
                         </li>
                         <li class="menu-item">
-                            <a class="link active" href="/controllers/http-message">HTTP Message</a>
+                            <a class="link" href="/controllers/http-message">HTTP Message</a>
                         </li>
                     </ul>
                 </li>
@@ -120,7 +120,7 @@
                     <a class="link" href="/repositories">Repositories</a>
                 </li>
                 <li class="menu-item">
-                    <a class="link" href="/interceptors">Interceptors</a>
+                    <a class="link active" href="/interceptors">Interceptors</a>
                 </li>
                 <li class="menu-item">
                     <a class="link" href="/config">Config</a>
@@ -128,124 +128,17 @@
             </ul>
         </div>
     </nav>
-    <div class="markdown-body"><h1>HTTP Message</h1>
-<p>HTTP Message is an object containing information about HTTP request
-and response. Endpoints from controller are executed in context of
-HTTP Message (in other words you can access it using <code>this</code> inside
-endpoint). You may use it to access additional information about
-request or modify data in response. For example:</p>
-<pre class="hljs"><button data-clipboard-target="#_bhj" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_bhj">GET: [
-    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-comment">// get cookies values</span>
-        <span class="hljs-keyword">const</span> basketId = <span class="hljs-keyword">this</span>.request.cookies[<span class="hljs-string">'basketId'</span>];
-
-        <span class="hljs-comment">// add header in response</span>
-        <span class="hljs-keyword">this</span>.response.headers[<span class="hljs-string">'Access-Control-Expose-Headers'</span>] = <span class="hljs-string">'X-Items-Total'</span>;
-
-        <span class="hljs-comment">// set response status code</span>
-        <span class="hljs-keyword">this</span>.response.status = <span class="hljs-keyword">this</span>.response.STATUSES._204_NoContent;
-    }
-]
-</code></pre>
-<h2>Message.request</h2>
-<p><strong>Message.request</strong> has information about request URL, request data,
-like headers, cookies, payload (body) and endpoint’s meta data.
-Below is a full list of available properties.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Name</th>
-<th style="text-align:left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><em>__request__</em></td>
-<td style="text-align:left">Reference to Node.Js <code>IncommingMessage</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left">method</td>
-<td style="text-align:left">Request HTTP method, e.g. GET, POST, PUT, DELETE. Always uppercase.</td>
-</tr>
-<tr>
-<td style="text-align:left">protocol</td>
-<td style="text-align:left">Request protocol. Returns <code>https</code> is connections is encrypted, <code>http</code> otherwise.</td>
-</tr>
-<tr>
-<td style="text-align:left">host</td>
-<td style="text-align:left">Host part of an URL including port, e.g. <code>localhost:7042</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left">port</td>
-<td style="text-align:left">Request port, e.g. <code>7042</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left">path</td>
-<td style="text-align:left">Path part of URL including query string. e.g. <code>books?limit=12</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left">url</td>
-<td style="text-align:left">Full request URL.</td>
-</tr>
-<tr>
-<td style="text-align:left">ip</td>
-<td style="text-align:left">Client’s IP address.</td>
-</tr>
-<tr>
-<td style="text-align:left">headers</td>
-<td style="text-align:left">Object containing request headers. Header name will be lowercased, e.g. <code>this.request.headers[&quot;user-agent&quot;]</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left">cookies</td>
-<td style="text-align:left">Object containing request cookies, e.g. <code>this.request.cookies['basketId']</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left">body</td>
-<td style="text-align:left">Object containing request payload. JSON passed in request body will be automatically converted to JS object, e.g. <code>this.request.body.firstName</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left">handler</td>
-<td style="text-align:left">Object containing information about endpoint handler, including annotations list, e.g. <code>this.request.handler.annotations.summary</code>.</td>
-</tr>
-</tbody>
-</table>
-<h2>Message.response</h2>
-<p><strong>Message.response</strong> collects response information like response status code
-headers and payload. Below is a full list of available properties.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Name</th>
-<th style="text-align:left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><em>__response__</em></td>
-<td style="text-align:left">Reference to Node.Js <code>ServerResponse</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left">status</td>
-<td style="text-align:left">Object representing status of HTTP response. It is helpful to use <code>this.response.STATUSES</code> constant to set proper response status.</td>
-</tr>
-<tr>
-<td style="text-align:left">status.code</td>
-<td style="text-align:left">HTTP response status code, e.g. <code>201</code></td>
-</tr>
-<tr>
-<td style="text-align:left">status.message</td>
-<td style="text-align:left">HTTP response status message, e.g. <code>Created</code></td>
-</tr>
-<tr>
-<td style="text-align:left">headers</td>
-<td style="text-align:left">Object containing response headers. By default, it has <br /> <code>{'Content-Type': 'application/json; charset=utf-8'}</code></td>
-</tr>
-<tr>
-<td style="text-align:left">body</td>
-<td style="text-align:left">Object containing HTTP response payload. Can be any serializable JS object or primitive type.</td>
-</tr>
-</tbody>
-</table>
+    <div class="markdown-body"><h1>Interceptors</h1>
+<p><strong>Interceptors are global!</strong> This means that no matter in what
+component they are declared, they will be executed for <em>every</em> request.
+I know it feels counter-intuitive and smells like a bad design, but it’s not.
+Or, at least I think it is not.</p>
+<p>The point here you should never need to decorate API endpoint on component level
+or on single <code>handler</code> level. Such functionality should be moved to factories, models
+or services.</p>
+<p>Interceptors should be used for actual global things like extracting
+cookies from header, parsing multipart/form-data, logging, converting response
+from JSON to XML, etc.</p>
 </div>
 </div>
 </body>
