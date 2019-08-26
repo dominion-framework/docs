@@ -149,8 +149,12 @@ between URI’s and those functions.</p>
 for matching endpoints from ones registered in controllers.</p>
 </li>
 <li>
-<p>If match was found, router builds <strong>request Promise chain</strong>. A chain contains
-<em>request interceptors</em>,  <em>endpoint function</em> (function defined in a controller),
+<p>If match was found, router builds <strong>request Promise chain</strong>. This means that
+all functions in a chain will receive as an argument execution result of previous
+function or Promise resolution returned by previous function. Also, if any of
+the function throws an exception all consequent functions will not be executed,
+unless there will be <code>.catch()</code> with manual exception handling.<br>
+A chain contains <em>request interceptors</em>,  <em>endpoint function</em> (function defined in a controller),
 <em>response interceptors</em> and <em>request finalisation</em>.
 Afterwards, request promise chain gets executed.</p>
 <ol>
@@ -167,7 +171,7 @@ from <code>responseInterceptors</code> array in component’s declaration file. 
 for response interceptor, as <code>endpoint</code> is responsible to produce response that is
 ready to be send back to client. However, it may be used to perform some general actions
 that depends on <code>endpoint</code>'s response, like set custom header.</li>
-<li>Lastly, router handles common exceptions produced by <code>Repositoy</code> or <code>Factories</code>. If any it will
+<li>Lastly, router handles common exceptions produced by <code>endpoint</code>, <code>Factories</code> or <code>Repositoy</code>. If any, it will
 set proper status code (400 - for bad request, 404 - if model not found, 409 - for conflicts, etc).</li>
 </ol>
 </li>
