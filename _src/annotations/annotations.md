@@ -69,3 +69,30 @@ Marks endpoint as deprecated. Used only for OpenAPI (Swagger) documentation.
         return BooksFactory.get({isbn})
     }
 ```
+
+# Annotations in a Runtime
+
+Annotations can be accessed in a runtime. This is useful when you need to extend
+endpoint functionality using [interceptors](/interceptors). For example, if you want to change
+output to XML format, you can add annotation `@output`:
+```js
+// controller.js
+
+GET: [
+    function() {
+        // @output: xml
+    }
+]
+```
+and if annotation is set to 'xml', change endpoint output in response interceptor:
+```js
+//responseInterceptor.js
+
+function jsonToXml(response) {
+    if(this.request.handler.annotations['output'] === 'xml') {
+        return convertJsonToXml(response);
+    } else {
+        return response;
+    }
+}
+``` 

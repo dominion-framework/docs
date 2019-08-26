@@ -85,7 +85,7 @@ For example:
  return book.remove()
     .then(result => {
         if (result.affectedRows === 1) {
-            this.response.status = this.response.statuses._204_NoContent;
+            this.response.status = this.response.STATUSES._204_NoContent;
         }
     });
 ```

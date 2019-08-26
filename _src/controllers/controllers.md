@@ -55,7 +55,7 @@ GET: [
         this.request.headers['authorization'];
 
         this.response.headers['x-result-length'] = 42;
-        this.response.status = this.response.statuses._201_Created;
+        this.response.status = this.response.STATUSES._201_Created;
     }
 ]
 ```     
@@ -128,7 +128,7 @@ module.exports = {
                 .then(user => user.remove())
                 .then(result => {
                     if (result.affectedRows) {
-                        this.response.status = this.response.statuses._204_NoContent;
+                        this.response.status = this.response.STATUSES._204_NoContent;
                     }
                 });
         }

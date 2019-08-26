@@ -95,7 +95,24 @@ If argument name ends with "Id" suffix, it will be ignored.
     ]
 }
 ```
-4. If `path:` property consist with more than one segment, function
+4. If model name, endpoint required arguments or `path:` property
+consist of multiple words in camelCase, they will be converted 
+to kebab-case in URI. Function optional arguments remain unchanged.
+```js
+{
+    path: "favoriteBooks",
+    ...
+    GET: [
+        function (libraryShelvesId, favoriteBooksId, orderBy = "") { }
+
+        // produces URI: 
+        // https://api.example.com/library-shelves/42/favorite-books/84?orderBy=+author
+        // libraryShelvesId == 42, favoriteBooksId == 84, orderBy == '+author'
+    ]
+}
+```
+
+5. If `path:` property consist with more than one segment, function
 argument need to be camelCased to receive value from URL.
 ```js
 {
