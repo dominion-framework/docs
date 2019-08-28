@@ -106,6 +106,9 @@ button::-moz-focus-inner,
   background-color: rgba(75, 160, 221, 0.1);
   text-decoration: none;
 }
+.markdown-body .sp::before {
+  /*content: '';*/
+}
 .markdown-body .sp::before, .sp::after {
   z-index: 0;
   margin: -7px;
@@ -131,7 +134,7 @@ button::-moz-focus-inner,
     clip: rect(108px, 220px, 120px, 0px);
   }
   75% {
-    clip: rect(0px, 220px, 120px, 218px);
+    clip: rect(0px, 220px, 120px, 210px);
   }
 }
 
