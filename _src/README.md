@@ -31,9 +31,9 @@ module.exports = {
     factory: BooksFactory,
 
     GET: [
-        // books/42?genre=western
-        function (booksId, genre = null) {
-            return UsersFactory.find({}, limit, offset);
+        // books?genre=western
+        function (genre = null) {
+            return BooksFactory.find({genre});
         }
     ],
 
