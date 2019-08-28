@@ -8,7 +8,7 @@
 
 <div class="out-of-the-box">   
 <a href="#clear-declaration" class="sp">Clear endpoints declaration</a>
-<a href="#correct-restful-urls" class="sp">Correct RESTful URLs</a>
+<a href="#correct-restful-urls" class="sp">Automatic <br/> RESTful URLs</a>
 <a href="#models-schema-validation" class="sp">Models schema validation</a>    
 <a href="#annotations" class="sp">Annotations</a>    
 <a href="#openapi-documentation" class="sp">OpenAPI documentation</a>    
@@ -50,7 +50,7 @@ module.exports = {
 
 <div id="correct-restful-urls">
 
-## Correct Automatic RESTful URLs
+## Automatic RESTful URLs
 <div style="text-align: right"> 
 
 [Read More &xrarr;](/controllers/uri-creation)
@@ -91,7 +91,6 @@ function (libraryShelvesId, favoriteBooksId, orderBy = "") { }
         creationTime: Property.date().private(),
         modificationTime: Property.date().private()
     }
-
     ...
 }
 ```
