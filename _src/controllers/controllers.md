@@ -47,7 +47,7 @@ POST: [
 Functions that processing requests will have execution context 
 set to [HTTP Message](/controllers/http-message/). 
 It contains information related to HTTP request and response. Take it as `req` and `res`
-in Node.js http module, they are actually wrapping those objects.
+in Node.js http module, it is actually wrapping those objects.
 ```js
 GET: [
     function () {
