@@ -4,7 +4,7 @@ They can be used to add some meta information to an endpoint or add
 additional functionality to request processing.
 
 Dominion framework has several predefined annotation, however you can write
-any annotation you want and use it as meta endpoint data in interceptor.
+any annotation you want and use it as endpoint meta data in interceptor.
 
 Let's start with annotation out of the box. They can be used to define
 custom URI for endpoint and add information for OpenAPI (Swagger) documentation.
