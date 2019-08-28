@@ -127,7 +127,7 @@
                     <a class="link" href="/interceptors">Interceptors</a>
                 </li>
                 <li class="menu-item">
-                    <a class="link" href="/config">Config</a>
+                    <a class="link" href="/config">Configurations</a>
                 </li>
             </ul>
         </div>
@@ -138,7 +138,7 @@ and response. Endpoints from controller are executed in context of
 HTTP Message (in other words you can access it using <code>this</code> inside
 endpoint). You may use it to access additional information about
 request or modify data in response. For example:</p>
-<pre class="hljs"><button data-clipboard-target="#_548" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_548">GET: [
+<pre class="hljs"><button data-clipboard-target="#_3api" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_3api">GET: [
     <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
         <span class="hljs-comment">// get cookies values</span>
         <span class="hljs-keyword">const</span> basketId = <span class="hljs-keyword">this</span>.request.cookies[<span class="hljs-string">'basketId'</span>];

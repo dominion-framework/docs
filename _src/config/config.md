@@ -1,4 +1,4 @@
-# Config
+# Configurations
 
 Dominion framework is using small configuration set covering server 
 address, API's URL prefix and CORS settings. You are also free to use
