@@ -54,7 +54,7 @@ book.toJSON();
 // returns
 // {
 //    "id": 42,
-//    "isbn": "ISBN 4-393-29939-3"
+//    "isbn": "ISBN 0-345-39181-0"
 // }
 // Note, properties creationTime and modificationTime are missing
 // because they are marked as private: Property.date().private()

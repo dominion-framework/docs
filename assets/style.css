@@ -57,6 +57,7 @@ button::-moz-focus-inner,
   margin-bottom: 1.4rem;
 }
 
+
 @media (min-width: 814px) {
   .doc-page {
     flex-direction: row;
@@ -65,6 +66,88 @@ button::-moz-focus-inner,
   .homepage-logo {
     display: block;
   }
+}
+
+.out-of-the-box {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin: 2.5rem 0;
+}
+/* Credits: https://codepen.io/Rplus/pen/lEDBj */
+
+.sp::before, .sp::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.markdown-body .sp {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+  margin: 15px 7px;
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid rgb(44, 72, 145);
+  cursor: pointer;
+  color: rgb(44, 72, 145);
+  font-size: 1.1rem;
+}
+.markdown-body .sp:hover {
+  color: rgb(75, 160, 221);
+  border-color: rgb(75, 160, 221);
+  background-color: rgba(75, 160, 221, 0.1);
+  text-decoration: none;
+}
+.markdown-body .sp::before, .sp::after {
+  z-index: 0;
+  margin: -7px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px rgb(75, 160, 221);
+  animation: clipMe 4s linear infinite;
+}
+.markdown-body .sp::before {
+  animation-delay: -2s;
+}
+.markdown-body .sp:hover::after, .sp:hover::before {
+  content: '';
+}
+
+@keyframes clipMe {
+  0%, 100% {
+    clip: rect(0px, 220px, 2px, 0px);
+  }
+  25% {
+    clip: rect(0px, 2px, 120px, 0px);
+  }
+  50% {
+    clip: rect(108px, 220px, 120px, 0px);
+  }
+  75% {
+    clip: rect(0px, 220px, 120px, 218px);
+  }
+}
+
+#openapi-documentation img,
+#zero-dependencies img{
+  width: 500px;
+  margin: 0 auto;
+  display: block;
+}
+
+#zero-dependencies {
+  margin-bottom: -64px;
+}
+
+#zero-dependencies p:last-child {
+  margin-bottom: 0;
 }
 
 .markdown-body {
@@ -361,7 +444,7 @@ button::-moz-focus-inner,
 }
 
 .markdown-body>*:last-child {
-  margin-bottom: 0 !important;
+  margin-bottom: 0;
 }
 
 .markdown-body a:not([href]) {

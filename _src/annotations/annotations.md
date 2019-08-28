@@ -24,8 +24,8 @@ GET: [
     } 
 ]
 ```
-The endpoint above will be called for URI: https://api.example.com/books/isbn/4-393-29939-X .
-Value of function's argument `isbn` will be set to "4-393-29939-X".
+The endpoint above will be called for URI: https://api.example.com/books/isbn/0-330-26738-8.
+Value of function's argument `isbn` will be set to "0-330-26738-8".
 
 ## @summary <a name="summary"></a>
 Sets short description of an endpoint. Used only for OpenAPI (Swagger) documentation.
@@ -41,7 +41,7 @@ Sets short description of an endpoint. Used only for OpenAPI (Swagger) documenta
 Sets detailed description of an endpoint. Used only for OpenAPI (Swagger) documentation.
 ```js
     function(isbn) {
-        // @description: ISBN number should be in format 4-393-29939-X.
+        // @description: ISBN number should be in formatted like "0-330-28700-1"
         
         return BooksFactory.get({isbn})
     }

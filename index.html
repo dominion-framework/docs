@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dominion - Node.js framework for creating REST APIs</title>
+    <title>Dominion Node.js framework for REST APIs</title>
+    <meta name="description" content="Dominion is declarative Promise based Node.js framework for RESTful API" />
     <meta content="width=device-width, initial-scale=1.0,minimum-scale=1.0,user-scalable=yes" name="viewport" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
@@ -136,6 +137,104 @@
         <img src="/assets/logo.svg" alt="Dominion Node.js RESTful API framework logo" />
     </div>
     <strong>Dominion is declarative Promise based Node.js framework for RESTful API</strong>
+</div>
+<div class="out-of-the-box">   
+<a href="#clear-declaration" class="sp">Clear endpoints declaration</a>
+<a href="#correct-restful-urls" class="sp">Correct RESTful URLs</a>
+<a href="#models-schema-validation" class="sp">Models schema validation</a>    
+<a href="#annotations" class="sp">Annotations</a>    
+<a href="#openapi-documentation" class="sp">OpenAPI documentation</a>    
+<a href="#zero-dependencies" class="sp">Zero dependencies</a>  
+</div>
+<div id="clear-declaration">
+<h2>Clear Endpoints Declaration</h2>
+<div style="text-align: right"> 
+<p><a href="/controllers">Read More ⟶</a></p>
+</div>
+<pre class="hljs"><button data-clipboard-target="#_52lg" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_52lg"><span class="hljs-built_in">module</span>.exports = {
+
+    <span class="hljs-attr">factory</span>: BooksFactory,
+
+    <span class="hljs-attr">GET</span>: [
+        <span class="hljs-comment">// books/42?genre=western</span>
+        <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">booksId, genre = null</span>) </span>{
+            <span class="hljs-keyword">return</span> UsersFactory.find({}, limit, offset);
+        }
+    ],
+
+    <span class="hljs-attr">POST</span>: [
+        <span class="hljs-comment">// books/</span>
+        <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">return</span> BooksFactory.new(<span class="hljs-keyword">this</span>.request.body)
+                .then(<span class="hljs-function"><span class="hljs-params">book</span> =&gt;</span> book.save());
+        }
+    ]
+}
+</code></pre>
+</div>
+<div id="correct-restful-urls">
+<h2>Correct Automatic RESTful URLs</h2>
+<div style="text-align: right"> 
+<p><a href="/controllers/uri-creation">Read More ⟶</a></p>
+</div>
+<pre class="hljs"><button data-clipboard-target="#_13h0" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_13h0"><span class="hljs-comment">// Endpoint URLs is build based on function arguments:</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">limit = <span class="hljs-number">10</span>, offset = <span class="hljs-number">0</span></span>) </span>{ }
+<span class="hljs-comment">// https://api.example.com/books?limit=42&amp;offset=21</span>
+
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">libraryShelvesId, favoriteBooksId, orderBy = <span class="hljs-string">""</span></span>) </span>{ }
+<span class="hljs-comment">// https://api.example.com/library-shelves/42/favorite-books/84?orderBy=+author</span>
+
+</code></pre>
+</div>
+<div id="models-schema-validation">
+<h2>Models Schema Validation</h2>
+<div style="text-align: right"> 
+<p><a href="/properties">Read More ⟶</a></p>
+</div>
+<pre class="hljs"><button data-clipboard-target="#_lc6" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_lc6">{
+    <span class="hljs-attr">name</span>: <span class="hljs-string">"Book"</span>,
+    
+    <span class="hljs-attr">properties</span>: {
+        <span class="hljs-attr">id</span>: Property.id(),
+        <span class="hljs-attr">name</span>: Property.string().min(<span class="hljs-number">1</span>).required(),
+        <span class="hljs-attr">isbn</span>: Property.string().pattern(<span class="hljs-regexp">/^\d-\d{3}-\d{5}-\d$/</span>).example(<span class="hljs-string">"0-330-25864-8"</span>),
+        <span class="hljs-attr">authorId</span>: Property.model(<span class="hljs-string">"Autho"</span>),
+        <span class="hljs-attr">genre</span>: Property.set([<span class="hljs-string">"Fantasy"</span>, <span class="hljs-string">"Science fiction"</span>, <span class="hljs-string">"Western"</span>, <span class="hljs-string">"Romance"</span>]),
+        <span class="hljs-attr">creationTime</span>: Property.date().private(),
+        <span class="hljs-attr">modificationTime</span>: Property.date().private()
+    }
+
+    ...
+}
+</code></pre>
+</div>
+<div id="annotations">
+<h2>Annotations</h2>
+<div style="text-align: right"> 
+<p><a href="/annotations">Read More ⟶</a></p>
+</div>
+<pre class="hljs"><button data-clipboard-target="#_5eeo" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_5eeo"><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">isbn</span>) </span>{
+    <span class="hljs-comment">// @path: books/isbn/(\d{1,5}[- ]\d{1,7}[- ]\d{1,6}[- ](?:\d|X))</span>
+    <span class="hljs-comment">// @model: Books    </span>
+    <span class="hljs-comment">// @summary: Get book by ISBN number</span>
+    
+    <span class="hljs-keyword">return</span> BooksFactory.get({isbn})
+}
+</code></pre>
+</div>
+<div id="openapi-documentation">
+<h2>OpenAPI (Swagger) documentation</h2>
+<p>Automatic OpenAPI documentation based on source code.</p>
+<p><img src="/assets/openap%D1%96.png" alt="OpenAPI (Swagger) documentation"></p>
+</div>
+<div id="zero-dependencies">
+<h2>Zero Dependencies</h2>
+<p>100Kb footprint Node.js framework with <strong>no</strong> npm dependencies. If you also think that
+you don’t need npm to <a href="https://www.theregister.co.uk/2016/03/23/npm_left_pad_chaos/">left-pad</a> a string.</p>
+<p><em><small style="font-size:.6rem">Credits: <a href="https://dev.to/leoat12/the-nodemodules-problem-29dc">The node_modules problem</a></small></em>
+<img src="/assets/node_modules.png" alt="OpenAPI (Swagger) documentation"></p>
 </div>
 </div>
 </div>

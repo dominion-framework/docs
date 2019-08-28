@@ -51,6 +51,8 @@ walk("./_src", function (err, pages) {
         let htmlPath = page.replace("/_src", "");
         htmlPath = htmlPath.substring(0, htmlPath.lastIndexOf("/"));
         let pageUri = htmlPath.replace("./", "");
+        let pageTitle = pageUri.match(/([^\/]*)$/)[1];
+        pageTitle = pageTitle.substring(0,1).toUpperCase()+pageTitle.substring(1).replace(/\-/g, " ");
         let parentUri = htmlPath.substring(2, htmlPath.indexOf("/", 2));
         fs.mkdirSync(htmlPath, {recursive: true});
         let htmlPage = tpl.replace("${result}", article)
@@ -59,6 +61,8 @@ walk("./_src", function (err, pages) {
             htmlPage = htmlPage
                 .replace(`class="link" href="/${parentUri}"`, `class="link opened" href="/${parentUri}"`);
         }
+        htmlPage = htmlPage
+            .replace("${title}", `${pageTitle !== '.'? pageTitle + ` — `: ""}`);
 
         fs.writeFileSync(htmlPath + "/index.html", htmlPage);
     });

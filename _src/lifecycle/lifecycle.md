@@ -38,5 +38,5 @@ Afterwards, request promise chain gets executed.
    4. Lastly, router handles common exceptions produced by `endpoint`, `Factories` or `Repositoy`. If any, it will 
     set proper status code (400 - for bad request, 404 - if model not found, 409 - for conflicts, etc). 
 
-5. In the end, response produced by all previous steps gets stringified and returned to a client.  
+5. After it's done, response produced by all previous steps gets stringified and returned to a client.  
 
