@@ -60,7 +60,7 @@ Interceptors should be used for actual global things like extracting
 cookies from header, parsing multipart/form-data, logging, converting response
 from JSON to XML, etc.
 
-## Code example
+## Code examples
 Adding server name header.
 ```js
 // file requestInterceptor.js
