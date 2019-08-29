@@ -76,7 +76,7 @@ Annotations can be accessed in a runtime. This is useful when you need to extend
 endpoint functionality using [interceptors](/interceptors). For example, if you want to change
 output to XML format, you can add annotation `@output`:
 ```js
-// controller.js
+// file controller.js
 
 GET: [
     function() {
@@ -86,7 +86,7 @@ GET: [
 ```
 and if annotation is set to 'xml', change endpoint output in response interceptor:
 ```js
-//responseInterceptor.js
+// file responseInterceptor.js
 
 module.exports = function jsonToXml(response) {
     if(this.request.handler.annotations['output'] === 'xml') {
