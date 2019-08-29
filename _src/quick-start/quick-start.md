@@ -16,6 +16,7 @@ npm init -y
 npm i @dominion-framework/dominion
 npx dominion create hello
 npm start
+
 ```
 
 Message in the terminal should indicate that server is running, 
