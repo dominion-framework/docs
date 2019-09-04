@@ -18,7 +18,7 @@ UsersFactory.get({id: 42})
 ```    
     
  
-#### `.find( [criteriasObject], [limit], [offset], [order] )` 
+#### `.find( [criteriasObject], [offset], [limit], [order] )` 
  
  Fetch collection with `limit` records using `criteriasObject`  starting from `offset` 
  in `order`, where order is a string equals to one of model's properties name and 
