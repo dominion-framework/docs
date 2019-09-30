@@ -15,8 +15,8 @@ It includes: data validation, input modification, output modification
 and documentation info. More about this you can read 
 on [Properties](properties/) page.
 
-By default [Factories prototype](/factories-and-models/factory-prototype)
-and [Models prototype](/factories-and-models/model-prototype) 
+By default [Factories prototype](/factories-and-models/factory-prototype/)
+and [Models prototype](/factories-and-models/model-prototype/) 
 contain the most common manipulations you will need in a project.
 And of course, you can extend or overwrite it using `factory:` and `instance:`
 properties in a Factory declaration.    

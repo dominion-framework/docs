@@ -22,7 +22,7 @@
 ## Clear Endpoints Declaration
 <div style="text-align: right"> 
 
-[Read More &xrarr;](/controllers)
+[Read More &xrarr;](/controllers/)
 </div>
 
 ```js
@@ -53,7 +53,7 @@ module.exports = {
 ## Automatic RESTful URLs
 <div style="text-align: right"> 
 
-[Read More &xrarr;](/controllers/uri-creation)
+[Read More &xrarr;](/controllers/uri-creation/)
 </div>
 
 ```js
@@ -75,7 +75,7 @@ function (libraryShelvesId, favoriteBooksId, orderBy = "") { }
 ## Models Schema Validation
 <div style="text-align: right"> 
 
-[Read More &xrarr;](/properties)
+[Read More &xrarr;](/properties/)
 </div>
 
 ```js
@@ -101,7 +101,7 @@ function (libraryShelvesId, favoriteBooksId, orderBy = "") { }
 ## Annotations
 <div style="text-align: right"> 
 
-[Read More &xrarr;](/annotations)
+[Read More &xrarr;](/annotations/)
 </div>
 
 ```js

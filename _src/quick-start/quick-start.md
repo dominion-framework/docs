@@ -197,7 +197,7 @@ But for majority of other operation there is a lot, e.g. saving
 in database, reading file, communicating with other micro-services, etc.
 So, to keep things consistent `.new()` returns Promise.       
 
-And as usual, you can find more about models on [Factories](/factories-and-models) page.
+And as usual, you can find more about models on [Factories](/factories-and-models/) page.
 
 
 I hope you are still following, we are almost done. 

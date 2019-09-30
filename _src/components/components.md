@@ -72,14 +72,14 @@ have endpoints that covers manipulation with single resource. If you have really
 a lot of endpoints that are related to single resource, you may split them 
  by http method into multiple files.  
 
-[Factories](/factories-and-models) is where you describe model structure and 
+[Factories](/factories-and-models/) is where you describe model structure and 
 its methods. Typically one component will work with single model.
 However, for more complex structures you can have multiple models in
 one component. But make sure that models you want to create in a component 
 are indeed representing single resource, or
 may it is better to move some of them to another component.
 
-[Request and Response Interceptors](/interceptors) allows you to add callbacks
+[Request and Response Interceptors](/interceptors/) allows you to add callbacks
 that will be called before and after main endpoint. You can use it to 
 decorate request functionality, modify request payload or response results.
 Common use cases for interceptors may be logging, data validation, 

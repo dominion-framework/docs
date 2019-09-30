@@ -7,7 +7,7 @@ request payload as function argument.
 * Response interceptors will be executed after main endpoint. As an argument they 
 will receive execution result of main endpoint.
 
-Interceptors are executed in [HTTP Message](/controllers/http-message) context,
+Interceptors are executed in [HTTP Message](/controllers/http-message/) context,
 so you have access to the same data as in main endpoint. This includes access
 to endpoint's [annotations](annotations/). In interceptors you can validate if 
 endpoint has specific annotation and perform some action based on it.
