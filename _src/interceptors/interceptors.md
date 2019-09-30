@@ -9,7 +9,7 @@ will receive execution result of main endpoint.
 
 Interceptors are executed in [HTTP Message](/controllers/http-message) context,
 so you have access to the same data as in main endpoint. This includes access
-to endpoint's [annotations](/annotations). In interceptors you can validate if 
+to endpoint's [annotations](annotations/). In interceptors you can validate if 
 endpoint has specific annotation and perform some action based on it.
 
 To add interceptors to the project you need to register them in component

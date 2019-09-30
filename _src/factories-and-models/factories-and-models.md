@@ -13,7 +13,7 @@ Cool thing in models declaration in Dominion framework is
 ability to specify extra features for each Model's property.
 It includes: data validation, input modification, output modification
 and documentation info. More about this you can read 
-on [Properties](/properties) page.
+on [Properties](properties/) page.
 
 By default [Factories prototype](/factories-and-models/factory-prototype)
 and [Models prototype](/factories-and-models/model-prototype) 

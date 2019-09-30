@@ -66,7 +66,7 @@ order of requires in file.
 There are 5 entries types: Factories, Controllers, Request Interceptors, 
 Response Interceptors and Bootstrap.
 
-[Controllers](/controllers) is a place where you define APIs endpoints, basically mappings 
+[Controllers](controllers/) is a place where you define APIs endpoints, basically mappings 
 between URL's and actions you need to produce response. One controller should
 have endpoints that covers manipulation with single resource. If you have really
 a lot of endpoints that are related to single resource, you may split them 

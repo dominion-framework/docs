@@ -19,12 +19,12 @@ be implemented in methods of factories and model instances, or
 in separated services.  
 
 ## Annotations
-You can add additional meta data to an endpoint using [annotation](/annotations).
+You can add additional meta data to an endpoint using [annotation](annotations/).
 Dominion framework comes with couple predefined annotations, that 
 allows to set custom URI for endpoint or add description for
 OpenAPI (Swagger) documentation. However, the main purpose
 of annotation is to extend functionality of an endpoint in 
-[interceptors](/interceptors). For example, you can use annotations 
+[interceptors](interceptors/). For example, you can use annotations 
 to assign specific permissions for specific endpoint. Take a look
 on example below:
 ```js

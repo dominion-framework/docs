@@ -73,7 +73,7 @@ Marks endpoint as deprecated. Used only for OpenAPI (Swagger) documentation.
 # Annotations in a Runtime
 
 Annotations can be accessed in a runtime. This is useful when you need to extend
-endpoint functionality using [interceptors](/interceptors). For example, if you want to change
+endpoint functionality using [interceptors](interceptors/). For example, if you want to change
 output to XML format, you can add annotation `@output`:
 ```js
 // file controller.js

@@ -46,27 +46,27 @@
             </div>
             <ul>
                 <li class="menu-item">
-                    <a class="link active" href="/quick-start">Quick Start</a>
+                    <a class="link" href="/quick-start/">Quick Start</a>
                 </li>
                 <li class="menu-item">
-                    <a class="link" href="/lifecycle">Request Lifecycle</a>
+                    <a class="link" href="/lifecycle/">Request Lifecycle</a>
                 </li>
                 <li class="menu-item">
-                    <a class="link" href="/components">Components</a>
+                    <a class="link" href="/components/">Components</a>
                 </li>
                 <li class="menu-item">
-                    <a class="link" href="/controllers">Controller</a>
+                    <a class="link" href="/controllers/">Controller</a>
                     <ul class="submenu">
                         <li class="menu-item">
-                            <a class="link" href="/controllers/uri-creation">URI Creation</a>
+                            <a class="link" href="/controllers/uri-creation/">URI Creation</a>
                         </li>
                         <li class="menu-item">
-                            <a class="link" href="/controllers/http-message">HTTP Message</a>
+                            <a class="link" href="/controllers/http-message/">HTTP Message</a>
                         </li>
                     </ul>
                 </li>
                 <li class="menu-item">
-                    <a class="link" href="/annotations">Annotations</a>
+                    <a class="link" href="/annotations/">Annotations</a>
                     <ul class="submenu">
                         <li class="menu-item"><a class="link" href="#path">@path</a>
                         </li>
@@ -81,18 +81,18 @@
                     </ul>
                 </li>
                 <li class="menu-item">
-                    <a class="link" href="/factories-and-models">Factories and Models</a>
+                    <a class="link" href="/factories-and-models/">Factories and Models</a>
                     <ul class="submenu">
                         <li class="menu-item">
-                            <a class="link" href="/factories-and-models/factory-prototype">Factory prototype</a>
+                            <a class="link" href="/factories-and-models/factory-prototype/">Factory prototype</a>
                         </li>
                         <li class="menu-item">
-                            <a class="link" href="/factories-and-models/model-prototype">Model prototype</a>
+                            <a class="link" href="/factories-and-models/model-prototype/">Model prototype</a>
                         </li>
                     </ul>
                 </li>
                 <li class="menu-item">
-                    <a class="link" href="/properties">Properties</a>
+                    <a class="link" href="/properties/">Properties</a>
                     <ul class="submenu">
                         <li class="menu-item">
                             <a class="link" href="#number">.number()</a>
@@ -121,13 +121,13 @@
                     </ul>
                 </li>
                 <li class="menu-item">
-                    <a class="link" href="/repositories">Repositories</a>
+                    <a class="link" href="/repositories/">Repositories</a>
                 </li>
                 <li class="menu-item">
-                    <a class="link" href="/interceptors">Interceptors</a>
+                    <a class="link" href="/interceptors/">Interceptors</a>
                 </li>
                 <li class="menu-item">
-                    <a class="link" href="/configurations">Configurations</a>
+                    <a class="link" href="/configurations/">Configurations</a>
                 </li>
             </ul>
         </div>
@@ -141,7 +141,7 @@ this tutorial is to install and start Node.js API server with a couple
 of sample APIs.</p>
 <p>To start, create a new folder and run following commands in
 your terminal.</p>
-<pre class="hljs"><button data-clipboard-target="#_508i" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_508i">npm init -y
+<pre class="hljs"><button data-clipboard-target="#_4mj5" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_4mj5">npm init -y
 npm i @dominion-framework/dominion
 npx dominion create hello
 npm start
@@ -202,13 +202,13 @@ after opening <code>./node_modules</code>, some of you will be pleased to see
 that it doesn’t contain a backup of npm repository.</p>
 <p>Third command <code>npx dominion create hello</code> is creating project scaffold.
 Actually, it creates scaffold for a single component. You can read
-more about it on page <a href="/components">Components</a>. But <code>hello</code> is
+more about it on page <a href="components/">Components</a>. But <code>hello</code> is
 a bit special, it also creates default configs, server’s index file,
 and adds <code>start</code> script to <code>package.json</code>. Don’t worry, if any of
 those already exists it won’t be overwritten.</p>
 <p>Finally, <code>npm start</code> is executing <code>node index.js</code>. Nothing special
 here, so lets see what is inside index file.</p>
-<pre class="hljs"><button data-clipboard-target="#_498g" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_498g"><span class="hljs-keyword">const</span> Server = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@dominion-framework/dominion"</span>);
+<pre class="hljs"><button data-clipboard-target="#_5fnk" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_5fnk"><span class="hljs-keyword">const</span> Server = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@dominion-framework/dominion"</span>);
 
 Server.addComponent(<span class="hljs-built_in">require</span>(<span class="hljs-string">"@dominion-framework/dominion/components/cors"</span>));
 Server.addComponent(<span class="hljs-built_in">require</span>(<span class="hljs-string">"@dominion-framework/dominion/components/logging"</span>));
@@ -231,10 +231,10 @@ already saw it after opening <a href="http://localhost:7042/hello">http://localh
 And here it starts to be interesting. There are 3 files inside
 folder <code>./components/hello/</code> - <code>index.js</code>, <code>controller.js</code> and
 <code>factory.js</code>. Index is used for registering parts of a components
-(more about it on <a href="/components">Components</a> page). Controller
+(more about it on <a href="components/">Components</a> page). Controller
 is a file where you write actual API handlers. Lets take
 endpoint that returns welcome message:</p>
-<pre class="hljs"><button data-clipboard-target="#_3pjm" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_3pjm">GET: [
+<pre class="hljs"><button data-clipboard-target="#_1ckp" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_1ckp">GET: [
     <span class="hljs-comment">//hello?offset=0&amp;limit=10</span>
     <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">offset = <span class="hljs-number">0</span>, limit = <span class="hljs-number">10</span></span>) </span>{
         <span class="hljs-comment">// @summary: Demo endpoint with optional arguments</span>
@@ -253,14 +253,14 @@ is not among arguments, then handler won’t be matched. For example,
 calling <a href="http://localhost:7042/hello?foo=bar">http://localhost:7042/hello?foo=bar</a> will return <code>501 Not Implemented</code>.</p>
 <p>Lines <code>@summary</code> and <code>@description</code> are handler’s annotations. They
 may provide some meta data about handler or extend its functionality.
-More about them on <a href="/annotations">Annotations</a> page.</p>
+More about them on <a href="annotations/">Annotations</a> page.</p>
 <p>The final piece of a puzzle is where <code>/hello?</code> part of URL comes from.
-<a href="/controllers">Controllers</a> may (but not have to) be linked to a models
+<a href="controllers/">Controllers</a> may (but not have to) be linked to a models
 factory . If they are, URLs path is taken from model’s name.
 In our case, controller is linked to model named <code>Hello</code>.
 What brings us to Models.</p>
 <p>Models are created by the factory declared in the file <code>factory.js</code>.</p>
-<pre class="hljs"><button data-clipboard-target="#_4ml3" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_4ml3">{
+<pre class="hljs"><button data-clipboard-target="#_5a41" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_5a41">{
     <span class="hljs-attr">name</span>: <span class="hljs-string">"Hello"</span>,
     
     <span class="hljs-attr">properties</span>: {
@@ -293,7 +293,7 @@ from API response.</p>
 factory or model (aka. instance) prototypes. In example above, instances
 of model <code>Hello</code> will have method <code>sendWelcomeEmail</code>. You can use it
 like this:</p>
-<pre class="hljs"><button data-clipboard-target="#_5502" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_5502"><span class="hljs-keyword">const</span> HelloFactory = Factories(<span class="hljs-string">"Hello"</span>);
+<pre class="hljs"><button data-clipboard-target="#_2el4" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_2el4"><span class="hljs-keyword">const</span> HelloFactory = Factories(<span class="hljs-string">"Hello"</span>);
 
 HelloFactory.new({
    <span class="hljs-attr">id</span>: <span class="hljs-number">42</span>,
@@ -311,7 +311,7 @@ So, to keep things consistent <code>.new()</code> returns Promise.</p>
 <p>I hope you are still following, we are almost done.
 Lets return back to component index file. We are left with one more
 row, really simple one:</p>
-<pre class="hljs"><button data-clipboard-target="#_2c5p" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_2c5p">Server.start();
+<pre class="hljs"><button data-clipboard-target="#_2agb" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_2agb">Server.start();
 </code></pre>
 <p>It runs all bootstrap functions and starts listening for HTTP requests.</p>
 <p>OK, that’s it. We just went through all basic features of the framework.
@@ -324,7 +324,7 @@ OpenAPI (Swagger) documentation is coming out of the box -
 open <a href="https://editor.swagger.io/">https://editor.swagger.io/</a> and copy-paste content from
 file <code>./openapi.json</code> into it. This file was created with the last
 line in component index:</p>
-<pre class="hljs"><button data-clipboard-target="#_315l" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_315l">Server.openApiToFile();
+<pre class="hljs"><button data-clipboard-target="#_2acb" title="Copy to clipboard"><svg viewBox="-40 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"/></svg></button><code class="highlight" id="_2acb">Server.openApiToFile();
 </code></pre>
 </div>
 </div>

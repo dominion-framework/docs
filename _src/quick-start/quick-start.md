@@ -77,7 +77,7 @@ that it doesn't contain a backup of npm repository.
 
 Third command `npx dominion create hello` is creating project scaffold.
 Actually, it creates scaffold for a single component. You can read
-more about it on page [Components](/components). But `hello` is 
+more about it on page [Components](components/). But `hello` is 
 a bit special, it also creates default configs, server's index file, 
 and adds `start` script to `package.json`. Don't worry, if any of 
 those already exists it won't be overwritten.
@@ -112,7 +112,7 @@ Then goes component that we created using "npx dominion create".
 And here it starts to be interesting. There are 3 files inside 
 folder `./components/hello/` - `index.js`, `controller.js` and
 `factory.js`. Index is used for registering parts of a components
-(more about it on [Components](/components) page). Controller 
+(more about it on [Components](components/) page). Controller 
 is a file where you write actual API handlers. Lets take 
 endpoint that returns welcome message:
 
@@ -137,10 +137,10 @@ calling http://localhost:7042/hello?foo=bar will return `501 Not Implemented`.
 
 Lines `@summary` and `@description` are handler's annotations. They 
 may provide some meta data about handler or extend its functionality.
-More about them on [Annotations](/annotations) page.
+More about them on [Annotations](annotations/) page.
 
 The final piece of a puzzle is where `/hello?` part of URL comes from.
-[Controllers](/controllers) may (but not have to) be linked to a models
+[Controllers](controllers/) may (but not have to) be linked to a models
 factory . If they are, URLs path is taken from model's name. 
 In our case, controller is linked to model named `Hello`. 
 What brings us to Models.
