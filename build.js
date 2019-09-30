@@ -56,10 +56,10 @@ walk("./_src", function (err, pages) {
         let parentUri = htmlPath.substring(2, htmlPath.indexOf("/", 2));
         fs.mkdirSync(htmlPath, {recursive: true});
         let htmlPage = tpl.replace("${result}", article)
-            .replace(`class="link" href="/${pageUri}"`, `class="link active" href="/${pageUri}"`);
+            .replace(`class="link" href="/${pageUri}/"`, `class="link active" href="/${pageUri}/"`);
         if(parentUri.indexOf(".") === -1) {
             htmlPage = htmlPage
-                .replace(`class="link" href="/${parentUri}"`, `class="link opened" href="/${parentUri}"`);
+                .replace(`class="link" href="/${parentUri}/"`, `class="link opened" href="/${parentUri}/"`);
         }
         htmlPage = htmlPage
             .replace("${title}", `${pageTitle !== '.'? pageTitle + ` — `: ""}`);
