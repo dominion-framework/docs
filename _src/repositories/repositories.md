@@ -52,12 +52,14 @@ If you are creating your own repository, take them as an interface
 you need to implement.   
 
 
-#### `.find( [criteriasObject], [limit], [offset], [order] )`
+#### `.find( [criteriasObject], [limit], [offset], [order], [totalCountOnly=false] )`
 
 Returns an array with model's data that matches `criteriaObject`.
 It is used in `.get()` and `.find()` methods
 of default models factories prototype. Basically it executes SELECT
 query, if we are talking about SQL databases.
+If `totalCountOnly` set to `true`, method should return only a number of records
+matching `criteriasObject`, ignoring `limit` and `offset` parameters.
 
 
 #### `.save( [modelInstance] )`
