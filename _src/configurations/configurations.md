@@ -35,6 +35,7 @@ module.exports = {
 |server.protocol  | Protocol to be used by Node server: `https` or `http` (default).
 |server.host  | Server host, e.g. `localhost`.    
 |server.port  | Server port, e.g. `7042`.
+|server.path  | Path to IPC endpoint, e.g. `\\\\.\\pipe\\89d9d208-80a2-4a00-88f1-09a4c4329cf3` or `process.env.PORT` for iisnode. Most likely, you will need it only when running your application on Microsoft Azure under IIS. Note, `server.port` will be ignored if `server.path` is present in config.  
 |server.url   | Server external URL. Is used only for OpenAPI documentation. Also, maybe used in the code, for example for links in emails.
 |router.urlPrefix | URI prefix, that will be prepended to all endpoints, e.g. `api/v2/`.
 |router.primaryKeyPattern| RegExp pattern for identifiers, e.g. `\\d+`. You'll need to change it if you are using hash or uuid keys in models.
