@@ -1,8 +1,8 @@
 # Properties
 
 Properties is a way how you define validation rules and extra feature 
-to Model's fields. By default Dominion framework comes with the most
-common data types and validation rules. But you can extend them 
+to Model's fields. By default, Dominion framework comes with the most
+common data types and validation rules. You can extend them 
 with project specific functionality.
 
 **Validation rules** applies every time you are assigning a value to
@@ -23,12 +23,12 @@ model.id = 'stringValue';
 ```
 
 If during assigment validation passed successfully, **input modifications**
-will be applied. The most simple example of input modification is in
+will be applied. The simplest example of input modification is in
 `.date()` property: if value is ISO 8601 string representation of a date
 it will be automatically converted to JavaScript `Date` type.
 
 **Output modification** are taking action before sending models back
-to a requester. They allow to change value of a property in JSON
+to a requester. They allow changing value of a property in JSON
 response or remove it all. For example, you probably wouldn't want
 to send password hash to a client, setting property to `.private()`
 will remove this field from the output.  
@@ -77,7 +77,7 @@ make sense no matter if it is a String or Date.
 There are couple additional rules used during date conversion, if property assigned with:
  * `Date` object - it will be set unchanged.
  * integer - it will be treated as UNIX epoch time.
- * ISO 8601 string without timezone - UTC±00:00 timezone will be used
+ * ISO 8601 string without a timezone - UTC±00:00 timezone will be used
  * any other string - it will be parsed with native [`Date.parse()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse)
 
 ## Enum Property <a name="enum"></a>   
@@ -115,7 +115,7 @@ Setting property to a `model()` will perform following:
 
 ## .id() and .uuid() <a name="id-uuid"></a>
 
-As primary keys are present in majority of models you use in your 
+As primary keys are present in a majority of models you use in your 
 project, Dominion framework has shortcuts for you.
    
 | Method | Shortcut for |

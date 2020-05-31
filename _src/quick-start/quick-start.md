@@ -69,21 +69,21 @@ http://localhost:7042/hello?offset=70&limit=42 to check results.
 If you can see welcome message, we are done. That's all you need to
 start REST API server.
 
-But lets go a bit deeper to what just happened. First two commands
+But let's go a bit deeper to what just happened. First two commands
 `npm init` and `npm i @dominion-framework/dominion` are obvious, 
 initiating npm package and installing Dominion framework. However, 
 after opening `./node_modules`, some of you will be pleased to see
 that it doesn't contain a backup of npm repository.
 
 Third command `npx dominion create hello` is creating project scaffold.
-Actually, it creates scaffold for a single component. You can read
+Actually, it creates a scaffold for a single component. You can read
 more about it on page [Components](components/). But `hello` is 
 a bit special, it also creates default configs, server's index file, 
 and adds `start` script to `package.json`. Don't worry, if any of 
 those already exists it won't be overwritten.
 
 Finally, `npm start` is executing `node index.js`. Nothing special
-here, so lets see what is inside index file.
+here, so let's see what is inside index file.
 
 ```js
 const Server = require("@dominion-framework/dominion");
@@ -105,10 +105,10 @@ ES modules will be moved out of a flag in Node.js.
 
 First two are default components. `cors` is adding proper CORS headers
 into APIs response. It is not needed, if your APIs won't  be used
-from a browser. And `logging` is writing logs into console, you should
+from a browser. And `logging` is writing logs into a console, you should
 already saw it after opening http://localhost:7042/hello.
 
-Then goes component that we created using "npx dominion create". 
+Then goes component we created using "npx dominion create". 
 And here it starts to be interesting. There are 3 files inside 
 folder `./components/hello/` - `index.js`, `controller.js` and
 `factory.js`. Index is used for registering parts of a components
@@ -192,16 +192,16 @@ HelloFactory.new({
 ```
 As you notices, creating new instance of `Hello` model is 
 asynchronous operation. Realistically, there is nothing
-to do asynchronously when you creating new model instance.
-But for majority of other operation there is a lot, e.g. saving 
-in database, reading file, communicating with other micro-services, etc.
+to do asynchronously when you create new model instance.
+But for a majority of other operation there is a lot, e.g. saving 
+in a database, reading file, communicating with other micro-services, etc.
 So, to keep things consistent `.new()` returns Promise.       
 
 And as usual, you can find more about models on [Factories](/factories-and-models/) page.
 
 
 I hope you are still following, we are almost done. 
-Lets return back to component index file. We are left with one more
+Let's return back to component index file. We are left with one more
 row, really simple one: 
 ```js
 Server.start();
@@ -209,7 +209,7 @@ Server.start();
 It runs all bootstrap functions and starts listening for HTTP requests.
 
 OK, that's it. We just went through all basic features of the framework.
-Thank you for reading and I'm wishing you to have a grate time working
+Thank you for reading, and I wish you to have a grate time working
 with Dominion framework. You can find more in-depth information on this
 website and of course (and it is more recommended) in the
  [source code](https://github.com/dominion-framework/dominion) on GitHub.
@@ -219,7 +219,7 @@ One last thing before you leave. There is a little giveaway for you.
 OpenAPI (Swagger) documentation is coming out of the box -
 open https://editor.swagger.io/ and copy-paste content from 
 file `./openapi.json` into it. This file was created with the last 
-line in component index:
+line in a component index:
 
 ```js
 Server.openApiToFile();
