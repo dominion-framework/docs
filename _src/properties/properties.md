@@ -43,6 +43,7 @@ make sense no matter if it is a String or Date.
 |:---|:---|
 | `.required()`  | Marks that property value can not be set to `null` or `undefined`. Also it cannot be omitted before saving model to external storage. 
 | `.private()`   | Marks that property should be removed from model before sending it in response.
+| `.immutable()` | Marks that property should be immutable.
 | `.primaryKey()`| Marks property as primary key of the model. This property will be set to a value returned from external storage (e.g. database) after new record has been inserted.
 | `.example(string)`   | Adding example of property value, e.g. "978-3-16-148410-0" for ISBN. It is used only during generating OpenAPI (Swagger) documentation. It is also useful as inline documentation.
 
